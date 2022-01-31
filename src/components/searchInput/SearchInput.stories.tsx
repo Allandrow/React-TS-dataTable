@@ -2,7 +2,7 @@ import { ComponentStory } from '@storybook/react'
 import { SearchInput } from './SearchInput'
 
 export default {
-  title: 'DataTable/Search',
+  title: 'datatable/Search',
   component: SearchInput,
 }
 
