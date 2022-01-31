@@ -10,14 +10,20 @@
 - [Lint-staged](https://github.com/okonet/lint-staged)
 - [Vitest](https://vitest.dev/)
 - [Testing Library](https://testing-library.com/) with [Jest-dom](https://testing-library.com/docs/ecosystem-jest-dom), [React](https://testing-library.com/docs/react-testing-library/intro) and [user-event](https://testing-library.com/docs/user-event/intro/) plugins
-
+- [Storybook](https://storybook.js.org/)
 
 ### Development
 
-1. Launch a local development server
+- Launch a local development server
 
 ```
 npm run dev
+```
+
+- Launch Storybook
+
+```
+npm run sb
 ```
 
 ### Build + preview

@@ -35,6 +35,10 @@
       "files": ["**/*.test.[jt]s?(x)"],
       "extends": ["plugin:testing-library/react", "plugin:jest-dom/recommended"],
       "plugins": ["testing-library", "jest-dom"]
+    },
+    {
+      "files": ["**/*.stories.[jt]s?(x)"],
+      "extends": ["plugin:storybook/recommended"]
     }
   ]
 }
