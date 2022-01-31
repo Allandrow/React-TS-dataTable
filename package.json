@@ -50,6 +50,6 @@
     "vitest": "^0.2.5"
   },
   "lint-staged": {
-    "*.js": "eslint --cache --fix"
+    "*.tsx": "eslint --cache --fix"
   }
 }
