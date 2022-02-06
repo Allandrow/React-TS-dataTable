@@ -1,4 +1,6 @@
 import { ComponentStory } from '@storybook/react'
+import { data } from '../../fixtures/data'
+import { headings } from '../../fixtures/headings'
 import { Table } from './Table'
 
 export default {
@@ -6,6 +8,8 @@ export default {
   component: Table,
 }
 
-const Template: ComponentStory<typeof Table> = () => <Table />
+const Template: ComponentStory<typeof Table> = () => (
+  <Table displayedData={data} headings={headings} />
+)
 
 export const Default = Template.bind({})
