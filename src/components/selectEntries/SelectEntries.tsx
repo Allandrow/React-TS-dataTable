@@ -1,6 +1,6 @@
 import { FormEvent } from 'react'
 
-interface SelectEntriesProps {
+type SelectEntriesProps = {
   options?: number[]
   callback: (e: FormEvent<HTMLSelectElement>) => void
 }

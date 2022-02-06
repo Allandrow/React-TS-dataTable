@@ -1,6 +1,6 @@
 import { FormEvent } from 'react'
 
-interface SearchInputProps {
+type SearchInputProps = {
   value: string
   callback: (e: FormEvent<HTMLInputElement>) => void
 }
