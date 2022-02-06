@@ -6,6 +6,10 @@ type TableProps = {
   headings: Headings
 }
 
+type Employee = {
+  [key: string]: string
+}
+
 export const Table = ({ displayedData, headings }: TableProps) => {
   return (
     <table>
@@ -16,6 +20,15 @@ export const Table = ({ displayedData, headings }: TableProps) => {
           ))}
         </tr>
       </thead>
+      <tbody>
+        {displayedData.map((employee: Employee, i) => (
+          <tr key={i}>
+            {headings.map(({ key }) => (
+              <td key={key}>{employee[key]}</td>
+            ))}
+          </tr>
+        ))}
+      </tbody>
     </table>
   )
 }
