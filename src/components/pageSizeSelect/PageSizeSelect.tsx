@@ -1,14 +1,14 @@
 import { FormEvent } from 'react'
 
-type SelectEntriesProps = {
+type PageSizeSelectProps = {
   options?: number[]
   callback: (e: FormEvent<HTMLSelectElement>) => void
 }
 
-export const SelectEntries = ({
+export const PageSizeSelect = ({
   options = [10, 20, 50, 100],
   callback,
-}: SelectEntriesProps) => {
+}: PageSizeSelectProps) => {
   return (
     <label>
       <span>Show</span>
