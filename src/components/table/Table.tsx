@@ -15,7 +15,7 @@ export const Table = ({ displayedData, headings }: TableProps) => {
     <table>
       <thead>
         <tr>
-          {headings.map(({ key, text }, i) => (
+          {headings.map(({ key, text }) => (
             <th key={key}>{text}</th>
           ))}
         </tr>
