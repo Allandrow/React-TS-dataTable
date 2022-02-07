@@ -1,15 +1,23 @@
-import { FormEvent } from 'react'
+import { FormEvent, useState } from 'react'
 
 type SearchInputProps = {
-  value: string
-  callback: (e: FormEvent<HTMLInputElement>) => void
+  callback: (value: string) => void
 }
 
-export const SearchInput = ({ value, callback }: SearchInputProps) => {
+export const SearchInput = ({ callback }: SearchInputProps) => {
+  const [searchValue, setSearchValue] = useState('')
+
+  // TODO : is it really needed to handle local state ?
+  const handleChange = (e: FormEvent<HTMLInputElement>) => {
+    const value = e.currentTarget.value
+    setSearchValue(value)
+    callback(value)
+  }
+
   return (
     <label>
       <span>Search: </span>
-      <input type="search" value={value} onChange={callback} />
+      <input type="search" value={searchValue} onInput={handleChange} />
     </label>
   )
 }
