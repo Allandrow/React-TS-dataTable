@@ -1,16 +1,26 @@
 import { Data } from '../../fixtures/data'
 import { Headings } from '../../fixtures/headings'
 
+type Ordering = {
+  key: string
+  order: string
+}
+
 type TableProps = {
   displayedData: Data
   headings: Headings
+  ordering: Ordering
 }
 
 type Employee = {
   [key: string]: string
 }
 
-export const Table = ({ displayedData, headings }: TableProps) => {
+export const Table = ({
+  displayedData,
+  headings,
+  ordering = { key: headings[0].key, order: 'descending' },
+}: TableProps) => {
   return (
     <table>
       <thead>

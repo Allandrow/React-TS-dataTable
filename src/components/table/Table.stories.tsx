@@ -9,7 +9,11 @@ export default {
 }
 
 const Template: ComponentStory<typeof Table> = () => (
-  <Table displayedData={data} headings={headings} />
+  <Table
+    displayedData={data}
+    headings={headings}
+    ordering={{ key: headings[0].key, order: 'descending' }}
+  />
 )
 
 export const Default = Template.bind({})
