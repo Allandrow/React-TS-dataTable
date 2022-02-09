@@ -108,8 +108,8 @@ Text component displaying the current range of items viewed in the table out of 
 
 ### Props
 
-- data.length
-- filteredData.length
+- dataLength
+- filteredDataLength : optional
 - pageSize
 - currentPage
 
@@ -117,6 +117,13 @@ Text component displaying the current range of items viewed in the table out of 
 
 - Calculating the first/last index of results shown
 - If data.length is different from filteredData.length, render a different text layout
+
+### Use Cases
+
+- No data display
+- No filter result display
+- Filtered display
+- default display
 
 <br>
 
