@@ -25,13 +25,13 @@ Wrapper controlling the overall state of the module
 
 - setDisplayedData : sort data according to ordering
 - setDisplayedData : Filtering data when searchValue changes
-
+- slicedData : Slices displayedData to display only items based on currentPage and pageSize
 
 ### Children components
 
 - PageSizeSelect (setPageSize)
 - SeachInput (setSearchValue)
-- Table (headings, displayedData, ordering, setOrdering, currentPage, pageSize)
+- Table (headings, slicedData, ordering, setOrdering)
 - Recap (data.length, filteredData, pageSize, currentPage)
 - Pagination (filteredData.length, pageSize, currentPage, setCurrentPage)
 
@@ -65,15 +65,11 @@ Select input with default options. On change, pass the new value up to the wrapp
 
 ### Description
 
-Controlled input component handling state locally. On change, pass the new value up to the wrapper component.
+Input component to specify search value for filtering data. On change, pass the new value up to the wrapper component.
 
 ### Props
 
 - callback
-
-### State
-
-- searchValue, setSearchValue
 
 <br>
 
@@ -95,12 +91,6 @@ Component displaying headings and data in a table format. On heading click pass 
 - headings
 - ordering
 - callback
-- currentPage
-- pageSize
-
-### Logic
-
-- Slices data to display only items based on currentPage and pageSize
 
 <br>
 
