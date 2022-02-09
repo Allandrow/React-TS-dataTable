@@ -3,7 +3,7 @@ import { Headings } from '../../fixtures/headings'
 
 type Ordering = {
   key: string
-  order: string
+  order: 'ascending' | 'descending'
 }
 
 type TableProps = {
