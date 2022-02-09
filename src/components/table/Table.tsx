@@ -1,4 +1,4 @@
-import { Data } from '../../fixtures/data'
+import { Employees } from '../../fixtures/employees'
 import { Headings } from '../../fixtures/headings'
 
 type Ordering = {
@@ -7,7 +7,7 @@ type Ordering = {
 }
 
 type TableProps = {
-  displayedData: Data
+  displayedData: Employees
   headings: Headings
   ordering: Ordering
 }

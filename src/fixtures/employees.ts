@@ -1,4 +1,4 @@
-export const data = [
+export const employees = [
   {
     firstName: 'Shaun',
     lastName: 'Derdes',
@@ -1101,4 +1101,4 @@ export const data = [
   },
 ]
 
-export type Data = typeof data
+export type Employees = typeof employees

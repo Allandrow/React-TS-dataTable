@@ -1,5 +1,5 @@
 import { ComponentStory } from '@storybook/react'
-import { data } from '../../fixtures/data'
+import { employees } from '../../fixtures/employees'
 import { headings } from '../../fixtures/headings'
 import { Table } from './Table'
 
@@ -10,7 +10,7 @@ export default {
 
 const Template: ComponentStory<typeof Table> = () => (
   <Table
-    displayedData={data}
+    displayedData={employees}
     headings={headings}
     ordering={{ key: headings[0].key, order: 'descending' }}
   />
