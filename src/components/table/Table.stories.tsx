@@ -8,9 +8,11 @@ export default {
   component: Table,
 }
 
+const data = employees.slice(0, 10)
+
 const Template: ComponentStory<typeof Table> = () => (
   <Table
-    displayedData={employees}
+    displayedData={data}
     headings={headings}
     ordering={{ key: headings[0].key, order: 'descending' }}
   />

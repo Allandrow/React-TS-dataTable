@@ -32,9 +32,9 @@ export const Table = ({
       </thead>
       <tbody>
         {displayedData.map((employee: Employee, i) => (
-          <tr key={i}>
+          <tr key={employee.id}>
             {headings.map(({ key }) => (
-              <td key={key}>{employee[key]}</td>
+              <td key={`${employee.id}-${key}`}>{employee[key]}</td>
             ))}
           </tr>
         ))}
