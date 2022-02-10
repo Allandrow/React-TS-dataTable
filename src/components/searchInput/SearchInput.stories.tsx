@@ -7,7 +7,7 @@ export default {
 }
 
 const Template: ComponentStory<typeof SearchInput> = () => (
-  <SearchInput callback={(value) => console.log(value)} />
+  <SearchInput callback={(e) => console.log(e.currentTarget.value)} />
 )
 
 export const Default = Template.bind({})
