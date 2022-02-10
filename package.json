@@ -8,7 +8,9 @@
     "preview": "vite preview",
     "prepare": "husky install",
     "sb": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "test": "vitest",
+    "commit-test": "vitest --run"
   },
   "dependencies": {
     "react": "^17.0.2",

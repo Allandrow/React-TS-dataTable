@@ -3,8 +3,8 @@ import { useState, useEffect } from 'react'
 type RecapProps = {
   dataLength: number
   filteredDataLength?: number
-  pageSize: number
-  currentPage: number
+  pageSize?: number
+  currentPage?: number
 }
 
 const getIndices = (total: number, pageSize: number, currentPage: number) => {

@@ -29,7 +29,7 @@
     "react/prop-types": "off",
     "prettier/prettier": "error"
   },
-  "ignorePatterns": ["src/tests/*"],
+  "ignorePatterns": ["src/**/*.test.*"],
   "overrides": [
     {
       "files": ["**/*.test.[jt]s?(x)"],
