@@ -1,10 +1,11 @@
-/*
-  Props :
-    data
-    headings
-*/
+import { Headings } from '../../fixtures/headings'
 
-export const DataTable = () => {
+type DataTableProps = {
+  data: Object[]
+  headings: Headings
+}
+
+export const DataTable = ({ data, headings }: DataTableProps) => {
   /*
     state :
       - searchValue
