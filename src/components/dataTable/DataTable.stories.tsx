@@ -8,8 +8,10 @@ export default {
   component: DataTable,
 }
 
-const Template: ComponentStory<typeof DataTable> = () => (
-  <DataTable data={employees} headings={headings} />
-)
+const Template: ComponentStory<typeof DataTable> = (args) => <DataTable {...args} />
 
 export const Default = Template.bind({})
+Default.args = {
+  data: employees,
+  headings,
+}
