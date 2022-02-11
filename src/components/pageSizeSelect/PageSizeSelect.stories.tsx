@@ -2,7 +2,7 @@ import { ComponentStory } from '@storybook/react'
 import { PageSizeSelect } from './PageSizeSelect'
 
 export default {
-  title: 'datatable/select',
+  title: 'datatable/Select',
   component: PageSizeSelect,
 }
 

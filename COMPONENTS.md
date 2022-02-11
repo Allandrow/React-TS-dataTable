@@ -141,7 +141,7 @@ Pagination component displaying currentPage, list of pages (in a range?) and but
 
 ### Props
 
-- filteredData.length
+- dataLength
 - pageSize
 - currentPage
 - setCurrentPage
