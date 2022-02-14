@@ -1,32 +1,62 @@
+import { useEffect, useState } from 'react'
+import { Employees } from '../../fixtures/employees'
 import { Headings } from '../../fixtures/headings'
+import { Ordering } from '../../types'
+import { PageSizeSelect } from '../pageSizeSelect/PageSizeSelect'
+import { SearchInput } from '../searchInput/SearchInput'
+import { Table } from '../table/Table'
 
+// <T extends Record<string, number | string>>
 type DataTableProps = {
-  data: Object[]
+  data: Employees
   headings: Headings
 }
 
 export const DataTable = ({ data, headings }: DataTableProps) => {
-  /*
-    state :
-      - searchValue
-      - pageSize
-      - currentPage
-      - ordering
-      - displayedData
-  */
+  const [pageSize, setPageSize] = useState(10)
+  const [searchValue, setSearchValue] = useState('')
+  const [ordering, setOrdering] = useState({
+    key: headings[0].key,
+    order: 'descending',
+  } as Ordering)
 
-  // select
-  // search
-  /*
-    Table :
-      - headings with ordering
-      - displayedData
-  */
-  // recap
-  // pagination
+  useEffect(() => {
+    console.log('pageSize', pageSize)
+    console.log('searchValue', searchValue)
+    console.log('ordering', ordering)
+  }, [pageSize, searchValue, ordering])
 
-  return <h1>WIP</h1>
+  return (
+    <>
+      <PageSizeSelect callback={setPageSize} />
+      <SearchInput callback={setSearchValue} />
+      <Table
+        displayedData={data}
+        headings={headings}
+        ordering={ordering}
+        callback={setOrdering}
+      />
+    </>
+  )
 }
+/*
+  state :
+    - searchValue
+    - pageSize
+    - currentPage
+    - ordering
+    - displayedData
+*/
+
+// select
+// search
+/*
+  Table :
+    - headings with ordering
+    - displayedData
+*/
+// recap
+// pagination
 
 /*
   rerenders :

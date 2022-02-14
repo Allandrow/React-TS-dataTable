@@ -8,7 +8,7 @@ type TableProps = {
   displayedData: Employees | []
   headings: Headings
   ordering: Ordering
-  callback: () => void
+  callback: ({ key, order }: Ordering) => void
 }
 
 export const Table = ({
