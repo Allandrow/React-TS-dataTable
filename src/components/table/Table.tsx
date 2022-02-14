@@ -1,44 +1,43 @@
 import { Employees } from '../../fixtures/employees'
 import { Headings } from '../../fixtures/headings'
-
-type Ordering = {
-  key: string
-  order: 'ascending' | 'descending'
-}
+import { TableHeader } from '../tableHeader/TableHeader'
+import { Ordering } from '../../types'
+import { TableBody } from '../tableBody/TableBody'
 
 type TableProps = {
-  displayedData: Employees
+  displayedData: Employees | []
   headings: Headings
   ordering: Ordering
-}
-
-type Employee = {
-  [key: string]: string
+  callback: () => void
 }
 
 export const Table = ({
   displayedData,
   headings,
   ordering = { key: headings[0].key, order: 'descending' },
+  callback,
 }: TableProps) => {
+  const hasData = displayedData.length > 0
+
   return (
     <table>
-      <thead>
-        <tr>
-          {headings.map(({ key, text }) => (
-            <th key={key}>{text}</th>
-          ))}
-        </tr>
-      </thead>
-      <tbody>
-        {displayedData.map((employee: Employee, i) => (
-          <tr key={employee.id}>
-            {headings.map(({ key }) => (
-              <td key={`${employee.id}-${key}`}>{employee[key]}</td>
-            ))}
+      <TableHeader headings={headings} ordering={ordering} callback={callback} />
+
+      {hasData && (
+        <TableBody
+          displayedData={displayedData}
+          headings={headings}
+          ordering={ordering}
+        />
+      )}
+
+      {!hasData && (
+        <tbody>
+          <tr>
+            <td colSpan={headings.length}>No data available in table</td>
           </tr>
-        ))}
-      </tbody>
+        </tbody>
+      )}
     </table>
   )
 }
