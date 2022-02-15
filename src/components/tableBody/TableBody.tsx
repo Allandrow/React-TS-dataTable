@@ -15,14 +15,14 @@ type Employee = {
 export const TableBody = ({ displayedData, headings, ordering }: TableBodyProps) => {
   return (
     <tbody>
-      {displayedData.map((employee: Employee, i) => (
-        <tr key={employee.id}>
+      {displayedData.map((item: Employee) => (
+        <tr key={item.id}>
           {headings.map(({ key }) => (
             <td
-              key={`${employee.id}-${key}`}
+              key={`${item.id}-${key}`}
               className={key === ordering.key ? 'sorted' : undefined}
             >
-              {employee[key]}
+              {item[key]}
             </td>
           ))}
         </tr>

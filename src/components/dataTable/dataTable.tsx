@@ -23,16 +23,29 @@ export const DataTable = ({ data, headings }: DataTableProps) => {
 
   useEffect(() => {}, [pageSize, searchValue])
 
-  const sortedData = useMemo(() => {
-    return useSorting({ data, ordering })
-  }, [data, ordering])
+  const sortedData = useMemo(() => useSorting({ data, ordering }), [data, ordering])
+  const filteredData = useMemo(() => {
+    if (searchValue.length >= 2) {
+      return sortedData.filter((item) => {
+        return Object.entries(item).some(([key, value]) => {
+          if (key === 'id') return false
+
+          return value.includes(searchValue)
+        })
+      })
+    }
+
+    return undefined
+  }, [sortedData, searchValue])
+
+  const displayedData = filteredData || sortedData
 
   return (
     <>
       <PageSizeSelect changeSize={setPageSize} />
       <SearchInput changeSearch={setSearchValue} />
       <Table
-        displayedData={sortedData}
+        displayedData={displayedData}
         headings={headings}
         ordering={ordering}
         changeOrdering={setOrdering}
