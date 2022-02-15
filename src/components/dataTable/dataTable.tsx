@@ -1,6 +1,7 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { Employees } from '../../fixtures/employees'
 import { Headings } from '../../fixtures/headings'
+import { useSorting } from '../../hooks/useSorting'
 import { Ordering } from '../../types'
 import { PageSizeSelect } from '../pageSizeSelect/PageSizeSelect'
 import { SearchInput } from '../searchInput/SearchInput'
@@ -20,14 +21,18 @@ export const DataTable = ({ data, headings }: DataTableProps) => {
     order: 'descending',
   } as Ordering)
 
-  useEffect(() => {}, [pageSize, searchValue, ordering])
+  useEffect(() => {}, [pageSize, searchValue])
+
+  const sortedData = useMemo(() => {
+    return useSorting({ data, ordering })
+  }, [data, ordering])
 
   return (
     <>
       <PageSizeSelect changeSize={setPageSize} />
       <SearchInput changeSearch={setSearchValue} />
       <Table
-        displayedData={data}
+        displayedData={sortedData}
         headings={headings}
         ordering={ordering}
         changeOrdering={setOrdering}
