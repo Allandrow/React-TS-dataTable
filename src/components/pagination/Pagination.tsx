@@ -1,11 +1,11 @@
-import { MouseEvent } from 'react'
 import { usePagination } from '../../hooks/usePagination'
+import { PageButton } from '../pageButton/PageButton'
 
 type PaginationProps = {
   dataLength: number
   pageSize: number
   currentPage?: number
-  callback: (value: number) => void
+  changePage: (value: number) => void
 }
 
 type PaginationListParams = {
@@ -20,22 +20,10 @@ export const Pagination = ({
   dataLength,
   pageSize,
   currentPage = 1,
-  callback,
+  changePage,
 }: PaginationProps) => {
-  const getPreviousPage = () => {
-    const previousPage = currentPage - 1
-    callback(previousPage)
-  }
-
-  const getNextPage = () => {
-    const nextPage = currentPage + 1
-    callback(nextPage)
-  }
-
-  const handlePageChange = (e: MouseEvent<HTMLButtonElement>) => {
-    const newPage = parseInt(e.currentTarget.textContent as string)
-    callback(newPage)
-  }
+  const getPreviousPage = () => changePage(currentPage - 1)
+  const getNextPage = () => changePage(currentPage + 1)
 
   const { pageList, suspendAfterList, suspendBeforeList, lastPage, firstPage } =
     usePagination({
@@ -59,7 +47,7 @@ export const Pagination = ({
       {suspendBeforeList && (
         <>
           <li key={firstPage}>
-            <button onClick={handlePageChange}>{firstPage}</button>
+            <PageButton value={firstPage as number} changePage={changePage} />
           </li>
           <li key={'suspendedBeforeList'}>
             <span>...</span>
@@ -71,7 +59,7 @@ export const Pagination = ({
         pageList.map(({ page, current }) => (
           <li key={page} className={current ? 'current' : undefined}>
             {current && <span>{page}</span>}
-            {!current && <button onClick={handlePageChange}>{page}</button>}
+            {!current && <PageButton value={page} changePage={changePage} />}
           </li>
         ))}
 
@@ -81,7 +69,7 @@ export const Pagination = ({
             <span>...</span>
           </li>
           <li key={lastPage}>
-            <button onClick={handlePageChange}>{lastPage}</button>
+            <PageButton value={lastPage as number} changePage={changePage} />
           </li>
         </>
       )}

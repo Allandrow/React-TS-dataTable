@@ -20,21 +20,17 @@ export const DataTable = ({ data, headings }: DataTableProps) => {
     order: 'descending',
   } as Ordering)
 
-  useEffect(() => {
-    console.log('pageSize', pageSize)
-    console.log('searchValue', searchValue)
-    console.log('ordering', ordering)
-  }, [pageSize, searchValue, ordering])
+  useEffect(() => {}, [pageSize, searchValue, ordering])
 
   return (
     <>
-      <PageSizeSelect callback={setPageSize} />
-      <SearchInput callback={setSearchValue} />
+      <PageSizeSelect changeSize={setPageSize} />
+      <SearchInput changeSearch={setSearchValue} />
       <Table
         displayedData={data}
         headings={headings}
         ordering={ordering}
-        callback={setOrdering}
+        changeOrdering={setOrdering}
       />
     </>
   )

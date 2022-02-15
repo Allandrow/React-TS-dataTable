@@ -8,20 +8,24 @@ type TableProps = {
   displayedData: Employees | []
   headings: Headings
   ordering: Ordering
-  callback: ({ key, order }: Ordering) => void
+  changeOrdering: ({ key, order }: Ordering) => void
 }
 
 export const Table = ({
   displayedData,
   headings,
   ordering = { key: headings[0].key, order: 'descending' },
-  callback,
+  changeOrdering,
 }: TableProps) => {
   const hasData = displayedData.length > 0
 
   return (
     <table>
-      <TableHeader headings={headings} ordering={ordering} callback={callback} />
+      <TableHeader
+        headings={headings}
+        ordering={ordering}
+        changeOrdering={changeOrdering}
+      />
 
       {hasData && (
         <TableBody

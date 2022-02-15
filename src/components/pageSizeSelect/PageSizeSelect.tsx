@@ -2,16 +2,15 @@ import { FormEvent } from 'react'
 
 type PageSizeSelectProps = {
   options?: number[]
-  callback: (value: number) => void
+  changeSize: (value: number) => void
 }
 
 export const PageSizeSelect = ({
   options = [10, 20, 50, 100],
-  callback,
+  changeSize,
 }: PageSizeSelectProps) => {
   const handleChange = (e: FormEvent<HTMLSelectElement>) => {
-    const value = parseInt(e.currentTarget.value)
-    callback(value)
+    changeSize(parseInt(e.currentTarget.value))
   }
 
   return (

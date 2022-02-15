@@ -5,7 +5,7 @@ export default {
   title: 'datatable/Pagination',
   component: Pagination,
   args: {
-    callback: (value: number) => console.log(value),
+    changePage: (value: number) => console.log(value),
   },
 }
 

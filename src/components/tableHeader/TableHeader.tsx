@@ -5,15 +5,15 @@ import { Ordering } from '../../types'
 interface TableHeaderProps {
   headings: Headings
   ordering: Ordering
-  callback: ({ key, order }: Ordering) => void
+  changeOrdering: ({ key, order }: Ordering) => void
 }
 
-export const TableHeader = ({ headings, ordering, callback }: TableHeaderProps) => {
+export const TableHeader = ({ headings, ordering, changeOrdering }: TableHeaderProps) => {
   const handleOrderingChange = (e: SyntheticEvent) => {
     let newOrdering
 
     if (e.currentTarget.classList.contains('sorted')) {
-      const order = ordering.order === 'ascending' ? 'ascending' : 'descending'
+      const order = ordering.order === 'ascending' ? 'descending' : 'ascending'
       newOrdering = {
         key: ordering.key,
         order,
@@ -27,7 +27,7 @@ export const TableHeader = ({ headings, ordering, callback }: TableHeaderProps) 
       } as Ordering
     }
 
-    callback(newOrdering)
+    changeOrdering(newOrdering)
   }
 
   return (

@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react'
 
 import { Recap } from './Recap'
 
-describe('Text recap component', () => {
+describe('Recap', () => {
   test('No data shown', () => {
     render(<Recap dataLength={0} />)
     expect(screen.getByText(/showing 0 to 0 of 0 entries/i)).toBeInTheDocument()

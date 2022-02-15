@@ -21,16 +21,17 @@ export const usePagination = ({
   dataLength,
   siblingCount = 1,
 }: UsePaginationProps) => {
+  const totalPageCount = Math.ceil(dataLength / pageSize)
+
   const pagination = useMemo(() => {
-    const displayedPagesCount = 7
-    const totalPageCount = Math.ceil(dataLength / pageSize)
+    const displayedPagesUntilSuspend = 7
     const suspendCountThreshold = 4
 
-    if (dataLength === 0) {
+    if (totalPageCount === 0) {
       return { pageList: [], suspendBeforeList: false, suspendAfterList: false }
     }
 
-    if (totalPageCount <= displayedPagesCount) {
+    if (totalPageCount <= displayedPagesUntilSuspend) {
       return {
         pageList: getRange(1, totalPageCount, currentPage),
         suspendAfterList: false,
@@ -68,6 +69,7 @@ export const usePagination = ({
       firstPage: 1,
       lastPage: totalPageCount,
     }
-  }, [currentPage, pageSize, dataLength, siblingCount])
+  }, [currentPage, totalPageCount, siblingCount])
+
   return pagination
 }

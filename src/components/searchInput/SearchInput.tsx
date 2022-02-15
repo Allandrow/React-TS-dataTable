@@ -1,13 +1,12 @@
 import { FormEvent } from 'react'
 
 type SearchInputProps = {
-  callback: (value: string) => void
+  changeSearch: (value: string) => void
 }
 
-export const SearchInput = ({ callback }: SearchInputProps) => {
+export const SearchInput = ({ changeSearch }: SearchInputProps) => {
   const handleChange = (e: FormEvent<HTMLInputElement>) => {
-    const value = e.currentTarget.value
-    callback(value)
+    changeSearch(e.currentTarget.value)
   }
 
   return (
