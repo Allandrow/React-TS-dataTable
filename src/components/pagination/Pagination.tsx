@@ -8,15 +8,28 @@ type PaginationProps = {
   callback: (value: number) => void
 }
 
+type PaginationListParams = {
+  pageList: { page: number; current?: boolean }[]
+  suspendAfterList: boolean
+  suspendBeforeList: boolean
+  lastPage?: number
+  firstPage?: number
+}
+
 export const Pagination = ({
   dataLength,
   pageSize,
   currentPage = 1,
   callback,
 }: PaginationProps) => {
-  const handleClick = (operation: string) => {
-    const newPage = operation === '+' ? currentPage + 1 : currentPage - 1
-    callback(newPage)
+  const getPreviousPage = () => {
+    const previousPage = currentPage - 1
+    callback(previousPage)
+  }
+
+  const getNextPage = () => {
+    const nextPage = currentPage + 1
+    callback(nextPage)
   }
 
   const handlePageChange = (e: MouseEvent<HTMLButtonElement>) => {
@@ -24,33 +37,58 @@ export const Pagination = ({
     callback(newPage)
   }
 
-  const pages = usePagination({ currentPage, pageSize, dataLength })
+  const { pageList, suspendAfterList, suspendBeforeList, lastPage, firstPage } =
+    usePagination({
+      currentPage,
+      pageSize,
+      dataLength,
+    }) as PaginationListParams
+
+  const isPreviousButtonDisabled = dataLength === 0 || currentPage === 1
+  const isNextButtonDisabled =
+    dataLength === 0 || currentPage === pageList[pageList.length - 1].page
 
   return (
-    <ul className="pagination">
+    <ul>
       <li>
-        <button onClick={() => handleClick('-')} disabled={currentPage === pages[0]}>
-          Previous
+        <button onClick={getPreviousPage} disabled={isPreviousButtonDisabled}>
+          previous
         </button>
       </li>
-      {pages.map((page, i) => (
-        <li key={`${page}-${i}`} className={currentPage === page ? 'current' : undefined}>
-          <button
-            disabled={currentPage === page || page === '...'}
-            onClick={
-              currentPage !== page && page !== '...' ? handlePageChange : undefined
-            }
-          >
-            {page}
-          </button>
-        </li>
-      ))}
+
+      {suspendBeforeList && (
+        <>
+          <li key={firstPage}>
+            <button onClick={handlePageChange}>{firstPage}</button>
+          </li>
+          <li key={'suspendedBeforeList'}>
+            <span>...</span>
+          </li>
+        </>
+      )}
+
+      {pageList.length > 0 &&
+        pageList.map(({ page, current }) => (
+          <li key={page} className={current ? 'current' : undefined}>
+            {current && <span>{page}</span>}
+            {!current && <button onClick={handlePageChange}>{page}</button>}
+          </li>
+        ))}
+
+      {suspendAfterList && (
+        <>
+          <li key={'suspendedAfterList'}>
+            <span>...</span>
+          </li>
+          <li key={lastPage}>
+            <button onClick={handlePageChange}>{lastPage}</button>
+          </li>
+        </>
+      )}
+
       <li>
-        <button
-          onClick={() => handleClick('+')}
-          disabled={currentPage === pages[pages.length - 1]}
-        >
-          Next
+        <button onClick={getNextPage} disabled={isNextButtonDisabled}>
+          next
         </button>
       </li>
     </ul>

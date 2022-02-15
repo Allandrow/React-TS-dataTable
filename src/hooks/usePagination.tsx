@@ -7,9 +7,12 @@ interface UsePaginationProps {
   siblingCount?: number
 }
 
-const getRange = (start: number, end: number) => {
+const getRange = (start: number, end: number, current: number) => {
   const length = end - start + 1
-  return Array.from({ length }, (_, i) => i + start)
+  return Array.from({ length }, (_, i) => {
+    const page = { page: i + start }
+    return i + start === current ? { ...page, current: true } : page
+  })
 }
 
 export const usePagination = ({
@@ -19,38 +22,52 @@ export const usePagination = ({
   siblingCount = 1,
 }: UsePaginationProps) => {
   const pagination = useMemo(() => {
-    const totalPageCount = Math.ceil(dataLength / pageSize)
-    const firstPage = 1
     const displayedPagesCount = 7
+    const totalPageCount = Math.ceil(dataLength / pageSize)
     const suspendCountThreshold = 4
 
-    if (dataLength === 0) return [firstPage]
-
-    // display all pages
-    if (totalPageCount <= displayedPagesCount) return getRange(1, totalPageCount)
-
-    // if currentPage is in the first four pages, suspend after 5th page
-    if (currentPage <= 4) {
-      const pagesBeforeSuspendCount = suspendCountThreshold + siblingCount
-      const pages = getRange(1, pagesBeforeSuspendCount)
-
-      return [...pages, '...', totalPageCount]
+    if (dataLength === 0) {
+      return { pageList: [], suspendBeforeList: false, suspendAfterList: false }
     }
 
-    // if currentPage is in the last four pages, suspend before last 5 pages
+    if (totalPageCount <= displayedPagesCount) {
+      return {
+        pageList: getRange(1, totalPageCount, currentPage),
+        suspendAfterList: false,
+        suspendBeforeList: false,
+      }
+    }
+
+    if (currentPage <= suspendCountThreshold) {
+      return {
+        pageList: getRange(1, suspendCountThreshold + siblingCount, currentPage),
+        suspendBeforeList: false,
+        suspendAfterList: true,
+        lastPage: totalPageCount,
+      }
+    }
+
     if (currentPage >= totalPageCount - suspendCountThreshold) {
-      const pagesAfterSuspendCount =
-        totalPageCount - suspendCountThreshold + siblingCount - 1
-      const pages = getRange(pagesAfterSuspendCount, totalPageCount)
-
-      return [firstPage, '...', ...pages]
+      const firstPageAfterSuspend =
+        totalPageCount - suspendCountThreshold - 1 + siblingCount
+      return {
+        pageList: getRange(firstPageAfterSuspend, totalPageCount, currentPage),
+        suspendAfterList: false,
+        suspendBeforeList: true,
+        firstPage: 1,
+      }
     }
 
-    // suspend before and after siblingCount from currentPage
-    const pages = getRange(currentPage - siblingCount, currentPage + siblingCount)
+    const firstPageAfterSuspend = currentPage - siblingCount
+    const lastPageBeforeSuspend = currentPage + siblingCount
 
-    return [firstPage, '...', ...pages, '...', totalPageCount]
+    return {
+      pageList: getRange(firstPageAfterSuspend, lastPageBeforeSuspend, currentPage),
+      suspendAfterList: true,
+      suspendBeforeList: true,
+      firstPage: 1,
+      lastPage: totalPageCount,
+    }
   }, [currentPage, pageSize, dataLength, siblingCount])
-
   return pagination
 }
