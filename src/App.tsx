@@ -1,5 +1,9 @@
+import { DataTable } from './components/dataTable/DataTable'
+import { employees } from './fixtures/employees'
+import { headings } from './fixtures/headings'
+
 function App() {
-  return <h1>Hey there</h1>
+  return <DataTable data={employees} headings={headings} />
 }
 
 export default App

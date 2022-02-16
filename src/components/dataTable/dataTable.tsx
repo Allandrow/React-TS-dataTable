@@ -1,9 +1,11 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useMemo, useState, FormEvent } from 'react'
 import { Employees } from '../../fixtures/employees'
 import { Headings } from '../../fixtures/headings'
 import { useSorting } from '../../hooks/useSorting'
 import { Ordering } from '../../types'
 import { PageSizeSelect } from '../pageSizeSelect/PageSizeSelect'
+import { Pagination } from '../pagination/Pagination'
+import { Recap } from '../recap/Recap'
 import { SearchInput } from '../searchInput/SearchInput'
 import { Table } from '../table/Table'
 
@@ -16,12 +18,11 @@ type DataTableProps = {
 export const DataTable = ({ data, headings }: DataTableProps) => {
   const [pageSize, setPageSize] = useState(10)
   const [searchValue, setSearchValue] = useState('')
+  const [currentPage, setCurrentPage] = useState(1)
   const [ordering, setOrdering] = useState({
     key: headings[0].key,
     order: 'descending',
   } as Ordering)
-
-  useEffect(() => {}, [pageSize, searchValue])
 
   const sortedData = useMemo(() => useSorting({ data, ordering }), [data, ordering])
   const filteredData = useMemo(() => {
@@ -34,43 +35,47 @@ export const DataTable = ({ data, headings }: DataTableProps) => {
     return undefined
   }, [sortedData, searchValue])
 
-  const displayedData = filteredData || sortedData
+  const displayedData = useMemo(() => {
+    const data = filteredData || sortedData
+    return data.slice((currentPage - 1) * pageSize, currentPage * pageSize)
+  }, [sortedData, filteredData, currentPage, pageSize, ordering])
+
+  const handleChangeSize = (value: number) => {
+    setPageSize(value)
+    setCurrentPage(1)
+  }
+
+  const handleFiltering = (e: FormEvent<HTMLInputElement>) => {
+    setSearchValue(e.currentTarget.value.toLowerCase())
+    setCurrentPage(1)
+  }
 
   return (
     <>
-      <PageSizeSelect changeSize={setPageSize} />
-      <SearchInput changeSearch={setSearchValue} />
+      <div>
+        <PageSizeSelect changeSize={handleChangeSize} />
+        <SearchInput changeSearch={handleFiltering} />
+      </div>
       <Table
         displayedData={displayedData}
         headings={headings}
         ordering={ordering}
         changeOrdering={setOrdering}
       />
+      <div>
+        <Recap
+          currentPage={currentPage}
+          dataLength={data.length}
+          filteredDataLength={filteredData?.length}
+          pageSize={pageSize}
+        />
+        <Pagination
+          dataLength={filteredData ? filteredData.length : data.length}
+          pageSize={pageSize}
+          currentPage={currentPage}
+          changePage={setCurrentPage}
+        />
+      </div>
     </>
   )
 }
-/*
-  state :
-    - searchValue
-    - pageSize
-    - currentPage
-    - ordering
-    - displayedData
-*/
-
-// select
-// search
-/*
-  Table :
-    - headings with ordering
-    - displayedData
-*/
-// recap
-// pagination
-
-/*
-  rerenders :
-    - displayedData when pageSize / searchValue / ordering / currentPage changes
-    - pagination when pageSize / displayedData / currentPage changes
-    - recap when currentPage / pageSize / searchValue changes
-*/

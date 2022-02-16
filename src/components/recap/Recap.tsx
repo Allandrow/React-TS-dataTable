@@ -3,8 +3,8 @@ import { useState, useEffect } from 'react'
 type RecapProps = {
   dataLength: number
   filteredDataLength?: number
-  pageSize?: number
-  currentPage?: number
+  pageSize: number
+  currentPage: number
 }
 
 const getIndices = (total: number, pageSize: number, currentPage: number) => {
@@ -18,36 +18,38 @@ const getIndices = (total: number, pageSize: number, currentPage: number) => {
 export const Recap = ({
   dataLength,
   filteredDataLength,
-  pageSize = 10,
-  currentPage = 1,
+  pageSize,
+  currentPage,
 }: RecapProps) => {
   const [indices, setIndices] = useState({ first: 0, last: 0 })
   const [recapText, setRecapText] = useState('')
 
-  const isFiltered = filteredDataLength !== undefined && filteredDataLength > 0
-  const isNotFiltered =
-    filteredDataLength === undefined || (isFiltered && filteredDataLength === dataLength)
+  const isFiltered = filteredDataLength !== undefined
 
   useEffect(() => {
-    if (dataLength && isNotFiltered) {
+    if (dataLength && !isFiltered) {
       setIndices(getIndices(dataLength, pageSize, currentPage))
     }
     if (dataLength && isFiltered) {
-      setIndices(getIndices(filteredDataLength, pageSize, currentPage))
+      if (filteredDataLength > 0) {
+        setIndices(getIndices(filteredDataLength, pageSize, currentPage))
+      } else {
+        setIndices({ first: 0, last: 0 })
+      }
     }
-  }, [])
+  }, [pageSize, currentPage, isFiltered, filteredDataLength])
 
   useEffect(() => {
     const { first, last } = indices
 
-    if (isNotFiltered) {
-      setRecapText(`Showing ${first} to ${last} of ${dataLength} entries`)
-    } else {
+    if (isFiltered) {
       setRecapText(
         `Showing ${first} to ${last} of ${filteredDataLength} entries (filtered from ${dataLength} total entries)`
       )
+    } else {
+      setRecapText(`Showing ${first} to ${last} of ${dataLength} entries`)
     }
-  }, [indices])
+  }, [indices, isFiltered])
 
   return <p>{recapText}</p>
 }

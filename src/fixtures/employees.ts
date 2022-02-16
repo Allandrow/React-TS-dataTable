@@ -1,16 +1,5 @@
 export const employees = [
   {
-    firstName: 'Germain',
-    lastName: 'Castilljo',
-    department: 'Marketing',
-    dateOfBirth: '4/28/1976',
-    startDate: '9/14/2020',
-    street: '972 Division Parkway',
-    city: 'Orlando',
-    state: 'FL',
-    zipCode: '32803',
-  },
-  {
     firstName: 'Lani',
     lastName: 'Beecraft',
     department: 'Business Development',

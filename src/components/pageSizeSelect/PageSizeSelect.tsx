@@ -10,7 +10,7 @@ export const PageSizeSelect = ({
   changeSize,
 }: PageSizeSelectProps) => {
   const handleChange = (e: FormEvent<HTMLSelectElement>) => {
-    changeSize(parseInt(e.currentTarget.value))
+    changeSize(parseInt(e.currentTarget.value, 10))
   }
 
   return (

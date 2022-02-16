@@ -10,7 +10,8 @@
     "sb": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "test": "vitest",
-    "commit-test": "vitest --run"
+    "commit-test": "vitest --run",
+    "coverage": "vitest --coverage"
   },
   "dependencies": {
     "react": "^17.0.2",

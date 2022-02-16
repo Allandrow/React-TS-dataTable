@@ -48,7 +48,7 @@ export const usePagination = ({
       }
     }
 
-    if (currentPage >= totalPageCount - suspendCountThreshold) {
+    if (currentPage > totalPageCount - suspendCountThreshold) {
       const firstPageAfterSuspend =
         totalPageCount - suspendCountThreshold - 1 + siblingCount
       return {

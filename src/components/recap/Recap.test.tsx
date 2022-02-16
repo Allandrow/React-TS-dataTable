@@ -4,12 +4,21 @@ import { Recap } from './Recap'
 
 describe('Recap', () => {
   test('No data shown', () => {
-    render(<Recap dataLength={0} />)
+    render(
+      <Recap
+        dataLength={0}
+        currentPage={1}
+        pageSize={10}
+        filteredDataLength={undefined}
+      />
+    )
     expect(screen.getByText(/showing 0 to 0 of 0 entries/i)).toBeInTheDocument()
   })
 
   test('Data existing, no filtered data shown', () => {
-    render(<Recap dataLength={100} filteredDataLength={0} />)
+    render(
+      <Recap dataLength={100} filteredDataLength={0} currentPage={1} pageSize={10} />
+    )
     expect(
       screen.getByText(/showing 0 to 0 of 0 entries \(filtered from 100 total entries\)/i)
     ).toBeInTheDocument()
