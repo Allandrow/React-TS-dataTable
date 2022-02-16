@@ -6,7 +6,7 @@ type SearchInputProps = {
 
 export const SearchInput = ({ changeSearch }: SearchInputProps) => {
   const handleChange = (e: FormEvent<HTMLInputElement>) => {
-    changeSearch(e.currentTarget.value)
+    changeSearch(e.currentTarget.value.toLowerCase())
   }
 
   return (
