@@ -1,6 +1,5 @@
 export const employees = [
   {
-    id: 'bdc4b4be-a317-4bb2-9233-5b91fc3996f2',
     firstName: 'Germain',
     lastName: 'Castilljo',
     department: 'Marketing',
@@ -12,7 +11,6 @@ export const employees = [
     zipCode: '32803',
   },
   {
-    id: 'fc5f52ec-eff4-44a7-a1c8-a994499aefa9',
     firstName: 'Lani',
     lastName: 'Beecraft',
     department: 'Business Development',
@@ -24,7 +22,6 @@ export const employees = [
     zipCode: '98140',
   },
   {
-    id: 'd5eea7f3-d82f-4127-be40-b92bfc22916e',
     firstName: 'Analise',
     lastName: 'Verrechia',
     department: 'Research and Development',
@@ -36,7 +33,6 @@ export const employees = [
     zipCode: '01905',
   },
   {
-    id: '435246ef-9770-4a42-8624-5208da191170',
     firstName: 'Valentino',
     lastName: 'Rubinovitsch',
     department: 'Human Resources',
@@ -48,7 +44,6 @@ export const employees = [
     zipCode: '84403',
   },
   {
-    id: '6f835ea1-e593-432c-8c7b-4fd6d3edcedf',
     firstName: 'Florida',
     lastName: 'Milham',
     department: 'Support',
@@ -60,7 +55,6 @@ export const employees = [
     zipCode: '93907',
   },
   {
-    id: '20c1549c-f91c-4b1f-a18a-6e85037121ec',
     firstName: 'Garrett',
     lastName: 'Ballance',
     department: 'Human Resources',
@@ -72,7 +66,6 @@ export const employees = [
     zipCode: '46221',
   },
   {
-    id: '326c05ca-3ed9-439c-aec1-4de68622d3f1',
     firstName: 'Georgeta',
     lastName: 'Marple',
     department: 'Engineering',
@@ -84,7 +77,6 @@ export const employees = [
     zipCode: '34611',
   },
   {
-    id: '912100ba-ab94-4413-b143-ed9d0ca557ac',
     firstName: 'Berny',
     lastName: 'Renish',
     department: 'Services',
@@ -96,7 +88,6 @@ export const employees = [
     zipCode: '94250',
   },
   {
-    id: 'dd11e5d4-d606-4bbd-9d5e-36370da10765',
     firstName: 'Vita',
     lastName: 'Bigham',
     department: 'Human Resources',
@@ -108,7 +99,6 @@ export const employees = [
     zipCode: '73071',
   },
   {
-    id: '0f5ef50c-914f-4b84-ac97-ebce6220a7de',
     firstName: 'Millie',
     lastName: 'Womersley',
     department: 'Sales',
@@ -120,7 +110,6 @@ export const employees = [
     zipCode: '20067',
   },
   {
-    id: 'b5a08d1e-c305-4429-b101-f2ed247d4235',
     firstName: 'Cosme',
     lastName: 'Rosencwaig',
     department: 'Engineering',
@@ -132,7 +121,6 @@ export const employees = [
     zipCode: '98158',
   },
   {
-    id: '9af29b2b-47c6-458c-98d4-565a680b9b9f',
     firstName: 'Lucius',
     lastName: 'McSaul',
     department: 'Legal',
@@ -144,7 +132,6 @@ export const employees = [
     zipCode: '99220',
   },
   {
-    id: 'e42139b1-5251-4744-8b38-082d7b4beda4',
     firstName: 'Lockwood',
     lastName: 'Donnell',
     department: 'Research and Development',
@@ -156,7 +143,6 @@ export const employees = [
     zipCode: '90310',
   },
   {
-    id: '0cf9cd7e-894a-42f3-9430-2afb96a38c62',
     firstName: 'Myrle',
     lastName: 'Kail',
     department: 'Research and Development',
@@ -168,7 +154,6 @@ export const employees = [
     zipCode: '31416',
   },
   {
-    id: '8d9775cd-35bb-41ad-a7b8-83a81abff0ec',
     firstName: 'Barnabe',
     lastName: 'Cheesman',
     department: 'Product Management',
@@ -180,7 +165,6 @@ export const employees = [
     zipCode: '76110',
   },
   {
-    id: 'bf163782-af19-49ab-90c2-f28ca3a5ce66',
     firstName: 'Joshuah',
     lastName: 'Durrant',
     department: 'Services',
@@ -192,7 +176,6 @@ export const employees = [
     zipCode: '78737',
   },
   {
-    id: '1545c72e-1ed8-4ce4-a316-77a38c66d94b',
     firstName: 'Annice',
     lastName: 'Baylie',
     department: 'Accounting',
@@ -204,7 +187,6 @@ export const employees = [
     zipCode: '95128',
   },
   {
-    id: 'f16679b6-81a9-49af-ac96-0e7e58e35b6c',
     firstName: 'Ev',
     lastName: 'Kineton',
     department: 'Human Resources',
@@ -216,7 +198,6 @@ export const employees = [
     zipCode: '45999',
   },
   {
-    id: '51e96226-cce1-459d-b54d-878f67ae51f2',
     firstName: 'Yolande',
     lastName: 'Bendley',
     department: 'Legal',
@@ -228,7 +209,6 @@ export const employees = [
     zipCode: '60158',
   },
   {
-    id: 'cc66e051-4aa2-4ed1-bfed-2257f8583b62',
     firstName: 'Darrel',
     lastName: 'Cuphus',
     department: 'Marketing',
@@ -240,7 +220,6 @@ export const employees = [
     zipCode: '33633',
   },
   {
-    id: 'f9a1e7c4-702f-4d93-b592-a345ea1c0e13',
     firstName: 'Eddi',
     lastName: 'Siddons',
     department: 'Research and Development',
@@ -252,7 +231,6 @@ export const employees = [
     zipCode: '06520',
   },
   {
-    id: '77301713-2e11-4c3d-b220-36745b8ed5c3',
     firstName: 'Helli',
     lastName: 'Semeniuk',
     department: 'Legal',
@@ -264,7 +242,6 @@ export const employees = [
     zipCode: '85072',
   },
   {
-    id: '248d60b7-2651-432d-9847-41db9df4a786',
     firstName: 'Avrom',
     lastName: 'Kemmons',
     department: 'Legal',
@@ -276,7 +253,6 @@ export const employees = [
     zipCode: '72222',
   },
   {
-    id: 'eaa96e20-2990-4873-b095-ab88463c8c35',
     firstName: 'Consuela',
     lastName: 'Dulling',
     department: 'Legal',
@@ -288,7 +264,6 @@ export const employees = [
     zipCode: '98442',
   },
   {
-    id: '2033e6c8-ae9a-4872-a5af-37bc6da3aa12',
     firstName: 'Katerina',
     lastName: 'Benois',
     department: 'Sales',
@@ -300,7 +275,6 @@ export const employees = [
     zipCode: '32520',
   },
   {
-    id: 'b5447acc-d5d8-49fc-9904-c042fbbbc5e9',
     firstName: 'Devondra',
     lastName: 'Roocroft',
     department: 'Legal',
@@ -312,7 +286,6 @@ export const employees = [
     zipCode: '31196',
   },
   {
-    id: 'bee6363e-603d-4269-aa5f-c143ac43ef5b',
     firstName: 'Gunar',
     lastName: 'Shann',
     department: 'Product Management',
@@ -324,7 +297,6 @@ export const employees = [
     zipCode: '38104',
   },
   {
-    id: '20964783-b54d-456d-853e-a15f5548eafb',
     firstName: 'Andreana',
     lastName: 'Klimkov',
     department: 'Services',
@@ -336,7 +308,6 @@ export const employees = [
     zipCode: '99260',
   },
   {
-    id: 'ece064ae-a8d0-454e-b6b7-74a635c1b653',
     firstName: 'Millisent',
     lastName: 'Andersson',
     department: 'Accounting',
@@ -348,7 +319,6 @@ export const employees = [
     zipCode: '92505',
   },
   {
-    id: '5ccda2b5-5a47-4c89-832b-2e51453a23fd',
     firstName: 'Fifine',
     lastName: 'Harwin',
     department: 'Engineering',
@@ -360,7 +330,6 @@ export const employees = [
     zipCode: '76105',
   },
   {
-    id: '3fb629d6-8255-4d06-8e2a-92d98e918cd4',
     firstName: 'Laurena',
     lastName: 'Copson',
     department: 'Training',
@@ -372,7 +341,6 @@ export const employees = [
     zipCode: '77806',
   },
   {
-    id: '575031b6-e921-4a5c-959c-a5ad7fe869ff',
     firstName: 'Roy',
     lastName: 'Boylan',
     department: 'Engineering',
@@ -384,7 +352,6 @@ export const employees = [
     zipCode: '94257',
   },
   {
-    id: 'edf13a4e-9767-4f4a-8f3b-3cf7b556e289',
     firstName: 'Binky',
     lastName: 'Matisse',
     department: 'Research and Development',
@@ -396,7 +363,6 @@ export const employees = [
     zipCode: '10115',
   },
   {
-    id: '865a612f-da63-4983-b9d9-ab3b61a8e346',
     firstName: 'Alfie',
     lastName: 'Jackes',
     department: 'Engineering',
@@ -408,7 +374,6 @@ export const employees = [
     zipCode: '30356',
   },
   {
-    id: '51bac402-831d-4135-94a3-77eb8e53b7e4',
     firstName: 'Lauren',
     lastName: 'Klimkowski',
     department: 'Engineering',
@@ -420,7 +385,6 @@ export const employees = [
     zipCode: '30316',
   },
   {
-    id: 'c6ec9ef8-485b-49f6-8380-a22174fb26f7',
     firstName: 'Caldwell',
     lastName: 'Humberstone',
     department: 'Research and Development',
@@ -432,7 +396,6 @@ export const employees = [
     zipCode: '40576',
   },
   {
-    id: '1ba4d412-ea04-47ea-8d60-36fe8eb175ec',
     firstName: 'Bernhard',
     lastName: 'Bauduin',
     department: 'Training',
@@ -444,7 +407,6 @@ export const employees = [
     zipCode: '97221',
   },
   {
-    id: 'e445d2de-0f36-49df-8184-ff064f468f1b',
     firstName: 'Verile',
     lastName: 'Lethem',
     department: 'Human Resources',
@@ -456,7 +418,6 @@ export const employees = [
     zipCode: '90071',
   },
   {
-    id: 'e73a93c2-0cae-40ee-b704-ea910e106c34',
     firstName: 'Alfons',
     lastName: 'Aronstein',
     department: 'Human Resources',
@@ -468,7 +429,6 @@ export const employees = [
     zipCode: '88535',
   },
   {
-    id: '61b70149-1bf3-41a2-a724-ff458a9eba72',
     firstName: 'Lianne',
     lastName: 'McNeil',
     department: 'Business Development',
@@ -480,7 +440,6 @@ export const employees = [
     zipCode: '73135',
   },
   {
-    id: 'c1f985fe-f2e1-460a-b630-013f7c6bbc27',
     firstName: 'Caz',
     lastName: 'Landy',
     department: 'Legal',
@@ -492,7 +451,6 @@ export const employees = [
     zipCode: '60686',
   },
   {
-    id: '13b1a709-9624-4e34-bf48-f7c207baf15e',
     firstName: 'Raul',
     lastName: 'Linton',
     department: 'Product Management',
@@ -504,7 +462,6 @@ export const employees = [
     zipCode: '63121',
   },
   {
-    id: '82406f00-337b-4591-8033-976ba5843189',
     firstName: 'Boy',
     lastName: 'Bumphrey',
     department: 'Product Management',
@@ -516,7 +473,6 @@ export const employees = [
     zipCode: '54313',
   },
   {
-    id: '559aa2a8-4f31-4ab9-ab13-bfc25686e14b',
     firstName: 'Izaak',
     lastName: 'Lauritzen',
     department: 'Training',
@@ -528,7 +484,6 @@ export const employees = [
     zipCode: '46814',
   },
   {
-    id: 'e1c8fd78-f586-4c1f-ba90-b1c5e6db0120',
     firstName: 'Rosalind',
     lastName: 'Duffree',
     department: 'Product Management',
@@ -540,7 +495,6 @@ export const employees = [
     zipCode: '27705',
   },
   {
-    id: 'd7983a41-48b9-498a-a1c8-788bdec863ca',
     firstName: 'Bab',
     lastName: 'Wallington',
     department: 'Legal',
@@ -552,7 +506,6 @@ export const employees = [
     zipCode: '23277',
   },
   {
-    id: '5c7afe5a-abba-43b3-8399-5bbb74bc20f2',
     firstName: 'Keefer',
     lastName: 'Kmietsch',
     department: 'Accounting',
@@ -564,7 +517,6 @@ export const employees = [
     zipCode: '97211',
   },
   {
-    id: 'c01475d4-c223-4c4c-9ed2-69f271d5e739',
     firstName: 'Zerk',
     lastName: 'Ledster',
     department: 'Human Resources',
@@ -576,7 +528,6 @@ export const employees = [
     zipCode: '40298',
   },
   {
-    id: 'bee03277-1e43-4d0d-8ac1-8b8569e7e562',
     firstName: 'Harri',
     lastName: 'Kimblen',
     department: 'Services',
@@ -588,7 +539,6 @@ export const employees = [
     zipCode: '39534',
   },
   {
-    id: '7815f2c9-f994-4c12-aa17-648c6e68e116',
     firstName: 'Matelda',
     lastName: 'Hurl',
     department: 'Product Management',
@@ -600,7 +550,6 @@ export const employees = [
     zipCode: '20046',
   },
   {
-    id: '2a8611cd-4420-43f7-875b-19fa9a47fa0a',
     firstName: 'Cassie',
     lastName: 'Slorach',
     department: 'Support',
@@ -612,7 +561,6 @@ export const employees = [
     zipCode: '45213',
   },
   {
-    id: 'c3def4c3-c457-47a5-807a-05cb09774f44',
     firstName: 'Davina',
     lastName: 'Beresford',
     department: 'Research and Development',
@@ -624,7 +572,6 @@ export const employees = [
     zipCode: '32314',
   },
   {
-    id: '10496b8d-7f2a-409d-bdaa-3db4c69e5668',
     firstName: 'Alessandra',
     lastName: 'Witcher',
     department: 'Engineering',
@@ -636,7 +583,6 @@ export const employees = [
     zipCode: '85297',
   },
   {
-    id: '954554f7-b097-4ad4-9da5-22745416d49d',
     firstName: 'Janel',
     lastName: 'Bavin',
     department: 'Engineering',
@@ -648,7 +594,6 @@ export const employees = [
     zipCode: '95123',
   },
   {
-    id: '0793d24c-dfa1-4a8d-96b4-65eeed13b2a4',
     firstName: 'Burch',
     lastName: 'Limpertz',
     department: 'Business Development',
@@ -660,7 +605,6 @@ export const employees = [
     zipCode: '20088',
   },
   {
-    id: '65993d68-e19a-41b3-8e13-d4a592b95223',
     firstName: 'Munmro',
     lastName: 'Whiles',
     department: 'Business Development',
@@ -672,7 +616,6 @@ export const employees = [
     zipCode: '85083',
   },
   {
-    id: '97bd389c-60e2-4302-a23a-2d723327121b',
     firstName: 'Bernette',
     lastName: 'Harnetty',
     department: 'Services',
@@ -684,7 +627,6 @@ export const employees = [
     zipCode: '20231',
   },
   {
-    id: 'f9ec0d6c-a70d-42cb-aa19-ea16da4534e5',
     firstName: 'Cookie',
     lastName: 'Antonik',
     department: 'Support',
@@ -696,7 +638,6 @@ export const employees = [
     zipCode: '55114',
   },
   {
-    id: 'd6dd3c73-dab9-4096-94bc-12bc63451507',
     firstName: 'Bertha',
     lastName: 'Saynor',
     department: 'Human Resources',
@@ -708,7 +649,6 @@ export const employees = [
     zipCode: '10184',
   },
   {
-    id: 'f19ec86c-b6f8-4e9b-be64-568fac0702a3',
     firstName: 'Loleta',
     lastName: 'Stockau',
     department: 'Legal',
@@ -720,7 +660,6 @@ export const employees = [
     zipCode: '11236',
   },
   {
-    id: '569f9bcf-8d84-4fa0-8297-fa4f7348087e',
     firstName: 'Essy',
     lastName: 'Britcher',
     department: 'Accounting',
@@ -732,7 +671,6 @@ export const employees = [
     zipCode: '76096',
   },
   {
-    id: '298ca3a8-ffc4-4793-9809-500887043f0a',
     firstName: 'Luce',
     lastName: 'Rennard',
     department: 'Human Resources',
@@ -744,7 +682,6 @@ export const employees = [
     zipCode: '62794',
   },
   {
-    id: '08c93b8c-26f9-438a-b4e4-8b85abfcc45a',
     firstName: 'Rolfe',
     lastName: 'Bamsey',
     department: 'Engineering',
@@ -756,7 +693,6 @@ export const employees = [
     zipCode: '68134',
   },
   {
-    id: 'dfe5b38c-2fbb-46a8-850e-fc1f1c273a05',
     firstName: 'Merline',
     lastName: 'Widmoor',
     department: 'Marketing',
@@ -768,7 +704,6 @@ export const employees = [
     zipCode: '07104',
   },
   {
-    id: '0b2fcec8-c998-444d-970d-39c54196ec22',
     firstName: 'Brooks',
     lastName: 'Pooley',
     department: 'Engineering',
@@ -780,7 +715,6 @@ export const employees = [
     zipCode: '44485',
   },
   {
-    id: '3cd839bf-9bfb-401f-9baa-550e26325c99',
     firstName: 'Abey',
     lastName: 'Ley',
     department: 'Training',
@@ -792,7 +726,6 @@ export const employees = [
     zipCode: '85255',
   },
   {
-    id: '935751ee-3ae7-4b37-a2c9-db622d3333f2',
     firstName: 'Carlina',
     lastName: 'Gonin',
     department: 'Legal',
@@ -804,7 +737,6 @@ export const employees = [
     zipCode: '33915',
   },
   {
-    id: 'bb45af1b-4ec4-460d-b80d-4c23e7b70a51',
     firstName: 'Merle',
     lastName: 'Scholz',
     department: 'Sales',
@@ -816,7 +748,6 @@ export const employees = [
     zipCode: '14215',
   },
   {
-    id: '9f9e1ccc-c51a-41ee-9c23-595bba5f99cc',
     firstName: 'Gare',
     lastName: 'Scammonden',
     department: 'Accounting',
@@ -828,7 +759,6 @@ export const employees = [
     zipCode: '43204',
   },
   {
-    id: 'ea506c10-7036-4097-8190-1e5cc95573c3',
     firstName: 'Jillayne',
     lastName: 'Woolhouse',
     department: 'Human Resources',
@@ -840,7 +770,6 @@ export const employees = [
     zipCode: '49544',
   },
   {
-    id: '46037b89-4ae0-475c-8ded-d41beeaadd1d',
     firstName: 'Bernelle',
     lastName: 'Hawson',
     department: 'Business Development',
@@ -852,7 +781,6 @@ export const employees = [
     zipCode: '46239',
   },
   {
-    id: '074eb12d-154c-413b-a262-94fd95258476',
     firstName: 'Chandler',
     lastName: 'Hedling',
     department: 'Accounting',
@@ -864,7 +792,6 @@ export const employees = [
     zipCode: '57110',
   },
   {
-    id: '803a4066-1722-46f1-bb14-dcaee917c18e',
     firstName: 'Maire',
     lastName: 'Chastel',
     department: 'Accounting',
@@ -876,7 +803,6 @@ export const employees = [
     zipCode: '20575',
   },
   {
-    id: '3ba03035-acde-44da-b928-49634b0e25d7',
     firstName: 'Domini',
     lastName: 'Escott',
     department: 'Training',
@@ -888,7 +814,6 @@ export const employees = [
     zipCode: '37931',
   },
   {
-    id: '29d0a783-50d9-4762-9885-ba452d5840f8',
     firstName: 'Verne',
     lastName: 'Boyack',
     department: 'Marketing',
@@ -900,7 +825,6 @@ export const employees = [
     zipCode: '32803',
   },
   {
-    id: '7db7c187-f713-4ed2-bc21-4509be0e9ad7',
     firstName: 'Temp',
     lastName: 'Bickmore',
     department: 'Services',
@@ -912,7 +836,6 @@ export const employees = [
     zipCode: '14233',
   },
   {
-    id: '92150ae9-7deb-4d2a-8b6e-b471147dacaa',
     firstName: 'Kingsly',
     lastName: 'Woodson',
     department: 'Services',
@@ -924,7 +847,6 @@ export const employees = [
     zipCode: '63116',
   },
   {
-    id: '6d045ccf-3fc1-482f-b367-834579b7fdf6',
     firstName: 'Sylas',
     lastName: 'Calcott',
     department: 'Sales',
@@ -936,7 +858,6 @@ export const employees = [
     zipCode: '33686',
   },
   {
-    id: 'a0231109-19c2-49e8-a746-534fcb93ceee',
     firstName: 'Crawford',
     lastName: 'Bertrand',
     department: 'Marketing',
@@ -948,7 +869,6 @@ export const employees = [
     zipCode: '33111',
   },
   {
-    id: '46578b8b-cac2-41de-b8ce-77a110c399c0',
     firstName: 'Haleigh',
     lastName: 'Kinghorn',
     department: 'Human Resources',
@@ -960,7 +880,6 @@ export const employees = [
     zipCode: '78250',
   },
   {
-    id: 'd5b1224c-8e93-4688-9407-fe051dc7d2be',
     firstName: 'Alec',
     lastName: 'Roomes',
     department: 'Services',
@@ -972,7 +891,6 @@ export const employees = [
     zipCode: '33742',
   },
   {
-    id: '14ee1075-8097-424d-8819-393635687737',
     firstName: 'Charmian',
     lastName: 'Bowra',
     department: 'Sales',
@@ -984,7 +902,6 @@ export const employees = [
     zipCode: '33013',
   },
   {
-    id: '866d9915-05b6-4690-8f48-20f24f1d2b91',
     firstName: 'Margaretha',
     lastName: 'Scrauniage',
     department: 'Services',
@@ -996,7 +913,6 @@ export const employees = [
     zipCode: '46805',
   },
   {
-    id: '383ba2a6-8908-4f07-9f17-1e2638fbf78e',
     firstName: 'Mahmoud',
     lastName: 'MacCallister',
     department: 'Business Development',
@@ -1008,7 +924,6 @@ export const employees = [
     zipCode: '48107',
   },
   {
-    id: 'd50f925d-f7ec-4ac8-a303-bb286f19b73e',
     firstName: 'Jamima',
     lastName: 'Siggee',
     department: 'Product Management',
@@ -1020,7 +935,6 @@ export const employees = [
     zipCode: '34210',
   },
   {
-    id: 'e574046d-83c1-4ec6-8d38-f9d420e9c959',
     firstName: 'Jobi',
     lastName: 'Gianelli',
     department: 'Engineering',
@@ -1032,7 +946,6 @@ export const employees = [
     zipCode: '64101',
   },
   {
-    id: 'a007a487-61df-4703-aba5-02814c0ee20e',
     firstName: 'Tania',
     lastName: 'Ithell',
     department: 'Product Management',
@@ -1044,7 +957,6 @@ export const employees = [
     zipCode: '20535',
   },
   {
-    id: '272cd7d4-48a3-47d5-93bc-538d64b87c19',
     firstName: 'Helli',
     lastName: 'Rowlson',
     department: 'Services',
@@ -1056,7 +968,6 @@ export const employees = [
     zipCode: '23203',
   },
   {
-    id: '4d27a020-ba05-4157-abee-fcba0e024bfa',
     firstName: 'Osmund',
     lastName: 'Squirrell',
     department: 'Research and Development',
@@ -1068,7 +979,6 @@ export const employees = [
     zipCode: '93726',
   },
   {
-    id: '8835c2a0-5f4a-4c08-8fa5-c5a571b6ea0a',
     firstName: 'Adan',
     lastName: 'Stag',
     department: 'Marketing',
@@ -1080,7 +990,6 @@ export const employees = [
     zipCode: '28805',
   },
   {
-    id: '95599326-7bcb-4c64-bb1f-ce604a71c0b5',
     firstName: 'Marsiella',
     lastName: 'Titta',
     department: 'Business Development',
@@ -1092,7 +1001,6 @@ export const employees = [
     zipCode: '72209',
   },
   {
-    id: 'c3a72f9c-43b6-435b-b057-04ecb84e7692',
     firstName: 'Kara',
     lastName: 'Cunde',
     department: 'Services',
@@ -1104,7 +1012,6 @@ export const employees = [
     zipCode: '98498',
   },
   {
-    id: '4463e8e0-abc3-40a8-865b-33339469461d',
     firstName: 'Audrie',
     lastName: 'Jakubovitch',
     department: 'Human Resources',
@@ -1116,7 +1023,6 @@ export const employees = [
     zipCode: '77844',
   },
   {
-    id: 'a606a9c3-d065-4b51-acae-cba5c4c51bba',
     firstName: 'Stormie',
     lastName: 'Verey',
     department: 'Human Resources',
@@ -1128,7 +1034,6 @@ export const employees = [
     zipCode: '92137',
   },
   {
-    id: 'ce11cec4-6211-4be1-8664-569e0f90e2f4',
     firstName: 'Nichols',
     lastName: 'Buntin',
     department: 'Training',
@@ -1140,7 +1045,6 @@ export const employees = [
     zipCode: '10249',
   },
   {
-    id: 'bef7a185-1fd1-4a9d-8849-d7fca7deabe4',
     firstName: 'Vergil',
     lastName: 'Muge',
     department: 'Human Resources',
@@ -1152,7 +1056,6 @@ export const employees = [
     zipCode: '02458',
   },
   {
-    id: '73952f3f-64b8-47f4-bc5b-c957bdc120c9',
     firstName: 'Donall',
     lastName: 'Flaunders',
     department: 'Research and Development',
@@ -1164,7 +1067,6 @@ export const employees = [
     zipCode: '14225',
   },
   {
-    id: 'a2b0ebc6-af83-4ad6-bf59-6e3ec1a5e904',
     firstName: 'North',
     lastName: 'Rudgerd',
     department: 'Support',
@@ -1176,7 +1078,6 @@ export const employees = [
     zipCode: '55166',
   },
   {
-    id: 'd689adc0-5ede-4940-86a4-54e49979c4f8',
     firstName: 'Jarvis',
     lastName: 'Skiggs',
     department: 'Marketing',
@@ -1188,7 +1089,6 @@ export const employees = [
     zipCode: '06854',
   },
   {
-    id: 'c22bdfaf-5ec0-4275-bd26-6f34b5335d07',
     firstName: 'Lilith',
     lastName: 'Haddacks',
     department: 'Training',

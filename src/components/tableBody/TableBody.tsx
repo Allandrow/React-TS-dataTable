@@ -16,10 +16,10 @@ export const TableBody = ({ displayedData, headings, ordering }: TableBodyProps)
   return (
     <tbody>
       {displayedData.map((item: Employee) => (
-        <tr key={item.id}>
+        <tr key={Object.values(item).reduce((key, value) => (key += value), '')}>
           {headings.map(({ key }) => (
             <td
-              key={`${item.id}-${key}`}
+              key={key + item[key]}
               className={key === ordering.key ? 'sorted' : undefined}
             >
               {item[key]}

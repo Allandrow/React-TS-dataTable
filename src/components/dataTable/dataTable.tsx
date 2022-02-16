@@ -26,11 +26,9 @@ export const DataTable = ({ data, headings }: DataTableProps) => {
   const sortedData = useMemo(() => useSorting({ data, ordering }), [data, ordering])
   const filteredData = useMemo(() => {
     if (searchValue.length >= 2) {
-      return sortedData.filter((item) => {
-        return Object.values(item).some((value) => {
-          return value.toLowerCase().includes(searchValue)
-        })
-      })
+      return sortedData.filter((item) =>
+        Object.values(item).some((value) => value.toLowerCase().includes(searchValue))
+      )
     }
 
     return undefined
