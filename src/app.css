@@ -62,6 +62,10 @@ tbody tr:hover .sorted {
   background-color: #eaeaea;
 }
 
+td.empty {
+  text-align: center;
+}
+
 th {
   cursor: pointer;
   padding-right: 1rem;

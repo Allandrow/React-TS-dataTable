@@ -3,8 +3,13 @@ import { TableHeader } from '../tableHeader/TableHeader'
 import { Ordering, OrderedHeadings } from '../../types'
 import { TableBody } from '../tableBody/TableBody'
 
+interface DisplayedData {
+  filtered: boolean
+  data: Employees | []
+}
+
 interface TableProps extends OrderedHeadings {
-  displayedData: Employees | []
+  displayedData: DisplayedData
   changeOrdering: ({ key, order }: Ordering) => void
 }
 
@@ -14,7 +19,8 @@ export const Table = ({
   ordering = { key: headings[0].key, order: 'descending' },
   changeOrdering,
 }: TableProps) => {
-  const hasData = displayedData.length > 0
+  const { data, filtered } = displayedData
+  const hasData = data.length > 0
 
   return (
     <table>
@@ -25,17 +31,15 @@ export const Table = ({
       />
 
       {hasData && (
-        <TableBody
-          displayedData={displayedData}
-          headings={headings}
-          ordering={ordering}
-        />
+        <TableBody displayedData={data} headings={headings} ordering={ordering} />
       )}
 
       {!hasData && (
         <tbody>
           <tr>
-            <td colSpan={headings.length}>No data available in table</td>
+            <td colSpan={headings.length} className="empty">
+              {filtered ? 'No matching records found' : 'No data available in table'}
+            </td>
           </tr>
         </tbody>
       )}

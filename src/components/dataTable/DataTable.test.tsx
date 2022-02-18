@@ -105,7 +105,7 @@ describe('DataTable', () => {
 
       expect(screen.getAllByRole('row')).toHaveLength(2)
       expect(
-        screen.getByRole('cell', { name: /No data available in table/i })
+        screen.getByRole('cell', { name: /no matching records found/i })
       ).toBeInTheDocument()
       expect(screen.getByRole('button', { name: /previous/i })).toBeDisabled()
       expect(screen.getByRole('button', { name: /next/i })).toBeDisabled()

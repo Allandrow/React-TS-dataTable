@@ -13,5 +13,8 @@ export const useSlicedData = ({
   pageSize,
 }: SlicedDataProps) => {
   const data = filteredData || sortedData
-  return data.slice((currentPage - 1) * pageSize, currentPage * pageSize)
+  return {
+    filtered: filteredData !== undefined,
+    data: data.slice((currentPage - 1) * pageSize, currentPage * pageSize),
+  }
 }
