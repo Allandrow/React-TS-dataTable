@@ -1,8 +1,7 @@
 import { useMemo } from 'react'
+import { PageDependant } from '../types'
 
-interface UsePaginationProps {
-  currentPage: number
-  pageSize: number
+interface UsePaginationProps extends PageDependant {
   dataLength: number
   siblingCount?: number
 }

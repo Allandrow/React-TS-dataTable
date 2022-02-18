@@ -1,10 +1,9 @@
 import { useState, useEffect } from 'react'
+import { PageDependant } from '../../types'
 
-type RecapProps = {
+interface RecapProps extends PageDependant {
   dataLength: number
   filteredDataLength?: number
-  pageSize: number
-  currentPage: number
 }
 
 const getIndices = (total: number, pageSize: number, currentPage: number) => {

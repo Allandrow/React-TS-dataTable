@@ -1,14 +1,13 @@
 import { usePagination } from '../../hooks/usePagination'
+import { PageDependant } from '../../types'
 import { PageButton } from '../pageButton/PageButton'
 
-type PaginationProps = {
+interface PaginationProps extends PageDependant {
   dataLength: number
-  pageSize: number
-  currentPage?: number
   changePage: (value: number) => void
 }
 
-type PaginationListParams = {
+interface PaginationListParams {
   pageList: { page: number; current?: boolean }[]
   suspendAfterList: boolean
   suspendBeforeList: boolean
@@ -19,7 +18,7 @@ type PaginationListParams = {
 export const Pagination = ({
   dataLength,
   pageSize,
-  currentPage = 1,
+  currentPage,
   changePage,
 }: PaginationProps) => {
   const getPreviousPage = () => changePage(currentPage - 1)

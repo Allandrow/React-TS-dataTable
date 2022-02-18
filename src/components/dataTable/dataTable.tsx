@@ -10,12 +10,17 @@ import { SearchInput } from '../searchInput/SearchInput'
 import { Table } from '../table/Table'
 
 // <T extends Record<string, number | string>>
-type DataTableProps = {
+interface DataTableProps {
   data: Employees
   headings: Headings
+  pageSizeOptions: number[]
 }
 
-export const DataTable = ({ data, headings }: DataTableProps) => {
+export const DataTable = ({
+  data,
+  headings,
+  pageSizeOptions = [10, 20, 50, 100],
+}: DataTableProps) => {
   const [pageSize, setPageSize] = useState(10)
   const [searchValue, setSearchValue] = useState('')
   const [currentPage, setCurrentPage] = useState(1)
@@ -53,7 +58,7 @@ export const DataTable = ({ data, headings }: DataTableProps) => {
   return (
     <>
       <div>
-        <PageSizeSelect changeSize={handleChangeSize} />
+        <PageSizeSelect changeSize={handleChangeSize} options={pageSizeOptions} />
         <SearchInput changeSearch={handleFiltering} />
       </div>
       <Table

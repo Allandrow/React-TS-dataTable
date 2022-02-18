@@ -1,13 +1,10 @@
 import { Employees } from '../../fixtures/employees'
-import { Headings } from '../../fixtures/headings'
 import { TableHeader } from '../tableHeader/TableHeader'
-import { Ordering } from '../../types'
+import { Ordering, OrderedHeadings } from '../../types'
 import { TableBody } from '../tableBody/TableBody'
 
-type TableProps = {
+interface TableProps extends OrderedHeadings {
   displayedData: Employees | []
-  headings: Headings
-  ordering: Ordering
   changeOrdering: ({ key, order }: Ordering) => void
 }
 

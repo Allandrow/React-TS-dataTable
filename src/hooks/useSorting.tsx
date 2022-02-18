@@ -1,13 +1,9 @@
 import { Employees } from '../fixtures/employees'
-import { Ordering } from '../types'
+import { HeadingRelatedValue, Ordering } from '../types'
 
 interface SortingProps {
   data: Employees
   ordering: Ordering
-}
-
-type DataRow = {
-  [key: string]: string
 }
 
 export const useSorting = ({ data, ordering }: SortingProps) => {
@@ -15,7 +11,7 @@ export const useSorting = ({ data, ordering }: SortingProps) => {
   const includesDateText = /date/i
   const isKeyDate = includesDateText.test(key)
 
-  const sortedData = data.sort((a: DataRow, b: DataRow) => {
+  const sortedData = data.sort((a: HeadingRelatedValue, b: HeadingRelatedValue) => {
     if (isKeyDate) {
       const aDate = new Date(a[key])
       const bDate = new Date(b[key])

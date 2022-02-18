@@ -1,14 +1,11 @@
 import { FormEvent } from 'react'
 
-type PageSizeSelectProps = {
-  options?: number[]
+interface PageSizeSelectProps {
+  options: number[]
   changeSize: (value: number) => void
 }
 
-export const PageSizeSelect = ({
-  options = [10, 20, 50, 100],
-  changeSize,
-}: PageSizeSelectProps) => {
+export const PageSizeSelect = ({ options, changeSize }: PageSizeSelectProps) => {
   const handleChange = (e: FormEvent<HTMLSelectElement>) => {
     changeSize(parseInt(e.currentTarget.value, 10))
   }

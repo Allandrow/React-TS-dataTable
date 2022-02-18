@@ -1,10 +1,7 @@
 import { SyntheticEvent } from 'react'
-import { Headings } from '../../fixtures/headings'
-import { Ordering } from '../../types'
+import { Ordering, OrderedHeadings } from '../../types'
 
-interface TableHeaderProps {
-  headings: Headings
-  ordering: Ordering
+interface TableHeaderProps extends OrderedHeadings {
   changeOrdering: ({ key, order }: Ordering) => void
 }
 
