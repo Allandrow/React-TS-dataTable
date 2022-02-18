@@ -8,8 +8,25 @@ describe('Pagination', () => {
     changePage = (value: number) => value
   })
 
+  test('Display all pages if total pages is 7 or less', () => {
+    render(
+      <Pagination changePage={changePage} dataLength={64} pageSize={10} currentPage={1} />
+    )
+
+    expect(screen.queryByText('...')).toBeFalsy()
+    expect(screen.queryByRole('button', { name: '1' })).toBeFalsy()
+    expect(screen.queryByRole('button', { name: '2' })).toBeInTheDocument()
+    expect(screen.queryByRole('button', { name: '3' })).toBeInTheDocument()
+    expect(screen.queryByRole('button', { name: '4' })).toBeInTheDocument()
+    expect(screen.queryByRole('button', { name: '5' })).toBeInTheDocument()
+    expect(screen.queryByRole('button', { name: '6' })).toBeInTheDocument()
+    expect(screen.queryByRole('button', { name: '7' })).toBeInTheDocument()
+  })
+
   test('No data displays no page and both navigation buttons are disabled', () => {
-    render(<Pagination changePage={changePage} dataLength={0} pageSize={10} />)
+    render(
+      <Pagination changePage={changePage} dataLength={0} pageSize={10} currentPage={1} />
+    )
 
     expect(screen.getByRole('button', { name: /previous/i })).toBeDisabled()
     expect(screen.getByRole('button', { name: /next/i })).toBeDisabled()

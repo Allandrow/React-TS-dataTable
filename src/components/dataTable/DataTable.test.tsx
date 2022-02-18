@@ -44,7 +44,7 @@ describe('DataTable', () => {
   test('on load verifies correct initial states', () => {
     render(<DataTable data={employeesSample} headings={headings} />)
 
-    expect(screen.getByRole('combobox', { name: /show entries/i })).toHaveValue('10')
+    expect(screen.getByRole('combobox')).toHaveValue('10')
     expect(screen.queryByRole('button', { name: '1' })).toBeFalsy()
     expect(screen.getByRole('button', { name: /previous/i })).toBeDisabled()
     expect(screen.getByRole('button', { name: /next/i })).toBeDisabled()
@@ -91,7 +91,7 @@ describe('DataTable', () => {
     test('Filtering only shows matching results if any', () => {
       render(<DataTable data={employeesSample} headings={headings} />)
 
-      userEvent.type(screen.getByRole('searchbox', { name: /search:/i }), 'development')
+      userEvent.type(screen.getByRole('searchbox'), 'development')
       expect(screen.getAllByRole('row')).toHaveLength(3)
       expect(screen.queryByText(/Rubinovitsch/i)).toBeFalsy()
       expect(
@@ -101,10 +101,7 @@ describe('DataTable', () => {
 
     test('Filtering with no results shows a different display', () => {
       render(<DataTable data={employeesSample} headings={headings} />)
-      userEvent.type(
-        screen.getByRole('searchbox', { name: /search:/i }),
-        "won't find any result like this"
-      )
+      userEvent.type(screen.getByRole('searchbox'), "won't find any result like this")
 
       expect(screen.getAllByRole('row')).toHaveLength(2)
       expect(
@@ -122,7 +119,7 @@ describe('DataTable', () => {
       render(<DataTable data={employees} headings={headings} />)
 
       userEvent.click(screen.getByRole('button', { name: '3' }))
-      userEvent.type(screen.getByRole('searchbox', { name: /search:/i }), 'development')
+      userEvent.type(screen.getByRole('searchbox'), 'development')
 
       expect(screen.queryByText(/no data available in table/i)).toBeFalsy()
       expect(screen.queryByRole('button', { name: '1' })).toBeFalsy()
@@ -135,18 +132,12 @@ describe('DataTable', () => {
     test('Change number of items', () => {
       render(<DataTable data={employees} headings={headings} />)
 
-      userEvent.selectOptions(
-        screen.getByRole('combobox', { name: /show entries/i }),
-        '20'
-      )
+      userEvent.selectOptions(screen.getByRole('combobox'), '20')
       expect(screen.getAllByRole('row')).toHaveLength(21)
       expect(screen.getByText(/showing 1 to 20 of 99 entries/i)).toBeInTheDocument()
       expect(screen.queryByRole('button', { name: '6' })).toBeFalsy()
 
-      userEvent.selectOptions(
-        screen.getByRole('combobox', { name: /show entries/i }),
-        '100'
-      )
+      userEvent.selectOptions(screen.getByRole('combobox'), '100')
 
       expect(screen.getAllByRole('row')).toHaveLength(100)
       expect(screen.getByText(/showing 1 to 99 of 99 entries/i)).toBeInTheDocument()
@@ -158,10 +149,7 @@ describe('DataTable', () => {
       render(<DataTable data={employees} headings={headings} />)
 
       userEvent.click(screen.getByRole('button', { name: '2' }))
-      userEvent.selectOptions(
-        screen.getByRole('combobox', { name: /show entries/i }),
-        '20'
-      )
+      userEvent.selectOptions(screen.getByRole('combobox'), '20')
 
       expect(screen.queryByRole('button', { name: '1' })).toBeFalsy()
       expect(screen.getByRole('button', { name: '2' })).toBeInTheDocument()

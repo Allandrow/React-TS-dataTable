@@ -38,7 +38,11 @@ export const Pagination = ({
   return (
     <ul>
       <li>
-        <button onClick={getPreviousPage} disabled={isPreviousButtonDisabled}>
+        <button
+          onClick={getPreviousPage}
+          disabled={isPreviousButtonDisabled}
+          className="pagination-nav"
+        >
           previous
         </button>
       </li>
@@ -74,7 +78,11 @@ export const Pagination = ({
       )}
 
       <li>
-        <button onClick={getNextPage} disabled={isNextButtonDisabled}>
+        <button
+          onClick={getNextPage}
+          disabled={isNextButtonDisabled}
+          className="pagination-nav"
+        >
           next
         </button>
       </li>

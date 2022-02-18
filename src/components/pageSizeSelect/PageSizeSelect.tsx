@@ -11,9 +11,9 @@ export const PageSizeSelect = ({ options, changeSize }: PageSizeSelectProps) => 
   }
 
   return (
-    <label>
+    <label htmlFor="entries">
       <span>Show</span>
-      <select name="entries" onChange={handleChange}>
+      <select id="entries" name="entries" onChange={handleChange}>
         {options.map((item) => (
           <option key={item} value={item}>
             {item}

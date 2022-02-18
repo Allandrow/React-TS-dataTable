@@ -52,31 +52,27 @@ export const DataTable = ({
   }
 
   return (
-    <>
-      <div>
-        <PageSizeSelect changeSize={handleChangeSize} options={pageSizeOptions} />
-        <SearchInput changeSearch={handleFiltering} />
-      </div>
+    <section className="dataTable">
+      <PageSizeSelect changeSize={handleChangeSize} options={pageSizeOptions} />
+      <SearchInput changeSearch={handleFiltering} />
       <Table
         displayedData={displayedData}
         headings={headings}
         ordering={ordering}
         changeOrdering={setOrdering}
       />
-      <div>
-        <Recap
-          currentPage={currentPage}
-          dataLength={data.length}
-          filteredDataLength={filteredData?.length}
-          pageSize={pageSize}
-        />
-        <Pagination
-          dataLength={filteredData ? filteredData.length : data.length}
-          pageSize={pageSize}
-          currentPage={currentPage}
-          changePage={setCurrentPage}
-        />
-      </div>
-    </>
+      <Recap
+        currentPage={currentPage}
+        dataLength={data.length}
+        filteredDataLength={filteredData?.length}
+        pageSize={pageSize}
+      />
+      <Pagination
+        dataLength={filteredData ? filteredData.length : data.length}
+        pageSize={pageSize}
+        currentPage={currentPage}
+        changePage={setCurrentPage}
+      />
+    </section>
   )
 }

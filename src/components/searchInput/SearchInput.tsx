@@ -6,9 +6,9 @@ interface SearchInputProps {
 
 export const SearchInput = ({ changeSearch }: SearchInputProps) => {
   return (
-    <label>
+    <label htmlFor="search">
       <span>Search: </span>
-      <input type="search" onChange={changeSearch} />
+      <input id="search" type="search" onChange={changeSearch} />
     </label>
   )
 }
