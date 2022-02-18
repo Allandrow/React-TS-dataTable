@@ -15,7 +15,7 @@ import { Table } from '../table/Table'
 interface DataTableProps {
   data: Employees
   headings: Headings
-  pageSizeOptions: number[]
+  pageSizeOptions?: number[]
 }
 
 export const DataTable = ({
