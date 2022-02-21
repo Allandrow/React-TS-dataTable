@@ -1,43 +1,36 @@
-import { Employees } from '../../fixtures/employees'
 import { TableHeader } from '../tableHeader/TableHeader'
-import { Ordering, OrderedHeadings } from '../../types'
+import { Sorting, Data, SortedColumns } from '../../types'
 import { TableBody } from '../tableBody/TableBody'
 
 interface DisplayedData {
   filtered: boolean
-  data: Employees | []
+  data: Data[] | []
 }
 
-interface TableProps extends OrderedHeadings {
+interface TableProps extends SortedColumns {
   displayedData: DisplayedData
-  changeOrdering: ({ key, order }: Ordering) => void
+  changeSorting: ({ key, direction }: Sorting) => void
 }
 
 export const Table = ({
   displayedData,
-  headings,
-  ordering = { key: headings[0].key, order: 'descending' },
-  changeOrdering,
+  columns,
+  sorting = { key: columns[0].key, direction: 'descending' },
+  changeSorting,
 }: TableProps) => {
   const { data, filtered } = displayedData
   const hasData = data.length > 0
 
   return (
     <table>
-      <TableHeader
-        headings={headings}
-        ordering={ordering}
-        changeOrdering={changeOrdering}
-      />
+      <TableHeader columns={columns} sorting={sorting} changeSorting={changeSorting} />
 
-      {hasData && (
-        <TableBody displayedData={data} headings={headings} ordering={ordering} />
-      )}
+      {hasData && <TableBody displayedData={data} columns={columns} sorting={sorting} />}
 
       {!hasData && (
         <tbody>
           <tr>
-            <td colSpan={headings.length} className="empty">
+            <td colSpan={columns.length} className="empty">
               {filtered ? 'No matching records found' : 'No data available in table'}
             </td>
           </tr>

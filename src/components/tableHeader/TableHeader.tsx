@@ -1,42 +1,40 @@
 import { SyntheticEvent } from 'react'
-import { Ordering, OrderedHeadings } from '../../types'
+import { Sorting, SortedColumns } from '../../types'
 
-interface TableHeaderProps extends OrderedHeadings {
-  changeOrdering: ({ key, order }: Ordering) => void
+interface TableHeaderProps extends SortedColumns {
+  changeSorting: ({ key, direction }: Sorting) => void
 }
 
-export const TableHeader = ({ headings, ordering, changeOrdering }: TableHeaderProps) => {
+export const TableHeader = ({ columns, sorting, changeSorting }: TableHeaderProps) => {
   const handleOrderingChange = (e: SyntheticEvent) => {
-    let newOrdering
-
+    // sorting was already done on target column : invert ordering
     if (e.currentTarget.classList.contains('sorted')) {
-      const order = ordering.order === 'ascending' ? 'descending' : 'ascending'
-      newOrdering = {
-        key: ordering.key,
-        order,
-      } as Ordering
+      const direction = sorting.direction === 'ascending' ? 'descending' : 'ascending'
+      changeSorting({
+        ...sorting,
+        direction,
+      } as Sorting)
     } else {
-      const headingText = e.currentTarget.textContent
-      const { key } = headings.find((heading) => heading.text === headingText)!
-      newOrdering = {
+      const { key } = columns.find(
+        (column) => column.header === e.currentTarget.textContent
+      )!
+      changeSorting({
         key,
-        order: 'descending',
-      } as Ordering
+        direction: 'descending',
+      } as Sorting)
     }
-
-    changeOrdering(newOrdering)
   }
 
   return (
     <thead>
       <tr>
-        {headings.map(({ key, text }) => (
+        {columns.map(({ key, header }) => (
           <th
             key={key}
             onClick={handleOrderingChange}
-            className={key === ordering.key ? `sorted ${ordering.order}` : undefined}
+            className={key === sorting.key ? `sorted ${sorting.direction}` : ''}
           >
-            {text}
+            {header}
           </th>
         ))}
       </tr>

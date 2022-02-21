@@ -1,17 +1,21 @@
-import { Headings } from './fixtures/headings'
+export type Data = Record<string | number, string | number>
 
-export interface Ordering {
+export interface Column {
   key: string
-  order: 'ascending' | 'descending'
+  header: string
+  sortMethod?: string
 }
 
-export interface HeadingRelatedValue {
-  [key: string]: string
+type Direction = 'ascending' | 'descending'
+
+export interface Sorting {
+  key: string
+  direction: Direction
 }
 
-export interface OrderedHeadings {
-  headings: Headings
-  ordering: Ordering
+export interface SortedColumns {
+  columns: Column[]
+  sorting: Sorting
 }
 
 export interface PageDependant {

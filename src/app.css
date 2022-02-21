@@ -122,6 +122,17 @@ ul {
   display: flex;
   gap: 0.5rem;
   align-items: center;
+  justify-content: end;
+}
+
+li {
+  min-width: 42px;
+}
+
+li > span {
+  text-align: center;
+  width: 100%;
+  display: block;
 }
 
 li > button {
@@ -129,7 +140,6 @@ li > button {
   background: transparent;
   text-transform: capitalize;
   cursor: pointer;
-  min-width: 1.5em;
   padding: 0.5em 1em;
   text-align: center;
   border: 1px solid transparent;

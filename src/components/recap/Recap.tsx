@@ -23,7 +23,7 @@ export const Recap = ({
   const [indices, setIndices] = useState({ first: 0, last: 0 })
   const [recapText, setRecapText] = useState('')
 
-  const isFiltered = filteredDataLength !== undefined
+  const isFiltered = filteredDataLength !== undefined && filteredDataLength !== dataLength
 
   useEffect(() => {
     if (dataLength && !isFiltered) {

@@ -1,9 +1,8 @@
-import { Employees } from '../fixtures/employees'
-import { PageDependant } from '../types'
+import { Data, PageDependant } from '../types'
 
 interface SlicedDataProps extends PageDependant {
-  sortedData: Employees
-  filteredData: Employees | undefined
+  sortedData: Data[]
+  filteredData: Data[] | undefined
 }
 
 export const useSlicedData = ({

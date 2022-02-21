@@ -1,14 +1,14 @@
-import { cleanup, render, screen } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { employees } from '../../fixtures/employees'
-import { headings } from '../../fixtures/headings'
+import { columns } from '../../fixtures/columns'
 import { DataTable } from './DataTable'
 
 const employeesSample = [
   {
     firstName: 'Lani',
     lastName: 'Beecraft',
-    department: 'Business Development',
+    department: 'Research and Development',
     dateOfBirth: '2/13/1968',
     startDate: '6/2/2021',
     street: '68382 Grasskamp Park',
@@ -19,7 +19,7 @@ const employeesSample = [
   {
     firstName: 'Analise',
     lastName: 'Verrechia',
-    department: 'Research and Development',
+    department: 'Business Development',
     dateOfBirth: '5/27/1997',
     startDate: '7/17/2021',
     street: '397 Thompson Circle',
@@ -42,7 +42,7 @@ const employeesSample = [
 
 describe('DataTable', () => {
   test('on load verifies correct initial states', () => {
-    render(<DataTable data={employeesSample} headings={headings} />)
+    render(<DataTable data={employeesSample} columns={columns} />)
 
     expect(screen.getByRole('combobox')).toHaveValue('10')
     expect(screen.queryByRole('button', { name: '1' })).toBeFalsy()
@@ -58,38 +58,9 @@ describe('DataTable', () => {
     expect(screen.getByText(/showing 1 to 3 of 3 entries/i)).toBeInTheDocument()
   })
 
-  describe('Change ordering', () => {
-    test('same key, different order', () => {
-      render(<DataTable data={employeesSample} headings={headings} />)
-
-      userEvent.click(screen.getByRole('columnheader', { name: /first name/i }))
-      const rows = screen.getAllByRole('row')
-      expect(rows[3]).toHaveTextContent(/analise/i)
-      expect(rows[1]).toHaveTextContent(/valentino/i)
-    })
-
-    test('different key, by date', () => {
-      render(<DataTable data={employeesSample} headings={headings} />)
-
-      userEvent.click(screen.getByRole('columnheader', { name: /start date/i }))
-      const rows = screen.getAllByRole('row')
-      expect(rows[1]).toHaveTextContent('6/2/2021')
-      expect(rows[3]).toHaveTextContent('7/17/2021')
-    })
-
-    test('different key, number', () => {
-      render(<DataTable data={employeesSample} headings={headings} />)
-
-      userEvent.click(screen.getByRole('columnheader', { name: /zip code/i }))
-      const rows = screen.getAllByRole('row')
-      expect(rows[1]).toHaveTextContent('01905')
-      expect(rows[3]).toHaveTextContent('98140')
-    })
-  })
-
   describe('Filtering', () => {
     test('Filtering only shows matching results if any', () => {
-      render(<DataTable data={employeesSample} headings={headings} />)
+      render(<DataTable data={employeesSample} columns={columns} />)
 
       userEvent.type(screen.getByRole('searchbox'), 'development')
       expect(screen.getAllByRole('row')).toHaveLength(3)
@@ -100,7 +71,7 @@ describe('DataTable', () => {
     })
 
     test('Filtering with no results shows a different display', () => {
-      render(<DataTable data={employeesSample} headings={headings} />)
+      render(<DataTable data={employeesSample} columns={columns} />)
       userEvent.type(screen.getByRole('searchbox'), "won't find any result like this")
 
       expect(screen.getAllByRole('row')).toHaveLength(2)
@@ -116,7 +87,7 @@ describe('DataTable', () => {
     })
 
     test('filtering when on other page than first resets current page to 1', () => {
-      render(<DataTable data={employees} headings={headings} />)
+      render(<DataTable data={employees} columns={columns} />)
 
       userEvent.click(screen.getByRole('button', { name: '3' }))
       userEvent.type(screen.getByRole('searchbox'), 'development')
@@ -126,11 +97,61 @@ describe('DataTable', () => {
       expect(screen.queryByRole('button', { name: '3' })).toBeFalsy()
       expect(screen.getByRole('button', { name: '2' })).toBeInTheDocument()
     })
+
+    test('filtering + sorting by another key', () => {
+      render(<DataTable data={employeesSample} columns={columns} />)
+
+      userEvent.type(screen.getByRole('searchbox'), '2')
+      userEvent.click(screen.getByRole('columnheader', { name: /city/i }))
+
+      const rows = screen.getAllByRole('row')
+      expect(rows[1]).toHaveTextContent(/lynn/i)
+      expect(rows[2]).toHaveTextContent(/ogden/i)
+      expect(rows[3]).toHaveTextContent(/seattle/i)
+    })
+  })
+
+  describe('Change ordering', () => {
+    test('same key, different order', () => {
+      render(<DataTable data={employeesSample} columns={columns} />)
+
+      userEvent.click(screen.getByRole('columnheader', { name: /first name/i }))
+      const rows = screen.getAllByRole('row')
+      expect(rows[3]).toHaveTextContent(/analise/i)
+      expect(rows[1]).toHaveTextContent(/valentino/i)
+    })
+
+    test('different key, by date', () => {
+      render(<DataTable data={employeesSample} columns={columns} />)
+
+      userEvent.click(screen.getByRole('columnheader', { name: /start date/i }))
+      const rows = screen.getAllByRole('row')
+      expect(rows[1]).toHaveTextContent('6/2/2021')
+      expect(rows[3]).toHaveTextContent('7/17/2021')
+    })
+
+    test('different key, number', () => {
+      render(<DataTable data={employeesSample} columns={columns} />)
+
+      userEvent.click(screen.getByRole('columnheader', { name: /zip code/i }))
+      const rows = screen.getAllByRole('row')
+      expect(rows[1]).toHaveTextContent('01905')
+      expect(rows[3]).toHaveTextContent('98140')
+    })
+
+    test('changing order while on page other that first resets current page to first', () => {
+      render(<DataTable data={employees} columns={columns} />)
+
+      userEvent.click(screen.getByRole('button', { name: /next/i }))
+      userEvent.click(screen.getByRole('columnheader', { name: /city/i }))
+
+      expect(screen.queryByRole('button', { name: '1' })).toBeFalsy()
+    })
   })
 
   describe('Select option change', () => {
     test('Change number of items', () => {
-      render(<DataTable data={employees} headings={headings} />)
+      render(<DataTable data={employees} columns={columns} />)
 
       userEvent.selectOptions(screen.getByRole('combobox'), '20')
       expect(screen.getAllByRole('row')).toHaveLength(21)
@@ -146,7 +167,7 @@ describe('DataTable', () => {
     })
 
     test('When on page after first and page size change, back to page 1', () => {
-      render(<DataTable data={employees} headings={headings} />)
+      render(<DataTable data={employees} columns={columns} />)
 
       userEvent.click(screen.getByRole('button', { name: '2' }))
       userEvent.selectOptions(screen.getByRole('combobox'), '20')
@@ -158,7 +179,7 @@ describe('DataTable', () => {
 
   describe('Pagination', () => {
     test('pagination change when click a specific page', () => {
-      render(<DataTable data={employees} headings={headings} />)
+      render(<DataTable data={employees} columns={columns} />)
 
       expect(screen.queryByRole('button', { name: '1' })).toBeFalsy()
       expect(screen.getByRole('button', { name: '2' })).toBeInTheDocument()
@@ -172,7 +193,7 @@ describe('DataTable', () => {
     })
 
     test('pagination change when click previous/next', () => {
-      render(<DataTable data={employees} headings={headings} />)
+      render(<DataTable data={employees} columns={columns} />)
 
       userEvent.click(screen.getByRole('button', { name: /next/i }))
 

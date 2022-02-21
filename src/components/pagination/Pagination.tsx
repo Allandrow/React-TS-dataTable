@@ -36,7 +36,7 @@ export const Pagination = ({
     dataLength === 0 || currentPage === pageList[pageList.length - 1].page
 
   return (
-    <ul>
+    <ul className="pagination">
       <li>
         <button
           onClick={getPreviousPage}
@@ -60,7 +60,7 @@ export const Pagination = ({
 
       {pageList.length > 0 &&
         pageList.map(({ page, current }) => (
-          <li key={page} className={current ? 'current' : undefined}>
+          <li key={page} className={current ? 'current' : ''}>
             {current && <span>{page}</span>}
             {!current && <PageButton value={page} changePage={changePage} />}
           </li>

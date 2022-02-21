@@ -7,7 +7,10 @@ export default {
 }
 
 const Template: ComponentStory<typeof PageSizeSelect> = () => (
-  <PageSizeSelect callback={(e) => console.log(e.currentTarget.value)} />
+  <PageSizeSelect
+    options={[10, 20, 50, 100]}
+    changeSize={(value) => console.log(value)}
+  />
 )
 
 export const Default = Template.bind({})

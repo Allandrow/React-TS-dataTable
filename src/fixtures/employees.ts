@@ -1089,5 +1089,3 @@ export const employees = [
     zipCode: '75358',
   },
 ]
-
-export type Employees = typeof employees
