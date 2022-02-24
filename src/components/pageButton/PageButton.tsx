@@ -1,4 +1,4 @@
-interface PageButtonProps {
+export interface PageButtonProps {
   value: number
   changePage: (value: number) => void
 }

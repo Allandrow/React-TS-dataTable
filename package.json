@@ -1,7 +1,13 @@
 {
-  "name": "react-ts-datatables",
+  "name": "react-ts-datatable",
   "author": "Cyril Tiger",
-  "version": "0.1.0",
+  "version": "1.0.12",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Allandrow/React-TS-dataTable.git"
+  },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
@@ -11,7 +17,8 @@
     "build-storybook": "build-storybook",
     "test": "vitest",
     "commit-test": "vitest --run",
-    "coverage": "vitest --coverage"
+    "coverage": "vitest --coverage",
+    "prepublish": "tsc"
   },
   "dependencies": {
     "react": "^17.0.2",

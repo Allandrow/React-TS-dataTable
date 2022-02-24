@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { PageDependant } from '../../types'
 
-interface RecapProps extends PageDependant {
+export interface RecapProps extends PageDependant {
   dataLength: number
   filteredDataLength?: number
 }

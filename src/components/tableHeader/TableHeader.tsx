@@ -1,7 +1,7 @@
 import { SyntheticEvent } from 'react'
 import { Sorting, SortedColumns } from '../../types'
 
-interface TableHeaderProps extends SortedColumns {
+export interface TableHeaderProps extends SortedColumns {
   changeSorting: ({ key, direction }: Sorting) => void
 }
 

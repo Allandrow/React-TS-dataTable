@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import { employees } from '../../fixtures/employees'
-import { columns } from '../../fixtures/columns'
+import { employees } from '../../../fixtures/employees'
+import { columns } from '../../../fixtures/columns'
 import { DataTable } from './DataTable'
 
 const employeesSample = [

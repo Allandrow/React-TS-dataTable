@@ -13,8 +13,11 @@
     "moduleResolution": "Node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "noEmit": false,
+    "declaration": true,
+    "outDir": "dist"
   },
-  "include": ["./src"]
+  "include": ["./src"],
+  "exclude": ["./src/**/*.stories.tsx", "./src/**/*.test.tsx", "./src/test-setup.ts"]
 }

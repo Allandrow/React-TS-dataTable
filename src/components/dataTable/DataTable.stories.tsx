@@ -1,6 +1,6 @@
 import { ComponentStory } from '@storybook/react'
-import { employees } from '../../fixtures/employees'
-import { columns } from '../../fixtures/columns'
+import { employees } from '../../../fixtures/employees'
+import { columns } from '../../../fixtures/columns'
 import { DataTable } from './DataTable'
 import '../../index.css'
 import '../../app.css'

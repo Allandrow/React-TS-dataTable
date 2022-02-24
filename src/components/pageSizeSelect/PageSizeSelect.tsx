@@ -1,6 +1,6 @@
 import { FormEvent } from 'react'
 
-interface PageSizeSelectProps {
+export interface PageSizeSelectProps {
   options: number[]
   changeSize: (value: number) => void
 }

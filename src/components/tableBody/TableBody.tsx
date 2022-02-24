@@ -1,6 +1,6 @@
 import { Data, SortedColumns } from '../../types'
 
-interface TableBodyProps extends SortedColumns {
+export interface TableBodyProps extends SortedColumns {
   displayedData: Data[]
 }
 

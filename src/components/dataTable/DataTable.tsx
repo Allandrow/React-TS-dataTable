@@ -9,7 +9,7 @@ import { Recap } from '../recap/Recap'
 import { SearchInput } from '../searchInput/SearchInput'
 import { Table } from '../table/Table'
 
-interface DataTableProps {
+export interface DataTableProps {
   data: Data[]
   columns: Column[]
   pageSizeOptions?: number[]

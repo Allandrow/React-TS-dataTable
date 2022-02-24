@@ -2,7 +2,7 @@ import { usePagination } from '../../hooks/usePagination'
 import { PageDependant } from '../../types'
 import { PageButton } from '../pageButton/PageButton'
 
-interface PaginationProps extends PageDependant {
+export interface PaginationProps extends PageDependant {
   dataLength: number
   changePage: (value: number) => void
 }

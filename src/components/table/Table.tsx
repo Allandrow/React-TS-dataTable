@@ -2,12 +2,12 @@ import { TableHeader } from '../tableHeader/TableHeader'
 import { Sorting, Data, SortedColumns } from '../../types'
 import { TableBody } from '../tableBody/TableBody'
 
-interface DisplayedData {
+export interface DisplayedData {
   filtered: boolean
   data: Data[] | []
 }
 
-interface TableProps extends SortedColumns {
+export interface TableProps extends SortedColumns {
   displayedData: DisplayedData
   changeSorting: ({ key, direction }: Sorting) => void
 }
