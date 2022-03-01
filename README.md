@@ -19,7 +19,11 @@ import { DataTable } from 'react-ts-datatable'
 
 // ...
 return (
-  <DataTable data={yourData} columns={yourColumns} pageSizeOptions={optionalOptionsArray}>
+  <DataTable
+    data={yourData}
+    columns={yourColumns}
+    pageSizeOptions={optionalOptionsArray}
+  />
 )
 ```
 
