@@ -7,5 +7,5 @@ export const columns = [
   { key: 'street', header: 'Street' },
   { key: 'city', header: 'City' },
   { key: 'state', header: 'State' },
-  { key: 'zipCode', header: 'Zip Code', sortMethod: 'sortNumber' },
+  { key: 'zipCode', header: 'Zip Code' },
 ]

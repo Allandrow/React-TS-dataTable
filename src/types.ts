@@ -1,4 +1,4 @@
-export type Data = Record<string | number, string | number>
+export type Data = Record<string, unknown>
 
 export interface Column {
   key: string
