@@ -20,7 +20,7 @@ export const DataTable = ({
   columns,
   pageSizeOptions = [10, 20, 50, 100],
 }: DataTableProps) => {
-  const [pageSize, setPageSize] = useState(10)
+  const [pageSize, setPageSize] = useState(pageSizeOptions[0])
   const [searchValue, setSearchValue] = useState('')
   const [currentPage, setCurrentPage] = useState(1)
   const [sorting, setSorting] = useState({

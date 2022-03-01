@@ -8,6 +8,11 @@
   },
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "keywords": [
+    "React",
+    "TypeScript",
+    "Data-table"
+  ],
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
