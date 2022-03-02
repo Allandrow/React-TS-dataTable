@@ -7,13 +7,11 @@ export interface TableBodyProps extends SortedColumns {
 export const TableBody = ({ displayedData, columns, sorting }: TableBodyProps) => {
   return (
     <tbody>
-      {displayedData.map((item) => (
-        <tr
-          key={Object.values(item).reduce((key, value) => (key += value.toString()), '')}
-        >
+      {displayedData.map((item, i) => (
+        <tr key={`bodyRow-${i}`}>
           {columns.map(({ key }) => (
             <td key={key + item[key]} className={key === sorting.key ? 'sorted' : ''}>
-              {item[key]}
+              {item[key] as string}
             </td>
           ))}
         </tr>
