@@ -41,13 +41,13 @@ Exemple of columns structure :
 const columns = [
   { key: 'firstName', header: 'First Name' },
   { key: 'lastName', header: 'Last Name' },
-  { key: 'startDate', header: 'Start Date', sortMethod: 'sortDateISO' },
+  { key: 'startDate', header: 'Start Date', sortMethod: 'sortDate' },
   { key: 'department', header: 'Department' },
-  { key: 'dateOfBirth', header: 'Date of Birth', sortMethod: 'sortDateISO' },
+  { key: 'dateOfBirth', header: 'Date of Birth', sortMethod: 'sortDate' },
   { key: 'street', header: 'Street' },
   { key: 'city', header: 'City' },
   { key: 'state', header: 'State' },
-  { key: 'zipCode', header: 'Zip Code' },
+  { key: 'zipCode', header: 'Zip Code', sortMethod: 'sortNumber' },
 ]
 ```
 
@@ -68,7 +68,7 @@ const employees = [
     street: '68382 Grasskamp Park',
     city: 'Seattle',
     state: 'WA',
-    zipCode: '98140',
+    zipCode: 98140,
   },
   {
     firstName: 'Analise',
@@ -79,7 +79,7 @@ const employees = [
     street: '397 Thompson Circle',
     city: 'Lynn',
     state: 'MA',
-    zipCode: '01905',
+    zipCode: 11905,
   },
 ]
 ```
@@ -88,3 +88,10 @@ const employees = [
 
 By default the options will be an array with the values 10, 20, 50 and 100.
 You can change these values by giving a props `pageSizeOptions` to DataTable, accepting an array of numbers.
+
+### Sort Methods
+
+By default the sort applied will consider your data values to be strings. You can change this sort by including a sortMethod prop in your column object with one of these strings that will call another built-in sort method :
+
+- sortNumber
+- sortDate

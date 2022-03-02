@@ -32,7 +32,7 @@ const sortNumber = (a: Data, b: Data, { key, direction }: Sorting) => {
   )
 }
 
-const sortDateISO = (a: Data, b: Data, { key, direction }: Sorting) => {
+const sortDate = (a: Data, b: Data, { key, direction }: Sorting) => {
   const aValue = a[key]
   const bValue = b[key]
 
@@ -72,7 +72,7 @@ export const useSorting = ({ data, sorting, columns }: SortingProps) => {
   const { sortMethod } = columns.find((column) => column.key === sorting.key)!
 
   if (sortMethod === 'sortNumber') return data.sort((a, b) => sortNumber(a, b, sorting))
-  if (sortMethod === 'sortDateISO') return data.sort((a, b) => sortDateISO(a, b, sorting))
+  if (sortMethod === 'sortDate') return data.sort((a, b) => sortDate(a, b, sorting))
 
   return data.sort((a, b) => sortString(a, b, sorting))
 }
