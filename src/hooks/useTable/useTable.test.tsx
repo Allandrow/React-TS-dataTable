@@ -4,37 +4,34 @@ import { columns } from '../../../demo/fixtures/columns'
 
 const dataSample = [
   {
-    firstName: 'Lani',
-    lastName: 'Beecraft',
-    department: 'Research and Development',
-    dateOfBirth: '2/13/1968',
-    startDate: '6/2/2021',
-    street: '68382 Grasskamp Park',
-    city: 'Seattle',
-    state: 'WA',
-    zipCode: '98140',
+    firstName: 'Alayne',
+    lastName: "O'Connolly",
+    dateOfBirth: '06/13/1961',
+    startDate: '08/24/2016',
+    street: '23554 Maple Parkway',
+    city: 'Austin',
+    state: 'TX',
+    zipCode: '78715',
   },
   {
-    firstName: 'Analise',
-    lastName: 'Verrechia',
-    department: 'Business Development',
-    dateOfBirth: '5/27/1997',
-    startDate: '7/17/2021',
-    street: '397 Thompson Circle',
-    city: 'Lynn',
-    state: 'MA',
-    zipCode: '01905',
+    firstName: 'Amalie',
+    lastName: 'Nanetti',
+    dateOfBirth: '09/14/1994',
+    startDate: '03/31/2017',
+    street: '4727 Mosinee Plaza',
+    city: 'Saint Petersburg',
+    state: 'FL',
+    zipCode: '33715',
   },
   {
-    firstName: 'Valentino',
-    lastName: 'Rubinovitsch',
-    department: 'Human Resources',
-    dateOfBirth: '5/1/1990',
-    startDate: '6/13/2021',
-    street: '29 Caliangt Street',
-    city: 'Ogden',
-    state: 'UT',
-    zipCode: '84403',
+    firstName: 'Vita',
+    lastName: 'Maciaszek',
+    dateOfBirth: '02/23/1976',
+    startDate: '04/20/2017',
+    street: '4 Doe Crossing Circle',
+    city: 'Oklahoma City',
+    state: 'OK',
+    zipCode: '73104',
   },
 ]
 
@@ -45,11 +42,12 @@ describe('useTable hook', () => {
     const resultKeys = Object.keys(result.current)
     expect(resultKeys).toHaveLength(2)
     expect(result.current.headers).toHaveLength(9)
-    expect(result.current.headers[0]).toBe('First Name')
+    expect(result.current.headers[0].text).toBe('First Name')
     expect(result.current.rows).toHaveLength(3)
-    expect(result.current.rows[0][0]).toBe('Lani')
-    result.current.rows.forEach((row) => {
-      expect(row).toHaveLength(9)
+    expect(result.current.rows[0].data[0].cell).toBe('Alayne')
+    expect(result.current.rows[0].data[0].key).toBe('firstName-Alayne')
+    result.current.rows.forEach(({ data }) => {
+      expect(data).toHaveLength(9)
     })
   })
 })

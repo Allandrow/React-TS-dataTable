@@ -9,16 +9,16 @@ export const DataTable = () => {
     <table>
       <thead>
         <tr>
-          {headers.map((header) => (
-            <th key={header}>{header}</th>
+          {headers.map(({ id, text }) => (
+            <th key={id}>{text}</th>
           ))}
         </tr>
       </thead>
       <tbody>
-        {rows.map((row, i) => (
-          <tr key={`row${i}`}>
-            {row.map((cell, i) => (
-              <td key={`cell${i}`}>{cell}</td>
+        {rows.map(({ data, key }) => (
+          <tr key={key}>
+            {data.map(({ cell, key }) => (
+              <td key={key}>{cell}</td>
             ))}
           </tr>
         ))}
@@ -26,5 +26,3 @@ export const DataTable = () => {
     </table>
   )
 }
-
-// TODO : keys

@@ -13,17 +13,27 @@ export interface TableProps {
   data: Data[]
 }
 
-export type Row = unknown[]
-
 export const useTable = ({ columns, data }: TableProps) => {
   const headers = useMemo(() => {
-    return columns.map(({ header }) => header)
+    return columns.map(({ header, id }) => {
+      return {
+        id,
+        text: header,
+      }
+    })
   }, [columns])
+
   const rows = useMemo(() => {
-    return data.map((item) => {
-      return columns.map(({ id }) => {
-        return item[id]
-      })
+    return data.map((row, i) => {
+      return {
+        key: `row-${i}`,
+        data: columns.map(({ id }) => {
+          return {
+            key: `${id}-${row[id]}`,
+            cell: row[id],
+          }
+        }),
+      }
     })
   }, [columns, data])
 
