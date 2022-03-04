@@ -1,4 +1,9 @@
 import { useMemo } from 'react'
+import { useFeaturesValues } from '../useFeaturesValues/useFeaturesValues'
+import { useHeader } from '../useHeader/useHeader'
+import { useRows } from '../useRows/useRows'
+
+export type Data = Record<string, unknown>
 
 export interface DefaultColumn {
   id: string
@@ -6,43 +11,56 @@ export interface DefaultColumn {
   sortMethod?: string
 }
 
-export type Data = Record<string, unknown>
-
-export interface TableProps {
+interface TableProps {
   columns: DefaultColumn[]
   data: Data[]
 }
 
-export const useTable = ({ columns, data }: TableProps) => {
-  const headers = useMemo(() => {
-    return columns.map(({ header, id }) => {
-      return {
-        id,
-        text: header,
-      }
-    })
-  }, [columns])
+export interface SortBy {
+  id: string
+  direction: 'ascending' | 'descending'
+}
 
-  const rows = useMemo(() => {
-    return data.map((row, i) => {
-      return {
-        key: `row-${i}`,
-        data: columns.map(({ id }) => {
-          return {
-            key: `${id}-${row[id]}`,
-            cell: row[id],
-          }
-        }),
-      }
-    })
-  }, [columns, data])
+export interface OptionsList {
+  sortBy: SortBy
+  disabled: string[]
+}
 
-  const instance = useMemo(() => {
-    return {
-      headers,
-      rows,
-    }
-  }, [rows])
+export interface Header {
+  id: string
+  text: string
+  classNames: string[]
+}
 
-  return instance
+interface Row {
+  key: string
+  cell: unknown
+  classNames: string[]
+}
+
+export interface Rows {
+  key: string
+  data: Row[]
+}
+
+export const useTable = (
+  { columns, data }: TableProps,
+  options?: Partial<OptionsList>
+) => {
+  // build initial state of features depending if they are not disabled and/or modified from default
+  const features = useMemo(
+    () => useFeaturesValues({ columns, options }),
+    [data, columns, options]
+  )
+
+  const headers = useMemo(() => useHeader({ columns, features }), [columns, features])
+  const rows = useMemo(
+    () => useRows({ data, headers, features }),
+    [data, headers, features]
+  )
+
+  return {
+    headers,
+    rows,
+  }
 }

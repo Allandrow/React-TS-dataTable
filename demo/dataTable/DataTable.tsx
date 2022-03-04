@@ -9,16 +9,20 @@ export const DataTable = () => {
     <table>
       <thead>
         <tr>
-          {headers.map(({ id, text }) => (
-            <th key={id}>{text}</th>
+          {headers.map(({ id, text, classNames }) => (
+            <th key={id} className={classNames.join(' ')}>
+              {text}
+            </th>
           ))}
         </tr>
       </thead>
       <tbody>
         {rows.map(({ data, key }) => (
           <tr key={key}>
-            {data.map(({ cell, key }) => (
-              <td key={key}>{cell}</td>
+            {data.map(({ cell, key, classNames }) => (
+              <td key={key} className={classNames.join(' ')}>
+                {cell}
+              </td>
             ))}
           </tr>
         ))}
