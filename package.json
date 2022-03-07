@@ -63,7 +63,7 @@
     "storybook-builder-vite": "^0.1.14",
     "typescript": "^4.4.4",
     "vite": "^2.7.2",
-    "vitest": "^0.3.5"
+    "vitest": "^0.5.9"
   },
   "lint-staged": {
     "*.tsx": "eslint --cache --fix"
