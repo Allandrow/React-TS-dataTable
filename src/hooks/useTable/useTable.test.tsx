@@ -41,8 +41,7 @@ describe('useTable hook', () => {
 
     const resultKeys = Object.keys(result.current)
     expect(resultKeys).toHaveLength(2)
-    expect(result.current.headers).toHaveLength(9)
-    expect(result.current.headers[0].text).toBe('First Name')
+    
     expect(result.current.rows).toHaveLength(3)
     expect(result.current.rows[0].data[0].cell).toBe('Alayne')
     expect(result.current.rows[0].data[0].key).toBe('firstName-Alayne')
