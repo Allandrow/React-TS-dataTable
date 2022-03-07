@@ -1,5 +1,4 @@
-import { useMemo } from 'react'
-import { useFeatures } from '../useFeatures/useFeatures'
+import { SyntheticEvent, useMemo, useState } from 'react'
 import { useHeader } from '../useHeader/useHeader'
 import { useRows } from '../useRows/useRows'
 
@@ -30,6 +29,7 @@ export interface Header {
   id: string
   text: string
   classNames: string[]
+  clickHandler: (e: SyntheticEvent) => void
 }
 
 interface Row {
@@ -43,20 +43,19 @@ export interface Rows {
   data: Row[]
 }
 
-export const useTable = (
-  { columns, data }: TableProps,
-  options?: Partial<OptionsList>
-) => {
-  // build initial state of features depending if they are not disabled and/or modified from default
-  const features = useMemo(
-    () => useFeatures({ columns, options }),
-    [data, columns, options]
-  )
+export const useTable = ({ columns, data }: TableProps) => {
+  const [sorting, setSorting] = useState<SortBy>({
+    id: columns[0].id,
+    direction: 'descending',
+  })
 
-  const headers = useMemo(() => useHeader({ columns, features }), [columns, features])
+  const headers = useMemo(
+    () => useHeader({ columns, sorting, setSorting }),
+    [columns, sorting]
+  )
   const rows = useMemo(
-    () => useRows({ data, headers, features }),
-    [data, headers, features]
+    () => useRows({ data, headers, sorting }),
+    [data, headers, sorting]
   )
 
   return {
@@ -64,3 +63,9 @@ export const useTable = (
     rows,
   }
 }
+
+/*
+
+Add in each header a callback function that allows changing sorting object on header click
+
+*/

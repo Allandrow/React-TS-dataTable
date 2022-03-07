@@ -1,12 +1,12 @@
-import { Data, Header, OptionsList, Rows } from '../useTable/useTable'
+import { Data, Header, Rows, SortBy } from '../useTable/useTable'
 
 interface RowsProps {
   data: Data[]
   headers: Header[]
-  features: Partial<OptionsList>
+  sorting: SortBy
 }
 
-export const useRows = ({ data, headers, features }: RowsProps): Rows[] => {
+export const useRows = ({ data, headers, sorting }: RowsProps): Rows[] => {
   return data.map((row, i) => {
     return {
       key: `row-${i}`,
@@ -14,7 +14,7 @@ export const useRows = ({ data, headers, features }: RowsProps): Rows[] => {
         return {
           key: `${id}-${row[id]}`,
           cell: row[id],
-          classNames: features.sortBy?.id === id ? ['sorted'] : [],
+          classNames: sorting.id === id ? ['sorted'] : [],
         }
       }),
     }

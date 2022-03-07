@@ -1,15 +1,15 @@
 import { renderHook } from '@testing-library/react-hooks'
 import { columns } from '../../../demo/fixtures/columns'
-import { OptionsList } from '../useTable/useTable'
+import { SortBy } from '../useTable/useTable'
 import { useHeader } from './useHeader'
 
-const features: Partial<OptionsList> = {
-  sortBy: { id: 'firstName', direction: 'descending' },
-}
+const sorting: SortBy = { id: 'firstName', direction: 'descending' }
+
+const sortingHandler = (value: SortBy) => console.log(value)
 
 describe('useHeader hook', () => {
   test('Returns headers array', () => {
-    const { result } = renderHook(() => useHeader({ columns, features }))
+    const { result } = renderHook(() => useHeader({ columns, sorting, sortingHandler }))
 
     expect(result.current).toHaveLength(9)
     expect(result.current[0].text).toBe('First Name')

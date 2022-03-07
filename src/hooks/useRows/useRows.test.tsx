@@ -1,6 +1,6 @@
 import { renderHook } from '@testing-library/react-hooks'
 import { useRows } from './useRows'
-import { Header, OptionsList } from '../useTable/useTable'
+import { Header, SortBy } from '../useTable/useTable'
 
 const data = [
   {
@@ -50,13 +50,11 @@ const headers: Header[] = [
   { id: 'zipCode', text: 'Zip Code', classNames: [] },
 ]
 
-const features: Partial<OptionsList> = {
-  sortBy: { id: 'firstName', direction: 'descending' },
-}
+const sorting: SortBy = { id: 'firstName', direction: 'descending' }
 
 describe('useRows hook', () => {
   test('Returns rows array', () => {
-    const { result } = renderHook(() => useRows({ data, headers, features }))
+    const { result } = renderHook(() => useRows({ data, headers, sorting }))
 
     expect(result.current).toHaveLength(3)
     expect(result.current[0].data[0].cell).toBe('Alayne')

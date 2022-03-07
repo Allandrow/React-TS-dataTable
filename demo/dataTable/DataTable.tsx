@@ -9,8 +9,8 @@ export const DataTable = () => {
     <table>
       <thead>
         <tr>
-          {headers.map(({ id, text, classNames }) => (
-            <th key={id} className={classNames.join(' ')}>
+          {headers.map(({ id, text, classNames, clickHandler }) => (
+            <th key={id} className={classNames.join(' ')} onClick={clickHandler}>
               {text}
             </th>
           ))}
