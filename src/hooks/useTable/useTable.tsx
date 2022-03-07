@@ -1,6 +1,7 @@
 import { SyntheticEvent, useMemo, useState } from 'react'
 import { useHeader } from '../useHeader/useHeader'
 import { useRows } from '../useRows/useRows'
+import { useSorting } from '../useSorting/useSorting'
 
 export type Data = Record<string, unknown>
 
@@ -53,9 +54,15 @@ export const useTable = ({ columns, data }: TableProps) => {
     () => useHeader({ columns, sorting, setSorting }),
     [columns, sorting]
   )
+
+  const sortedData = useMemo(
+    () => useSorting({ data, sorting, columns }),
+    [data, sorting, headers]
+  )
+
   const rows = useMemo(
-    () => useRows({ data, headers, sorting }),
-    [data, headers, sorting]
+    () => useRows({ data: sortedData, headers, sorting }),
+    [sortedData, headers, sorting]
   )
 
   return {
@@ -63,9 +70,3 @@ export const useTable = ({ columns, data }: TableProps) => {
     rows,
   }
 }
-
-/*
-
-Add in each header a callback function that allows changing sorting object on header click
-
-*/
