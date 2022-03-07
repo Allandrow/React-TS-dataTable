@@ -1,5 +1,5 @@
 import { useMemo } from 'react'
-import { useFeaturesValues } from '../useFeaturesValues/useFeaturesValues'
+import { useFeatures } from '../useFeatures/useFeatures'
 import { useHeader } from '../useHeader/useHeader'
 import { useRows } from '../useRows/useRows'
 
@@ -49,7 +49,7 @@ export const useTable = (
 ) => {
   // build initial state of features depending if they are not disabled and/or modified from default
   const features = useMemo(
-    () => useFeaturesValues({ columns, options }),
+    () => useFeatures({ columns, options }),
     [data, columns, options]
   )
 

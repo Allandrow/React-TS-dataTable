@@ -9,7 +9,7 @@ interface FeaturesValues {
   sortBy: SortBy
 }
 
-export const useFeaturesValues = ({ columns, options = {} }: FeaturesProps) => {
+export const useFeatures = ({ columns, options = {} }: FeaturesProps) => {
   const initialValues: Partial<FeaturesValues> = {}
 
   // sort initial value if enabled
