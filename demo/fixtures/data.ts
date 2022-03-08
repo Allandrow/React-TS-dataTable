@@ -1,11 +1,11 @@
-export const data = [
+export const sample = [
   {
     firstName: 'Alayne',
     lastName: "O'Connolly",
     dateOfBirth: '06/13/1961',
     startDate: '08/24/2016',
     street: '23554 Maple Parkway',
-    department: 'Business',
+    department: 'Engineering',
     city: 'Austin',
     state: 'TX',
     zipCode: '78715',

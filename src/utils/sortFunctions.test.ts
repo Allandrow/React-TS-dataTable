@@ -1,16 +1,16 @@
 import { sortFunctions } from './sortFunctions'
-import { data } from '../../demo/fixtures/data'
+import { sample } from '../../demo/fixtures/data'
 
 describe('sort functions', () => {
   test('sort string', () => {
-    let sortedData = data.sort((a, b) =>
+    let sortedData = sample.sort((a, b) =>
       sortFunctions.get('sortString')(a, b, { id: 'lastName', direction: 'descending' })
     )
 
     expect(sortedData[0].lastName).toBe('Maciaszek')
     expect(sortedData[2].lastName).toBe("O'Connolly")
 
-    sortedData = data.sort((a, b) =>
+    sortedData = sample.sort((a, b) =>
       sortFunctions.get('sortString')(a, b, { id: 'city', direction: 'ascending' })
     )
 
@@ -58,14 +58,14 @@ describe('sort functions', () => {
   })
 
   test('sort date', () => {
-    let sortedData = data.sort((a, b) =>
+    let sortedData = sample.sort((a, b) =>
       sortFunctions.get('sortDate')(a, b, { id: 'dateOfBirth', direction: 'descending' })
     )
 
     expect(sortedData[0].dateOfBirth).toBe('06/13/1961')
     expect(sortedData[2].dateOfBirth).toBe('09/14/1994')
 
-    sortedData = data.sort((a, b) =>
+    sortedData = sample.sort((a, b) =>
       sortFunctions.get('sortDate')(a, b, { id: 'dateOfBirth', direction: 'ascending' })
     )
 

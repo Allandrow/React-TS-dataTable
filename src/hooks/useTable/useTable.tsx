@@ -1,4 +1,5 @@
-import { SyntheticEvent, useMemo, useState } from 'react'
+import { FormEvent, SyntheticEvent, useMemo, useState } from 'react'
+import { useFiltering } from '../useFiltering/useFiltering'
 import { useHeader } from '../useHeader/useHeader'
 import { useRows } from '../useRows/useRows'
 import { useSorting } from '../useSorting/useSorting'
@@ -49,6 +50,7 @@ export const useTable = ({ columns, data }: TableProps) => {
     id: columns[0].id,
     direction: 'descending',
   })
+  const [searchValue, setSearchValue] = useState('')
 
   const headers = useMemo(
     () => useHeader({ columns, sorting, setSorting }),
@@ -60,13 +62,23 @@ export const useTable = ({ columns, data }: TableProps) => {
     [data, sorting, headers]
   )
 
-  const rows = useMemo(
-    () => useRows({ data: sortedData, headers, sorting }),
-    [sortedData, headers, sorting]
+  const filteredData = useMemo(
+    () => useFiltering({ data: sortedData, searchValue }),
+    [sortedData, searchValue, sorting]
   )
+
+  const rows = useMemo(
+    () => useRows({ data: filteredData ?? sortedData, headers, sorting }),
+    [filteredData, sortedData, headers, sorting]
+  )
+
+  const handleFiltering = (e: FormEvent<HTMLInputElement>) => {
+    setSearchValue(e.currentTarget.value.toLowerCase())
+  }
 
   return {
     headers,
     rows,
+    handleFiltering,
   }
 }

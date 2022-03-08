@@ -39,15 +39,20 @@ const data = [
 ]
 
 const headers: Header[] = [
-  { id: 'firstName', text: 'First Name', classNames: ['sorted', 'descending'] },
-  { id: 'lastName', text: 'Last Name', classNames: [] },
-  { id: 'dateOfBirth', text: 'Date of Birth', classNames: [] },
-  { id: 'startDate', text: 'Start Date', classNames: [] },
-  { id: 'department', text: 'Department', classNames: [] },
-  { id: 'street', text: 'Street', classNames: [] },
-  { id: 'city', text: 'City', classNames: [] },
-  { id: 'state', text: 'State', classNames: [] },
-  { id: 'zipCode', text: 'Zip Code', classNames: [] },
+  {
+    id: 'firstName',
+    text: 'First Name',
+    classNames: ['sorted', 'descending'],
+    clickHandler: null,
+  },
+  { id: 'lastName', text: 'Last Name', classNames: [], clickHandler: null },
+  { id: 'dateOfBirth', text: 'Date of Birth', classNames: [], clickHandler: null },
+  { id: 'startDate', text: 'Start Date', classNames: [], clickHandler: null },
+  { id: 'department', text: 'Department', classNames: [], clickHandler: null },
+  { id: 'street', text: 'Street', classNames: [], clickHandler: null },
+  { id: 'city', text: 'City', classNames: [], clickHandler: null },
+  { id: 'state', text: 'State', classNames: [], clickHandler: null },
+  { id: 'zipCode', text: 'Zip Code', classNames: [], clickHandler: null },
 ]
 
 const sorting: SortBy = { id: 'firstName', direction: 'descending' }
