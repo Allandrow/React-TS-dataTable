@@ -4,19 +4,19 @@ import { DefaultColumn, Header, SortBy } from '../useTable/useTable'
 interface HeaderProps {
   columns: DefaultColumn[]
   sorting: SortBy
-  setSorting: (value: SortBy) => void
+  handleSorting: (value: SortBy) => void
 }
 
-export const useHeader = ({ columns, sorting, setSorting }: HeaderProps): Header[] => {
-  const handleSorting = (e: SyntheticEvent) => {
+export const useHeader = ({ columns, sorting, handleSorting }: HeaderProps): Header[] => {
+  const handleSortEvent = (e: SyntheticEvent) => {
     if (e.currentTarget.classList.contains('sorted')) {
       const direction = sorting.direction === 'ascending' ? 'descending' : 'ascending'
-      setSorting({ ...sorting, direction })
+      handleSorting({ ...sorting, direction })
     } else {
       const { id } = columns.find(
         (column) => column.header === e.currentTarget.textContent
       )!
-      setSorting({ id, direction: 'descending' })
+      handleSorting({ id, direction: 'descending' })
     }
   }
 
@@ -25,7 +25,7 @@ export const useHeader = ({ columns, sorting, setSorting }: HeaderProps): Header
       id: id,
       text: header,
       classNames: sorting.id === id ? ['sorted', sorting.direction] : [],
-      clickHandler: (e) => handleSorting(e),
+      handleSortEvent,
     }
   })
 }

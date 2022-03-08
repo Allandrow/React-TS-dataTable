@@ -10,8 +10,8 @@ export const Table = ({ headers, rows }: TableProps) => {
     <table>
       <thead>
         <tr>
-          {headers.map(({ id, text, classNames, clickHandler }) => (
-            <th key={id} className={classNames.join(' ')} onClick={clickHandler}>
+          {headers.map(({ id, text, classNames, handleSortEvent }) => (
+            <th key={id} className={classNames.join(' ')} onClick={handleSortEvent}>
               {text}
             </th>
           ))}
