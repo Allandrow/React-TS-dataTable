@@ -12,12 +12,14 @@ export const useHeader = ({ columns, sorting, handleSorting }: HeaderProps): Hea
     if (e.currentTarget.classList.contains('sorted')) {
       const direction = sorting.direction === 'ascending' ? 'descending' : 'ascending'
       handleSorting({ ...sorting, direction })
-    } else {
-      const { id } = columns.find(
-        (column) => column.header === e.currentTarget.textContent
-      )!
-      handleSorting({ id, direction: 'descending' })
+
+      return
     }
+
+    const { id } = columns.find(
+      (column) => column.header === e.currentTarget.textContent
+    )!
+    handleSorting({ id, direction: 'descending' })
   }
 
   return columns.map(({ header, id }) => {
