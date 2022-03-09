@@ -1,7 +1,7 @@
 import { PageButton } from './PageButton'
 
 interface PaginationProps {
-  pageList: { page: number; current?: boolean }[]
+  pageList: number[]
   suspendBeforeList: boolean
   suspendAfterList: boolean
   firstPage: number
@@ -24,7 +24,7 @@ export const Pagination = ({
 
   const isPreviousButtonDisabled = pageList.length === 0 || currentPage === 1
   const isNextButtonDisabled =
-    pageList.length === 0 || currentPage === pageList[pageList.length - 1].page
+    pageList.length === 0 || currentPage === pageList[pageList.length - 1]
 
   return (
     <ul className="pagination">
@@ -50,10 +50,12 @@ export const Pagination = ({
       )}
 
       {pageList.length > 0 &&
-        pageList.map(({ page, current }) => (
-          <li key={page} className={current ? 'current' : ''}>
-            {current && <span>{page}</span>}
-            {!current && <PageButton page={page} setCurrentPage={setCurrentPage} />}
+        pageList.map((page) => (
+          <li key={page} className={currentPage === page ? 'current' : ''}>
+            {currentPage === page && <span>{page}</span>}
+            {!(currentPage === page) && (
+              <PageButton page={page} setCurrentPage={setCurrentPage} />
+            )}
           </li>
         ))}
 

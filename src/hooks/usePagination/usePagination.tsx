@@ -9,7 +9,7 @@ interface PaginationProps {
 }
 
 export interface PaginationParams {
-  pageList: { page: number; current?: boolean }[]
+  pageList: number[]
   suspendBeforeList: boolean
   suspendAfterList: boolean
   firstPage: number
@@ -18,11 +18,10 @@ export interface PaginationParams {
   setCurrentPage: (value: number) => void
 }
 
-const getRange = (start: number, end: number, current: number) => {
+const getRange = (start: number, end: number) => {
   const length = end - start + 1
   return Array.from({ length }, (_, i) => {
-    const page = { page: i + start }
-    return i + start === current ? { ...page, current: true } : page
+    return i + start
   })
 }
 
@@ -49,7 +48,7 @@ export const usePagination = ({
 
     if (totalPageCount <= displayedPagesUntilSuspend) {
       return {
-        pageList: getRange(1, totalPageCount, currentPage),
+        pageList: getRange(1, totalPageCount),
         suspendBeforeList: false,
         suspendAfterList: false,
         currentPage,
@@ -59,7 +58,7 @@ export const usePagination = ({
 
     if (currentPage <= suspendCountThreshold) {
       return {
-        pageList: getRange(1, suspendCountThreshold + siblintCount, currentPage),
+        pageList: getRange(1, suspendCountThreshold + siblintCount),
         suspendBeforeList: false,
         suspendAfterList: true,
         lastPage: totalPageCount,
@@ -73,7 +72,7 @@ export const usePagination = ({
         totalPageCount - suspendCountThreshold - 1 + siblintCount
 
       return {
-        pageList: getRange(firstPageAfterSuspend, totalPageCount, currentPage),
+        pageList: getRange(firstPageAfterSuspend, totalPageCount),
         suspendBeforeList: true,
         suspendAfterList: false,
         firstPage: 1,
@@ -86,7 +85,7 @@ export const usePagination = ({
     const lastPageBeforeSuspend = currentPage + siblintCount
 
     return {
-      pageList: getRange(firstPageAfterSuspend, lastPageBeforeSuspend, currentPage),
+      pageList: getRange(firstPageAfterSuspend, lastPageBeforeSuspend),
       suspendBeforeList: true,
       suspendAfterList: true,
       firstPage: 1,
