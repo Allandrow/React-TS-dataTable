@@ -8,6 +8,6 @@ describe('useTable hook', () => {
     const { result } = renderHook(() => useTable({ columns, data: sample }))
 
     const resultKeys = Object.keys(result.current)
-    expect(resultKeys).toHaveLength(4)
+    expect(resultKeys).toHaveLength(5)
   })
 })

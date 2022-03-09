@@ -1,6 +1,7 @@
 import { FormEvent, SyntheticEvent, useMemo, useState } from 'react'
 import { useFiltering } from '../useFiltering/useFiltering'
 import { useHeader } from '../useHeader/useHeader'
+import { usePagination } from '../usePagination/usePagination'
 import { useRows } from '../useRows/useRows'
 import { useSlicedData } from '../useSlicedData/useSlicedData'
 import { useSorting } from '../useSorting/useSorting'
@@ -100,9 +101,17 @@ export const useTable = ({
     [rows, currentPage, pageSize, sorting]
   )
 
+  const pagination = usePagination({
+    currentPage,
+    pageSize,
+    rowsLength: rows.length,
+    setCurrentPage,
+  })
+
   return {
     headers,
     rows: slicedRows,
+    pagination,
     handleFiltering,
     handlePageSizing,
   }

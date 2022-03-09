@@ -1,0 +1,222 @@
+/* JOSH COMEAU CSS RESET - more infos : https://www.joshwcomeau.com/css/custom-css-reset/ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+#root,
+#__next {
+  isolation: isolate;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --table-border: 1px solid #111;
+  --sort-color: #7a80dd;
+}
+
+.dataTable {
+  display: grid;
+  max-width: 1200px;
+  padding: 1rem 0;
+  margin: 0 auto;
+  gap: 1rem;
+  grid-template-areas:
+    'select . . search'
+    'table table table table'
+    'recap . . pagination';
+}
+
+label[for='entries'] {
+  grid-area: select;
+}
+
+select {
+  margin: 0 0.25rem;
+}
+
+label[for='search'] {
+  grid-area: search;
+  text-align: right;
+}
+
+table {
+  grid-area: table;
+  border-collapse: collapse;
+}
+
+tbody {
+  border-top: var(--table-border);
+  border-bottom: var(--table-border);
+}
+
+tbody tr:nth-of-type(2n + 1) {
+  background-color: #f9f9f9;
+}
+
+tbody tr:nth-of-type(2n + 1) .sorted {
+  background-color: #f1f1f1;
+}
+
+tbody tr:nth-of-type(2n) .sorted {
+  background-color: #fafafa;
+}
+
+tbody tr:hover {
+  background-color: #f6f6f6;
+}
+
+tbody tr:hover .sorted {
+  background-color: #eaeaea;
+}
+
+td.empty {
+  text-align: center;
+}
+
+th {
+  cursor: pointer;
+  padding-right: 1rem;
+  position: relative;
+}
+
+th::before,
+th::after {
+  position: absolute;
+  content: '';
+  width: 0.5rem;
+  height: 0.5rem;
+  right: 0.5rem;
+  background-color: #dcdcdc;
+}
+
+th::before {
+  clip-path: polygon(50% 0%, 0 100%, 100% 100%);
+  top: 0.25rem;
+}
+
+th::after {
+  clip-path: polygon(50% 100%, 0 0, 100% 0);
+  bottom: 0.25rem;
+}
+
+.ascending::before {
+  background-color: transparent;
+}
+
+.ascending::after {
+  background-color: var(--sort-color);
+}
+
+.descending::before {
+  background-color: var(--sort-color);
+}
+
+.descending::after {
+  background-color: transparent;
+}
+
+td {
+  padding: 0.5em;
+}
+
+p {
+  grid-area: recap;
+}
+
+ul {
+  grid-area: pagination;
+  list-style-type: none;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: end;
+}
+
+li {
+  min-width: 42px;
+}
+
+li > span {
+  text-align: center;
+  width: 100%;
+  display: block;
+}
+
+li > button {
+  border: none;
+  background: transparent;
+  text-transform: capitalize;
+  cursor: pointer;
+  padding: 0.5em 1em;
+  text-align: center;
+  border: 1px solid transparent;
+}
+
+li:hover > button:not(:disabled) {
+  color: white;
+  border: var(--table-border);
+  background: linear-gradient(to bottom, #585858 0%, #111 100%);
+}
+
+li > button:disabled {
+  cursor: auto;
+  color: inherit;
+}
+
+ul .current {
+  min-width: 1.5em;
+  padding: 0.5em 1em;
+  text-align: center;
+  border: 1px solid #979797;
+  background: linear-gradient(to bottom, #fff 0%, #dcdcdc 100%);
+}
+
+p {
+  padding: 0.5em 0;
+}

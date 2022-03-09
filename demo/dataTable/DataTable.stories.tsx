@@ -1,5 +1,6 @@
 import { ComponentStory } from '@storybook/react'
 import { DataTable } from './DataTable'
+import '../styles/demo.css'
 
 export default {
   title: 'dataTable/Datatable',
