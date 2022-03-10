@@ -8,7 +8,7 @@ describe('useSummary hook', () => {
         dataLength: 0,
         filteredDataLength: 0,
         pageSize: 10,
-        currentPage: 1,
+        page: 1,
       })
     )
 
@@ -24,7 +24,7 @@ describe('useSummary hook', () => {
         dataLength: 100,
         filteredDataLength: 0,
         pageSize: 10,
-        currentPage: 1,
+        page: 1,
       })
     )
 
@@ -40,7 +40,7 @@ describe('useSummary hook', () => {
         dataLength: 80,
         filteredDataLength: 35,
         pageSize: 20,
-        currentPage: 1,
+        page: 1,
       })
     )
 
@@ -56,7 +56,7 @@ describe('useSummary hook', () => {
         dataLength: 97,
         filteredDataLength: 97,
         pageSize: 20,
-        currentPage: 5,
+        page: 5,
       })
     )
 

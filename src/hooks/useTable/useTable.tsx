@@ -59,21 +59,21 @@ export const useTable = ({
   })
   const [searchValue, setSearchValue] = useState('')
   const [pageSize, setPageSize] = useState(pageSizeOptions[0])
-  const [currentPage, setCurrentPage] = useState(1)
+  const [page, setPage] = useState(1)
 
   const handleSorting = (sorting: SortBy) => {
     setSorting(sorting)
-    setCurrentPage(1)
+    setPage(1)
   }
 
   const handleFiltering = (e: FormEvent<HTMLInputElement>) => {
     setSearchValue(e.currentTarget.value.toLowerCase())
-    setCurrentPage(1)
+    setPage(1)
   }
 
   const handlePageSizing = (e: FormEvent<HTMLSelectElement>) => {
     setPageSize(parseInt(e.currentTarget.value, 10))
-    setCurrentPage(1)
+    setPage(1)
   }
 
   const headers = useMemo(
@@ -97,21 +97,21 @@ export const useTable = ({
   )
 
   const slicedRows = useMemo(
-    () => rows.slice((currentPage - 1) * pageSize, currentPage * pageSize),
-    [rows, currentPage, pageSize, sorting]
+    () => rows.slice((page - 1) * pageSize, page * pageSize),
+    [rows, page, pageSize, sorting]
   )
 
   const pagination = usePagination({
-    currentPage,
+    page,
     pageSize,
     rowsLength: rows.length,
-    setCurrentPage,
+    setPage,
   })
 
   const summary = useSummary({
     dataLength: data.length,
     filteredDataLength: filteredData.length,
-    currentPage,
+    page,
     pageSize,
   })
 

@@ -2,91 +2,40 @@ import { renderHook } from '@testing-library/react-hooks'
 import { usePagination } from './usePagination'
 
 interface Params {
-  currentPage: number
+  page: number
   pageSize: number
   rowsLength: number
-  setCurrentPage: (value: number) => void
+  setPage: (value: number) => void
 }
 
 describe('usePagination hook', () => {
-  const setCurrentPage = (value: number) => console.log(value)
+  const setPage = (value: number) => console.log(value)
 
   test('no data', () => {
-    const params: Params = {
-      currentPage: 1,
+    const params: Params | null = {
+      page: 1,
       pageSize: 10,
       rowsLength: 0,
-      setCurrentPage,
+      setPage,
     }
 
     const { result } = renderHook(() => usePagination(params))
 
-    expect(result.current.pageList).toHaveLength(0)
-    expect(result.current.suspendAfterList).toBe(false)
-    expect(result.current.suspendBeforeList).toBe(false)
+    expect(result.current).toBeNull()
   })
 
-  test('less than 7 pages of data', () => {
-    const params: Params = {
-      currentPage: 1,
-      pageSize: 10,
-      rowsLength: 60,
-      setCurrentPage,
+  test('pagination object', () => {
+    const params: Params | null = {
+      page: 1,
+      pageSize: 20,
+      rowsLength: 100,
+      setPage,
     }
 
     const { result } = renderHook(() => usePagination(params))
 
-    expect(result.current.pageList).toHaveLength(6)
-    expect(result.current.suspendAfterList).toBe(false)
-    expect(result.current.suspendBeforeList).toBe(false)
-  })
-
-  test('more than 7 pages with current in first 5', () => {
-    const params: Params = {
-      currentPage: 3,
-      pageSize: 10,
-      rowsLength: 80,
-      setCurrentPage,
-    }
-
-    const { result } = renderHook(() => usePagination(params))
-
-    expect(result.current.pageList).toHaveLength(5)
-    expect(result.current.suspendAfterList).toBe(true)
-    expect(result.current.suspendBeforeList).toBe(false)
-    expect(result.current.lastPage).toBe(8)
-  })
-
-  test('more than 7 pages with current in last 4', () => {
-    const params: Params = {
-      currentPage: 7,
-      pageSize: 10,
-      rowsLength: 80,
-      setCurrentPage,
-    }
-
-    const { result } = renderHook(() => usePagination(params))
-
-    expect(result.current.pageList).toHaveLength(5)
-    expect(result.current.suspendAfterList).toBe(false)
-    expect(result.current.suspendBeforeList).toBe(true)
     expect(result.current.firstPage).toBe(1)
-  })
-
-  test('current page not in first/last 4', () => {
-    const params: Params = {
-      currentPage: 10,
-      pageSize: 10,
-      rowsLength: 200,
-      setCurrentPage,
-    }
-
-    const { result } = renderHook(() => usePagination(params))
-
-    expect(result.current.pageList).toHaveLength(3)
-    expect(result.current.suspendAfterList).toBe(true)
-    expect(result.current.suspendBeforeList).toBe(true)
-    expect(result.current.firstPage).toBe(1)
-    expect(result.current.lastPage).toBe(20)
+    expect(result.current.lastPage).toBe(5)
+    expect(result.current.page).toBe(1)
   })
 })
