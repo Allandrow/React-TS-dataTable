@@ -9,6 +9,7 @@ describe('DataTable', () => {
     userEvent.selectOptions(screen.getByRole('combobox'), '20')
 
     expect(screen.getAllByRole('row')).toHaveLength(21)
+    
   })
 
   test.todo('pagination changes')
@@ -18,4 +19,5 @@ describe('DataTable', () => {
   test.todo('sorting changes')
 
   test.todo('search + sorting changes')
+
 })
