@@ -1,5 +1,6 @@
 export const sample = [
   {
+    key: '1',
     firstName: 'Alayne',
     lastName: "O'Connolly",
     dateOfBirth: '06/13/1961',
@@ -11,6 +12,7 @@ export const sample = [
     zipCode: '78715',
   },
   {
+    key: '2',
     firstName: 'Amalie',
     lastName: 'Nanetti',
     dateOfBirth: '09/14/1994',
@@ -22,6 +24,7 @@ export const sample = [
     zipCode: '33715',
   },
   {
+    key: '3',
     firstName: 'Vita',
     lastName: 'Maciaszek',
     dateOfBirth: '02/23/1976',

@@ -10,8 +10,8 @@ export const Table = ({ headers, rows }: TableProps) => {
     <table>
       <thead>
         <tr>
-          {headers.map(({ id, text, handleSortEvent }) => (
-            <th key={id} className={''} onClick={handleSortEvent}>
+          {headers.map(({ id, text, handleSorting }) => (
+            <th key={id} className={''} onClick={() => null}>
               {text}
             </th>
           ))}

@@ -6,13 +6,13 @@ interface RowsProps {
 }
 
 export const useRows = ({ data, headers }: RowsProps): Rows[] => {
-  return data.map((row, i) => {
+  return data.map((row) => {
     return {
-      key: `row-${i}`,
+      key: row.key,
       data: headers.map(({ id }) => {
         return {
           key: `${id}-${row[id]}`,
-          cell: row[id],
+          cellValue: row[id],
         }
       }),
     }

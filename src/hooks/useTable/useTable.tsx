@@ -6,7 +6,11 @@ import { useSummary } from '../useSummary/useSummary'
 import { useRows } from '../useRows/useRows'
 import { useSorting } from '../useSorting/useSorting'
 
-export type Data = Record<string, unknown>
+type DataProps = Record<string, unknown>
+
+export interface Data extends DataProps {
+  key: string
+}
 
 export interface DefaultColumn {
   id: string
@@ -38,7 +42,7 @@ export interface Header {
 
 interface Row {
   key: string
-  cell: unknown
+  cellValue: unknown
 }
 
 export interface Rows {
