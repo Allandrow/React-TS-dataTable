@@ -15,7 +15,7 @@ describe('useFiltering hook', () => {
     )
 
     expect(result.current).toEqual([])
-    expect(result.current.length).toBe(0)
+    expect(result.current).toHaveLength(0)
   })
 
   test('returns array of matches if cells contain search value', () => {
@@ -23,6 +23,6 @@ describe('useFiltering hook', () => {
       useFiltering({ data: sample, searchValue: 'business' })
     )
 
-    expect(result.current.length).toBe(2)
+    expect(result.current).toHaveLength(2)
   })
 })

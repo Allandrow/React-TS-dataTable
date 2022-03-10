@@ -21,7 +21,7 @@ describe('usePagination hook', () => {
 
     const { result } = renderHook(() => usePagination(params))
 
-    expect(result.current.pageList.length).toBe(0)
+    expect(result.current.pageList).toHaveLength(0)
     expect(result.current.suspendAfterList).toBe(false)
     expect(result.current.suspendBeforeList).toBe(false)
   })
@@ -36,7 +36,7 @@ describe('usePagination hook', () => {
 
     const { result } = renderHook(() => usePagination(params))
 
-    expect(result.current.pageList.length).toBe(6)
+    expect(result.current.pageList).toHaveLength(6)
     expect(result.current.suspendAfterList).toBe(false)
     expect(result.current.suspendBeforeList).toBe(false)
   })
@@ -51,7 +51,7 @@ describe('usePagination hook', () => {
 
     const { result } = renderHook(() => usePagination(params))
 
-    expect(result.current.pageList.length).toBe(5)
+    expect(result.current.pageList).toHaveLength(5)
     expect(result.current.suspendAfterList).toBe(true)
     expect(result.current.suspendBeforeList).toBe(false)
     expect(result.current.lastPage).toBe(8)
@@ -67,7 +67,7 @@ describe('usePagination hook', () => {
 
     const { result } = renderHook(() => usePagination(params))
 
-    expect(result.current.pageList.length).toBe(5)
+    expect(result.current.pageList).toHaveLength(5)
     expect(result.current.suspendAfterList).toBe(false)
     expect(result.current.suspendBeforeList).toBe(true)
     expect(result.current.firstPage).toBe(1)
@@ -83,7 +83,7 @@ describe('usePagination hook', () => {
 
     const { result } = renderHook(() => usePagination(params))
 
-    expect(result.current.pageList.length).toBe(3)
+    expect(result.current.pageList).toHaveLength(3)
     expect(result.current.suspendAfterList).toBe(true)
     expect(result.current.suspendBeforeList).toBe(true)
     expect(result.current.firstPage).toBe(1)
