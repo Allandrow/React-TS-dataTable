@@ -3,10 +3,10 @@ import { sample } from '../../../demo/fixtures/data'
 import { useFiltering } from './useFiltering'
 
 describe('useFiltering hook', () => {
-  test('returns undefined if no search value', () => {
+  test('returns data if no search value', () => {
     const { result } = renderHook(() => useFiltering({ data: sample, searchValue: '' }))
 
-    expect(result.current).toBeUndefined()
+    expect(result.current).toBe(sample)
   })
 
   test('returns empty array if no match', () => {

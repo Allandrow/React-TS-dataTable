@@ -9,12 +9,12 @@ interface RecapProps {
 
 const getIndices = (total: number, pageSize: number, currentPage: number) => {
   const pageOffset = pageSize * currentPage
-  const first = 1 + pageOffset - pageSize
-  const last = total >= pageOffset ? pageOffset : total
-  return { first, last }
+  const firstIndex = 1 + pageOffset - pageSize
+  const lastIndex = total >= pageOffset ? pageOffset : total
+  return { firstIndex, lastIndex }
 }
 
-export const useRecap = ({
+export const useSummary = ({
   dataLength,
   filteredDataLength,
   currentPage,
@@ -31,12 +31,13 @@ export const useRecap = ({
       return getIndices(filteredDataLength, pageSize, currentPage)
     }
 
-    return { first: 0, last: 0 }
+    return { firstIndex: 0, lastIndex: 0 }
   }, [dataLength, filteredDataLength, isFiltered, currentPage, pageSize])
 
   return {
     originalLength: dataLength,
-    currentLength: isFiltered ? filteredDataLength : dataLength,
-    indices,
+    filteredLength: filteredDataLength,
+    isFiltered,
+    ...indices,
   }
 }

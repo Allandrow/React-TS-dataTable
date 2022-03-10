@@ -2,7 +2,7 @@ import { FormEvent, SyntheticEvent, useMemo, useState } from 'react'
 import { useFiltering } from '../useFiltering/useFiltering'
 import { useHeader } from '../useHeader/useHeader'
 import { usePagination } from '../usePagination/usePagination'
-import { useRecap } from '../useRecap/useRecap'
+import { useSummary } from '../useSummary/useSummary'
 import { useRows } from '../useRows/useRows'
 import { useSorting } from '../useSorting/useSorting'
 
@@ -92,7 +92,7 @@ export const useTable = ({
   )
 
   const rows = useMemo(
-    () => useRows({ data: filteredData ?? sortedData, headers, sorting }),
+    () => useRows({ data: filteredData, headers, sorting }),
     [sortedData, filteredData, headers, sorting]
   )
 
@@ -108,9 +108,9 @@ export const useTable = ({
     setCurrentPage,
   })
 
-  const recap = useRecap({
+  const summary = useSummary({
     dataLength: data.length,
-    filteredDataLength: filteredData?.length,
+    filteredDataLength: filteredData.length,
     currentPage,
     pageSize,
   })
@@ -119,7 +119,7 @@ export const useTable = ({
     headers,
     rows: slicedRows,
     pagination,
-    recap,
+    summary,
     handleFiltering,
     handlePageSizing,
   }

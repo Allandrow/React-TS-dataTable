@@ -18,5 +18,5 @@ export const useFiltering = ({ data, searchValue }: FilteringProps) => {
     )
   }
 
-  return undefined
+  return data
 }
