@@ -1,4 +1,4 @@
-import { FormEvent, SyntheticEvent, useMemo, useState } from 'react'
+import { FormEvent, useMemo, useState } from 'react'
 import { useFiltering } from '../useFiltering/useFiltering'
 import { useHeader } from '../useHeader/useHeader'
 import { usePagination } from '../usePagination/usePagination'
@@ -33,14 +33,12 @@ export interface OptionsList {
 export interface Header {
   id: string
   text: string
-  classNames: string[]
-  handleSortEvent: (e: SyntheticEvent) => void
+  handleSorting: (sorting: SortBy) => void
 }
 
 interface Row {
   key: string
   cell: unknown
-  classNames: string[]
 }
 
 export interface Rows {
@@ -92,7 +90,7 @@ export const useTable = ({
   )
 
   const rows = useMemo(
-    () => useRows({ data: filteredData, headers, sorting }),
+    () => useRows({ data: filteredData, headers }),
     [sortedData, filteredData, headers, sorting]
   )
 
@@ -119,6 +117,7 @@ export const useTable = ({
     headers,
     rows: slicedRows,
     pagination,
+    sorting,
     summary,
     handleFiltering,
     handlePageSizing,
