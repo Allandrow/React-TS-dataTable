@@ -4,7 +4,6 @@ import { useHeader } from '../useHeader/useHeader'
 import { usePagination } from '../usePagination/usePagination'
 import { useRecap } from '../useRecap/useRecap'
 import { useRows } from '../useRows/useRows'
-import { useSlicedData } from '../useSlicedData/useSlicedData'
 import { useSorting } from '../useSorting/useSorting'
 
 export type Data = Record<string, unknown>
@@ -98,7 +97,7 @@ export const useTable = ({
   )
 
   const slicedRows = useMemo(
-    () => useSlicedData({ rows, currentPage, pageSize }),
+    () => rows.slice((currentPage - 1) * pageSize, currentPage * pageSize),
     [rows, currentPage, pageSize, sorting]
   )
 
