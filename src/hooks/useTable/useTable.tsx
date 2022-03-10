@@ -2,6 +2,7 @@ import { FormEvent, SyntheticEvent, useMemo, useState } from 'react'
 import { useFiltering } from '../useFiltering/useFiltering'
 import { useHeader } from '../useHeader/useHeader'
 import { usePagination } from '../usePagination/usePagination'
+import { useRecap } from '../useRecap/useRecap'
 import { useRows } from '../useRows/useRows'
 import { useSlicedData } from '../useSlicedData/useSlicedData'
 import { useSorting } from '../useSorting/useSorting'
@@ -108,10 +109,18 @@ export const useTable = ({
     setCurrentPage,
   })
 
+  const recap = useRecap({
+    dataLength: data.length,
+    filteredDataLength: filteredData?.length,
+    currentPage,
+    pageSize,
+  })
+
   return {
     headers,
     rows: slicedRows,
     pagination,
+    recap,
     handleFiltering,
     handlePageSizing,
   }
