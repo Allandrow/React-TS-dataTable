@@ -12,7 +12,7 @@ const compareValues = <T extends string | number | Date>(
   return 0
 }
 
-const getError = (a: Data, b: Data, id: string, type: string) => {
+const throwError = (a: Data, b: Data, id: string, type: string) => {
   throw new Error(
     `At least one of the two compared values from key : ${id} are not of type ${type} for this sort. Data involved in sort error : ${a}, ${b}`
   )
@@ -33,7 +33,7 @@ const sortNumber = (a: Data, b: Data, { id, direction }: SortBy) => {
     return compareValues(aValue, bValue, direction)
   }
 
-  getError(a, b, id, 'number')
+  throwError(a, b, id, 'number')
 }
 
 const sortDate = (a: Data, b: Data, { id, direction }: SortBy) => {
@@ -47,7 +47,7 @@ const sortDate = (a: Data, b: Data, { id, direction }: SortBy) => {
     return compareValues(aDate, bDate, direction)
   }
 
-  getError(a, b, id, 'date')
+  throwError(a, b, id, 'date')
 }
 
 const sortString = (a: Data, b: Data, { id, direction }: SortBy) => {
@@ -58,7 +58,7 @@ const sortString = (a: Data, b: Data, { id, direction }: SortBy) => {
     return compareValues(aValue, bValue, direction)
   }
 
-  getError(a, b, id, 'string')
+  throwError(a, b, id, 'string')
 }
 
 const sortFunctions = new Map()
