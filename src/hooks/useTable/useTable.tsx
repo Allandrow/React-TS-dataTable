@@ -56,9 +56,6 @@ export interface HandleStateChange {
   (methodName: 'sorting', value: SortBy, resetPage?: boolean): void
 }
 
-export type MethodName = 'filter' | 'pageSize' | 'page' | 'sorting'
-export type StateChangeValue = string | number | SortBy
-
 export const useTable = ({
   columns,
   data,
