@@ -59,14 +59,20 @@ describe('sort functions', () => {
 
   test('sort date', () => {
     let sortedData = sample.sort((a, b) =>
-      sortFunctions.get('sortDate')(a, b, { id: 'dateOfBirth', direction: 'descending' })
+      sortFunctions.get('sortDateISO')(a, b, {
+        id: 'dateOfBirth',
+        direction: 'descending',
+      })
     )
 
     expect(sortedData[0].dateOfBirth).toBe('06/13/1961')
     expect(sortedData[2].dateOfBirth).toBe('09/14/1994')
 
     sortedData = sample.sort((a, b) =>
-      sortFunctions.get('sortDate')(a, b, { id: 'dateOfBirth', direction: 'ascending' })
+      sortFunctions.get('sortDateISO')(a, b, {
+        id: 'dateOfBirth',
+        direction: 'ascending',
+      })
     )
 
     expect(sortedData[0].dateOfBirth).toBe('09/14/1994')
@@ -85,7 +91,7 @@ describe('sort functions', () => {
     ]
 
     const sortedDates = dates.sort((a, b) =>
-      sortFunctions.get('sortDate')(a, b, { id: 'date', direction: 'descending' })
+      sortFunctions.get('sortDateISO')(a, b, { id: 'date', direction: 'descending' })
     )
 
     // new Date('06/13/1961') time
@@ -123,7 +129,7 @@ describe('sort functions', () => {
     ).toThrowError(/number/i)
 
     expect(() =>
-      sortFunctions.get('sortDate')(invalidData[0], invalidData[1], {
+      sortFunctions.get('sortDateISO')(invalidData[0], invalidData[1], {
         id: 'willThrow',
         direction: 'descending',
       })

@@ -1,7 +1,5 @@
 import { Data, SortBy } from '../hooks/useTable/useTable'
 
-type DateFormat = string | Date
-
 const compareValues = <T extends string | number | Date>(
   aValue: T,
   bValue: T,
@@ -18,13 +16,6 @@ const throwError = (a: Data, b: Data, id: string, type: string) => {
   )
 }
 
-const isDate = (value: unknown) => {
-  if (typeof value === 'string') return isFinite(Date.parse(value))
-  if (value instanceof Date) return isFinite(value.getTime())
-
-  return false
-}
-
 const sortNumber = (a: Data, b: Data, { id, direction }: SortBy) => {
   const aValue = a[id]
   const bValue = b[id]
@@ -36,15 +27,19 @@ const sortNumber = (a: Data, b: Data, { id, direction }: SortBy) => {
   throwError(a, b, id, 'number')
 }
 
-const sortDate = (a: Data, b: Data, { id, direction }: SortBy) => {
-  const aValue = a[id]
-  const bValue = b[id]
+const getTimestamp = (value: unknown) => {
+  if (typeof value === 'number') return value
+  if (typeof value === 'string') return Date.parse(value)
+  if (value instanceof Date) return value.getTime()
+  return null
+}
 
-  if (isDate(aValue) && isDate(bValue)) {
-    const aDate = new Date(aValue as DateFormat)
-    const bDate = new Date(bValue as DateFormat)
+const sortDateISO = (a: Data, b: Data, { id, direction }: SortBy) => {
+  const aValue = getTimestamp(a[id])
+  const bValue = getTimestamp(b[id])
 
-    return compareValues(aDate, bDate, direction)
+  if (aValue && bValue) {
+    return compareValues(aValue, bValue, direction)
   }
 
   throwError(a, b, id, 'date')
@@ -64,6 +59,6 @@ const sortString = (a: Data, b: Data, { id, direction }: SortBy) => {
 const sortFunctions = new Map()
 sortFunctions.set('sortString', sortString)
 sortFunctions.set('sortNumber', sortNumber)
-sortFunctions.set('sortDate', sortDate)
+sortFunctions.set('sortDateISO', sortDateISO)
 
 export { sortFunctions }
