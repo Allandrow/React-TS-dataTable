@@ -4,14 +4,14 @@ import { useFiltering } from './useFiltering'
 
 describe('useFiltering hook', () => {
   test('returns data if no search value', () => {
-    const { result } = renderHook(() => useFiltering({ data: sample, searchValue: '' }))
+    const { result } = renderHook(() => useFiltering({ data: sample, filter: '' }))
 
     expect(result.current).toBe(sample)
   })
 
   test('returns empty array if no match', () => {
     const { result } = renderHook(() =>
-      useFiltering({ data: sample, searchValue: 'will not find any matches' })
+      useFiltering({ data: sample, filter: 'will not find any matches' })
     )
 
     expect(result.current).toEqual([])
@@ -20,7 +20,7 @@ describe('useFiltering hook', () => {
 
   test('returns array of matches if cells contain search value', () => {
     const { result } = renderHook(() =>
-      useFiltering({ data: sample, searchValue: 'business' })
+      useFiltering({ data: sample, filter: 'business' })
     )
 
     expect(result.current).toHaveLength(2)

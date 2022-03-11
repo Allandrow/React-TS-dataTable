@@ -1,4 +1,4 @@
-import { FormEvent, useMemo, useState } from 'react'
+import { useMemo, useState } from 'react'
 import { useFiltering } from '../useFiltering/useFiltering'
 import { useHeader } from '../useHeader/useHeader'
 import { usePagination } from '../usePagination/usePagination'
@@ -37,7 +37,6 @@ export interface OptionsList {
 export interface Header {
   id: string
   text: string
-  handleSorting: (sorting: SortBy) => void
 }
 
 interface Row {
@@ -50,6 +49,16 @@ export interface Rows {
   data: Row[]
 }
 
+export interface HandleStateChange {
+  (methodName: 'filter', value: string, resetPage?: boolean): void
+  (methodName: 'pageSize', value: number, resetPage?: boolean): void
+  (methodName: 'page', value: number, resetPage?: boolean): void
+  (methodName: 'sorting', value: SortBy, resetPage?: boolean): void
+}
+
+export type MethodName = 'filter' | 'pageSize' | 'page' | 'sorting'
+export type StateChangeValue = string | number | SortBy
+
 export const useTable = ({
   columns,
   data,
@@ -59,29 +68,31 @@ export const useTable = ({
     id: columns[0].id,
     direction: 'descending',
   })
-  const [searchValue, setSearchValue] = useState('')
+  const [filter, setFilter] = useState('')
   const [pageSize, setPageSize] = useState(pageSizeOptions[0])
   const [page, setPage] = useState(1)
 
-  const handleSorting = (sorting: SortBy) => {
-    setSorting(sorting)
-    setPage(1)
+  const stateMethodMaps = new Map()
+  stateMethodMaps.set('sorting', setSorting)
+  stateMethodMaps.set('filter', setFilter)
+  stateMethodMaps.set('pageSize', setPageSize)
+  stateMethodMaps.set('page', setPage)
+
+  const handleStateChange: HandleStateChange = (methodName, value, resetPage = true) => {
+    const stateMethod = stateMethodMaps.get(methodName)
+
+    if (!stateMethod) {
+      throw new Error(
+        `${methodName} is not a valid state altering method. 
+        List of valid method names : sorting, filter, pageSize, page.`
+      )
+    }
+
+    stateMethod(value)
+    if (resetPage && methodName !== 'page') setPage(1)
   }
 
-  const handleFiltering = (e: FormEvent<HTMLInputElement>) => {
-    setSearchValue(e.currentTarget.value.toLowerCase())
-    setPage(1)
-  }
-
-  const handlePageSizing = (e: FormEvent<HTMLSelectElement>) => {
-    setPageSize(parseInt(e.currentTarget.value, 10))
-    setPage(1)
-  }
-
-  const headers = useMemo(
-    () => useHeader({ columns, sorting, handleSorting }),
-    [columns, sorting]
-  )
+  const headers = useMemo(() => useHeader({ columns, sorting }), [columns, sorting])
 
   const sortedData = useMemo(
     () => useSorting({ data, sorting, columns }),
@@ -89,8 +100,8 @@ export const useTable = ({
   )
 
   const filteredData = useMemo(
-    () => useFiltering({ data: sortedData, searchValue }),
-    [sortedData, searchValue, sorting]
+    () => useFiltering({ data: sortedData, filter }),
+    [sortedData, filter, sorting]
   )
 
   const rows = useMemo(
@@ -123,7 +134,6 @@ export const useTable = ({
     pagination,
     sorting,
     summary,
-    handleFiltering,
-    handlePageSizing,
+    handleStateChange,
   }
 }

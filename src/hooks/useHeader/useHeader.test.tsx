@@ -6,11 +6,9 @@ import { useHeader } from './useHeader'
 
 const sorting: SortBy = { id: 'firstName', direction: 'descending' }
 
-const handleSorting = vi.fn()
-
 describe('useHeader hook', () => {
   test('Returns headers array', () => {
-    const { result } = renderHook(() => useHeader({ columns, sorting, handleSorting }))
+    const { result } = renderHook(() => useHeader({ columns, sorting }))
 
     expect(result.current).toHaveLength(9)
     expect(result.current[0].text).toBe('First Name')
