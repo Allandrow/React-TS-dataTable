@@ -8,7 +8,7 @@ describe('useTable hook', () => {
     const { result } = renderHook(() => useTable({ columns, data: sample }))
 
     const resultKeys = Object.keys(result.current)
-    expect(resultKeys).toHaveLength(6)
+    expect(resultKeys).toHaveLength(5)
   })
   test('handleStateChange', () => {
     const { result } = renderHook(() => useTable({ columns, data: sample }))

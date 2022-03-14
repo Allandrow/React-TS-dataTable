@@ -1,10 +1,15 @@
 import { FormEvent } from 'react'
+import { HandleStateChange } from '../../../src/hooks/useTable/useTable'
 
 interface FilterInputProps {
-  handleFiltering: (e: FormEvent<HTMLInputElement>) => void
+  handleStateChange: HandleStateChange
 }
 
-export const FilterInput = ({ handleFiltering }: FilterInputProps) => {
+export const FilterInput = ({ handleStateChange }: FilterInputProps) => {
+  const handleFiltering = (e: FormEvent<HTMLInputElement>) => {
+    const value = e.currentTarget.value.toLowerCase()
+    handleStateChange('filter', value)
+  }
   return (
     <label htmlFor="search">
       <span>Search: </span>

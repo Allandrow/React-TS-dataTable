@@ -37,11 +37,14 @@ export interface OptionsList {
 export interface Header {
   id: string
   text: string
+  isSorted: boolean
+  sortingDirection: 'ascending' | 'descending'
 }
 
 interface Row {
   key: string
   cellValue: unknown
+  isSorted: boolean
 }
 
 export interface Rows {
@@ -102,7 +105,7 @@ export const useTable = ({
   )
 
   const rows = useMemo(
-    () => useRows({ data: filteredData, headers }),
+    () => useRows({ data: filteredData, headers, sorting }),
     [sortedData, filteredData, headers, sorting]
   )
 
@@ -129,7 +132,6 @@ export const useTable = ({
     headers,
     rows: slicedRows,
     pagination,
-    sorting,
     summary,
     handleStateChange,
   }
