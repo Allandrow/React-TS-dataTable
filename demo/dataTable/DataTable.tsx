@@ -21,7 +21,7 @@ export const DataTable = () => {
       <FilterInput handleStateChange={handleStateChange} />
       <Table headers={headers} rows={rows} handleStateChange={handleStateChange} />
       <Summary {...summary} />
-      <Pagination {...pagination} />
+      <Pagination pagination={pagination} />
     </section>
   )
 }

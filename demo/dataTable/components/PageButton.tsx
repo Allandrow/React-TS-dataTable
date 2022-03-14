@@ -1,8 +1,8 @@
 interface PageButtonProps {
   page: number
-  setCurrentPage: (value: number) => void
+  setPage: (value: number) => void
 }
 
-export const PageButton = ({ page, setCurrentPage }: PageButtonProps) => {
-  return <button onClick={() => setCurrentPage(page)}>{page}</button>
+export const PageButton = ({ page, setPage }: PageButtonProps) => {
+  return <button onClick={() => setPage(page)}>{page}</button>
 }
