@@ -2,7 +2,7 @@ import { useMemo } from 'react'
 import { PaginationValues } from '../hooks/usePagination/usePagination'
 
 interface PaginationRenderOptions {
-  threshold: number
+  suspendCountThreshold: number
   displayedPagesUntilSuspend: number
   siblingCount: number
 }
@@ -20,22 +20,27 @@ const getRange = (start: number, end: number) => {
   })
 }
 
-export const paginationRenderHelper = (
+// TODO : Default values
+export const paginationWithSuspend = (
   pagination: PaginationValues,
-  {
-    threshold,
-    displayedPagesUntilSuspend,
-    siblingCount,
-  }: Partial<PaginationRenderOptions>
+  userOptions: PaginationRenderOptions
 ) => {
-  if (!pagination) return null
+  const defaults: PaginationRenderOptions = {
+    suspendCountThreshold: 4,
+    displayedPagesUntilSuspend: 7,
+    siblingCount: 1,
+  }
+
+  const options = {
+    ...defaults,
+    ...userOptions,
+  }
 
   const paginationRenderProps = useMemo(() => {
     const { firstPage, lastPage, page } = pagination
+    const { suspendCountThreshold, displayedPagesUntilSuspend, siblingCount } = options
 
-    const hasThreshold = threshold && siblingCount
-
-    if (displayedPagesUntilSuspend && lastPage <= displayedPagesUntilSuspend) {
+    if (lastPage <= displayedPagesUntilSuspend) {
       return {
         pageList: getRange(firstPage, lastPage),
         suspendAfterList: false,
@@ -44,17 +49,17 @@ export const paginationRenderHelper = (
       }
     }
 
-    if (hasThreshold && page <= threshold) {
+    if (page <= suspendCountThreshold) {
       return {
-        pageList: getRange(firstPage, threshold + siblingCount),
+        pageList: getRange(firstPage, suspendCountThreshold + siblingCount),
         suspendAfterList: true,
         suspendBeforeList: false,
         ...pagination,
       }
     }
 
-    if (hasThreshold && page > lastPage - threshold) {
-      const firstPageAfterSuspend = lastPage - threshold - 1 + siblingCount
+    if (page > lastPage - suspendCountThreshold) {
+      const firstPageAfterSuspend = lastPage - suspendCountThreshold - 1 + siblingCount
 
       return {
         pageList: getRange(firstPageAfterSuspend, lastPage),
@@ -75,7 +80,7 @@ export const paginationRenderHelper = (
         ...pagination,
       }
     }
-  }, [pagination, threshold, displayedPagesUntilSuspend, siblingCount])
+  }, [pagination, options])
 
   return paginationRenderProps
 }

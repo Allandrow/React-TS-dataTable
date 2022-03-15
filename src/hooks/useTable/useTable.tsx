@@ -52,6 +52,7 @@ export interface Rows {
   data: Row[]
 }
 
+// TODO : objet pour les options
 export interface HandleStateChange {
   (methodName: 'filter', value: string, resetPage?: boolean): void
   (methodName: 'pageSize', value: number, resetPage?: boolean): void
@@ -72,6 +73,7 @@ export const useTable = ({
   const [pageSize, setPageSize] = useState(pageSizeOptions[0])
   const [page, setPage] = useState(1)
 
+  // TODO : revert en plusieurs fonctions
   const stateMethodMaps = new Map()
   stateMethodMaps.set('sorting', setSorting)
   stateMethodMaps.set('filter', setFilter)

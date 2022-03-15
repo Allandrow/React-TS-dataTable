@@ -28,6 +28,8 @@ const sortNumber = (a: Data, b: Data, { id, direction }: SortBy) => {
 }
 
 const getTimestamp = (value: unknown) => {
+  // TODO : throw ici
+  // TODO : Compter le nb de chiffres pour voir si le number fourni est en secondes ou milli
   if (typeof value === 'number') return value
   if (typeof value === 'string') return Date.parse(value)
   if (value instanceof Date) return value.getTime()

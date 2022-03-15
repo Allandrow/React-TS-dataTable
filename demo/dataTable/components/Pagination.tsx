@@ -1,4 +1,4 @@
-import { paginationRenderHelper } from '../../../src/helpers/paginationRenderHelper'
+import { paginationWithSuspend } from '../../../src/helpers/paginationRenderHelper'
 import { PaginationValues } from '../../../src/hooks/usePagination/usePagination'
 import { PageList } from './PageList'
 
@@ -8,8 +8,8 @@ interface PaginationProps {
 
 export const Pagination = ({ pagination }: PaginationProps) => {
   const paginationRenderValues = pagination
-    ? paginationRenderHelper(pagination, {
-        threshold: 4,
+    ? paginationWithSuspend(pagination, {
+        suspendCountThreshold: 4,
         displayedPagesUntilSuspend: 7,
         siblingCount: 1,
       })
