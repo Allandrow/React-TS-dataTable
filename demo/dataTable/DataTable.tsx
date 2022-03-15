@@ -9,7 +9,15 @@ import { Table } from './components/Table'
 
 export const DataTable = () => {
   const options = [10, 20, 50, 100]
-  const { headers, rows, pagination, summary, handleStateChange } = useTable({
+  const {
+    headers,
+    rows,
+    pagination,
+    summary,
+    handleSorting,
+    handlePageSizing,
+    handleFiltering,
+  } = useTable({
     columns,
     data: employees,
     pageSizeOptions: options,
@@ -17,9 +25,9 @@ export const DataTable = () => {
 
   return (
     <section className="dataTable">
-      <PageSizeSelect options={options} handleStateChange={handleStateChange} />
-      <FilterInput handleStateChange={handleStateChange} />
-      <Table headers={headers} rows={rows} handleStateChange={handleStateChange} />
+      <PageSizeSelect options={options} handlePageSizing={handlePageSizing} />
+      <FilterInput handleFiltering={handleFiltering} />
+      <Table headers={headers} rows={rows} handleSorting={handleSorting} />
       <Summary {...summary} />
       <Pagination pagination={pagination} />
     </section>

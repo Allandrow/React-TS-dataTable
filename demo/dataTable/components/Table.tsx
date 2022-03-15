@@ -1,20 +1,20 @@
-import { HandleStateChange, Header, Rows } from '../../../src/hooks/useTable/useTable'
+import { Header, Rows, SortBy } from '../../../src/hooks/useTable/useTable'
 
 interface TableProps {
   headers: Header[]
   rows: Rows[]
-  handleStateChange: HandleStateChange
+  handleSorting: (sorting: SortBy, options?: { resetPage: boolean }) => void
 }
 
-export const Table = ({ headers, rows, handleStateChange }: TableProps) => {
-  const handleSorting = ({ id, isSorted, sortingDirection }: Header) => {
+export const Table = ({ headers, rows, handleSorting }: TableProps) => {
+  const handleSortingEvent = ({ id, isSorted, sortingDirection }: Header) => {
     if (isSorted) {
-      handleStateChange('sorting', {
+      handleSorting({
         id,
         direction: sortingDirection === 'ascending' ? 'descending' : 'ascending',
       })
     } else {
-      handleStateChange('sorting', { id, direction: 'descending' })
+      handleSorting({ id, direction: 'descending' })
     }
   }
 
@@ -26,7 +26,7 @@ export const Table = ({ headers, rows, handleStateChange }: TableProps) => {
             <th
               key={header.id}
               className={header.isSorted ? `sorted ${header.sortingDirection}` : ''}
-              onClick={() => handleSorting(header)}
+              onClick={() => handleSortingEvent(header)}
             >
               {header.text}
             </th>

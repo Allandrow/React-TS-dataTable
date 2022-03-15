@@ -1,15 +1,14 @@
 import { FormEvent } from 'react'
-import { HandleStateChange } from '../../../src/hooks/useTable/useTable'
 
 interface PageSizeSelectProps {
   options: number[]
-  handleStateChange: HandleStateChange
+  handlePageSizing: (value: number, options?: { resetPage: boolean }) => void
 }
 
-export const PageSizeSelect = ({ options, handleStateChange }: PageSizeSelectProps) => {
+export const PageSizeSelect = ({ options, handlePageSizing }: PageSizeSelectProps) => {
   const handleChange = (e: FormEvent<HTMLSelectElement>) => {
     const value = parseInt(e.currentTarget.value, 10)
-    handleStateChange('pageSize', value)
+    handlePageSizing(value)
   }
   return (
     <label htmlFor="entries">

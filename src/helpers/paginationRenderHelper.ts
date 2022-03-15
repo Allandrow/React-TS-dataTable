@@ -20,7 +20,6 @@ const getRange = (start: number, end: number) => {
   })
 }
 
-// TODO : Default values
 export const paginationWithSuspend = (
   pagination: PaginationValues,
   userOptions: PaginationRenderOptions
@@ -31,7 +30,7 @@ export const paginationWithSuspend = (
     siblingCount: 1,
   }
 
-  const options = {
+  const options: PaginationRenderOptions = {
     ...defaults,
     ...userOptions,
   }

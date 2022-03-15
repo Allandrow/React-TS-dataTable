@@ -52,12 +52,8 @@ export interface Rows {
   data: Row[]
 }
 
-// TODO : objet pour les options
-export interface HandleStateChange {
-  (methodName: 'filter', value: string, resetPage?: boolean): void
-  (methodName: 'pageSize', value: number, resetPage?: boolean): void
-  (methodName: 'page', value: number, resetPage?: boolean): void
-  (methodName: 'sorting', value: SortBy, resetPage?: boolean): void
+export interface StateChangeOptions {
+  resetPage: boolean
 }
 
 export const useTable = ({
@@ -73,25 +69,23 @@ export const useTable = ({
   const [pageSize, setPageSize] = useState(pageSizeOptions[0])
   const [page, setPage] = useState(1)
 
-  // TODO : revert en plusieurs fonctions
-  const stateMethodMaps = new Map()
-  stateMethodMaps.set('sorting', setSorting)
-  stateMethodMaps.set('filter', setFilter)
-  stateMethodMaps.set('pageSize', setPageSize)
-  stateMethodMaps.set('page', setPage)
+  const handlePageReset = (reset: boolean) => {
+    if (reset) setPage(1)
+  }
 
-  const handleStateChange: HandleStateChange = (methodName, value, resetPage = true) => {
-    const stateMethod = stateMethodMaps.get(methodName)
+  const handleSorting = (sorting: SortBy, { resetPage = true }: StateChangeOptions) => {
+    setSorting(sorting)
+    handlePageReset(resetPage)
+  }
 
-    if (!stateMethod) {
-      throw new Error(
-        `${methodName} is not a valid state altering method. 
-        List of valid method names : sorting, filter, pageSize, page.`
-      )
-    }
+  const handleFiltering = (value: string, { resetPage = true }: StateChangeOptions) => {
+    setFilter(value)
+    handlePageReset(resetPage)
+  }
 
-    stateMethod(value)
-    if (resetPage && methodName !== 'page') setPage(1)
+  const handlePageSizing = (value: number, { resetPage = true }: StateChangeOptions) => {
+    setPageSize(value)
+    handlePageReset(resetPage)
   }
 
   const headers = useMemo(() => useHeader({ columns, sorting }), [columns, sorting])
@@ -135,6 +129,8 @@ export const useTable = ({
     rows: slicedRows,
     pagination,
     summary,
-    handleStateChange,
+    handleSorting,
+    handleFiltering,
+    handlePageSizing,
   }
 }
