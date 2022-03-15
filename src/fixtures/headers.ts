@@ -9,12 +9,6 @@ export const headers: Header[] = [
   },
   { id: 'lastName', text: 'Last Name', isSorted: false, sortingDirection: 'descending' },
   {
-    id: 'dateOfBirth',
-    text: 'Date of Birth',
-    isSorted: false,
-    sortingDirection: 'descending',
-  },
-  {
     id: 'startDate',
     text: 'Start Date',
     isSorted: false,
@@ -23,6 +17,12 @@ export const headers: Header[] = [
   {
     id: 'department',
     text: 'Department',
+    isSorted: false,
+    sortingDirection: 'descending',
+  },
+  {
+    id: 'dateOfBirth',
+    text: 'Date of Birth',
     isSorted: false,
     sortingDirection: 'descending',
   },

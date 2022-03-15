@@ -5,10 +5,11 @@ import { HandleSorting } from '../../../src/hooks/useTable/useTable'
 interface TableProps {
   headers: Header[]
   rows: Rows[]
+  isFiltered: boolean
   handleSorting: HandleSorting
 }
 
-export const Table = ({ headers, rows, handleSorting }: TableProps) => {
+export const Table = ({ headers, rows, isFiltered, handleSorting }: TableProps) => {
   const handleSortingEvent = ({ id, isSorted, sortingDirection }: Header) => {
     if (isSorted) {
       handleSorting({
@@ -19,6 +20,9 @@ export const Table = ({ headers, rows, handleSorting }: TableProps) => {
       handleSorting({ id, direction: 'descending' })
     }
   }
+
+  const hasNoData = rows.length === 0 && !isFiltered
+  const hasNoFilteredData = rows.length === 0 && isFiltered
 
   return (
     <table>
@@ -36,6 +40,20 @@ export const Table = ({ headers, rows, handleSorting }: TableProps) => {
         </tr>
       </thead>
       <tbody>
+        {hasNoData && (
+          <tr>
+            <td colSpan={headers.length} className="empty">
+              No data available in table
+            </td>
+          </tr>
+        )}
+        {hasNoFilteredData && (
+          <tr>
+            <td colSpan={headers.length} className="empty">
+              No matching records found
+            </td>
+          </tr>
+        )}
         {rows.map(({ data, key }) => (
           <tr key={key}>
             {data.map(({ cellValue, key, isSorted }) => (

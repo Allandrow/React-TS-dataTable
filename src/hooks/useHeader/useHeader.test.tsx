@@ -1,16 +1,23 @@
-import { vi } from 'vitest'
 import { renderHook } from '@testing-library/react-hooks'
-import { columns } from '../../../demo/fixtures/columns'
-import { SortBy } from '../useTable/useTable'
 import { useHeader } from './useHeader'
-
-const sorting: SortBy = { id: 'firstName', direction: 'descending' }
+import { columns, sorting } from '../../fixtures'
 
 describe('useHeader hook', () => {
   test('Returns headers array', () => {
     const { result } = renderHook(() => useHeader({ columns, sorting }))
 
     expect(result.current).toHaveLength(9)
-    expect(result.current[0].text).toBe('First Name')
+
+    result.current.forEach((header, i) => {
+      expect(header.id).toBe(columns[i].id)
+      expect(header.text).toBe(columns[i].header)
+      expect(header.isSorted).toBeDefined()
+      if (header.id === sorting.id) {
+        expect(header.isSorted).toBe(true)
+      } else {
+        expect(header.isSorted).toBe(false)
+      }
+      expect(header.sortingDirection).toBe(sorting.direction)
+    })
   })
 })

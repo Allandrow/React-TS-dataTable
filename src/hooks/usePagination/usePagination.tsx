@@ -12,14 +12,12 @@ export interface PaginationParams {
   setPage: (value: number) => void
 }
 
-export type PaginationValues = PaginationParams | null
-
 export const usePagination = ({
   page,
   pageSize,
   rowsLength,
   setPage,
-}: PaginationProps): PaginationValues => {
+}: PaginationProps): PaginationParams | null => {
   const totalPageCount = Math.ceil(rowsLength / pageSize)
 
   if (!totalPageCount) return null

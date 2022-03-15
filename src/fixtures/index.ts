@@ -1,4 +1,5 @@
-import { headers } from './headers'
-import { data } from './data'
-
-export { headers, data }
+export { columns } from './columns'
+export { headers } from './headers'
+export { data } from './data'
+export { employees } from './employees'
+export { sorting } from './sorting'

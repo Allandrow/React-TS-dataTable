@@ -20,24 +20,12 @@ describe('sort functions', () => {
 
   test('sort number', () => {
     const dataNumbers = [
-      {
-        number: 2,
-      },
-      {
-        number: 49,
-      },
-      {
-        number: 258,
-      },
-      {
-        number: 1,
-      },
-      {
-        number: -10,
-      },
-      {
-        number: 0,
-      },
+      { number: 2 },
+      { number: 49 },
+      { number: 258 },
+      { number: 1 },
+      { number: -10 },
+      { number: 0 },
     ]
 
     let sortedData = dataNumbers.sort((a, b) =>
@@ -57,8 +45,8 @@ describe('sort functions', () => {
     expect(sortedData[5].number).toBe(-10)
   })
 
-  test('sort date', () => {
-    let sortedData = data.sort((a, b) =>
+  test('sort date with ISO dateString', () => {
+    let sortedData = [...data].sort((a, b) =>
       sortFunctions.get('sortDateISO')(a, b, {
         id: 'dateOfBirth',
         direction: 'descending',
@@ -68,7 +56,7 @@ describe('sort functions', () => {
     expect(sortedData[0].dateOfBirth).toBe('06/13/1961')
     expect(sortedData[2].dateOfBirth).toBe('09/14/1994')
 
-    sortedData = data.sort((a, b) =>
+    sortedData = [...data].sort((a, b) =>
       sortFunctions.get('sortDateISO')(a, b, {
         id: 'dateOfBirth',
         direction: 'ascending',
@@ -77,7 +65,9 @@ describe('sort functions', () => {
 
     expect(sortedData[0].dateOfBirth).toBe('09/14/1994')
     expect(sortedData[2].dateOfBirth).toBe('06/13/1961')
+  })
 
+  test('sort date with Date Object', () => {
     const dates = [
       {
         date: new Date('09/14/1994'),
@@ -90,7 +80,7 @@ describe('sort functions', () => {
       },
     ]
 
-    const sortedDates = dates.sort((a, b) =>
+    const sortedDates = [...dates].sort((a, b) =>
       sortFunctions.get('sortDateISO')(a, b, { id: 'date', direction: 'descending' })
     )
 
@@ -98,6 +88,21 @@ describe('sort functions', () => {
     expect(sortedDates[0].date.getTime()).toBe(-269917200000)
     // new Date('04/20/2017') time
     expect(sortedDates[2].date.getTime()).toBe(1492639200000)
+  })
+
+  test('sort date with timestamp number', () => {
+    const dates = [
+      { date: 779493600000 }, // 09/14/1994
+      { date: 1492639200000 }, // 04/20/2017
+      { date: -269917200000 }, // 06/13/1961
+    ]
+
+    const sortedDates = [...dates].sort((a, b) =>
+      sortFunctions.get('sortDateISO')(a, b, { id: 'date', direction: 'descending' })
+    )
+
+    expect(sortedDates[0].date).toBe(-269917200000)
+    expect(sortedDates[2].date).toBe(1492639200000)
   })
 
   test('method throws', () => {

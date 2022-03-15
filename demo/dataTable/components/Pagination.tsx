@@ -1,9 +1,9 @@
-import { paginationWithSuspend } from '../../../src/helpers/paginationRenderHelper'
-import { PaginationValues } from '../../../src/hooks/usePagination/usePagination'
+import { paginationWithSuspend } from '../../../src/helpers/paginationWithSuspend'
+import { PaginationParams } from '../../../src/hooks/usePagination/usePagination'
 import { PageList } from './PageList'
 
 interface PaginationProps {
-  pagination: PaginationValues
+  pagination: PaginationParams | null
 }
 
 export const Pagination = ({ pagination }: PaginationProps) => {

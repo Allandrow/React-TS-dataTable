@@ -9,33 +9,28 @@ interface Params {
 }
 
 describe('usePagination hook', () => {
-  const setPage = (value: number) => console.log(value)
+  const defaultParams: Params = {
+    page: 3,
+    pageSize: 10,
+    rowsLength: 100,
+    setPage: (value) => console.log(value),
+  }
 
   test('no data', () => {
-    const params: Params | null = {
+    const noData: Params = {
+      ...defaultParams,
       page: 1,
-      pageSize: 10,
       rowsLength: 0,
-      setPage,
     }
-
-    const { result } = renderHook(() => usePagination(params))
-
+    const { result } = renderHook(() => usePagination(noData))
     expect(result.current).toBeNull()
   })
 
   test('pagination object', () => {
-    const params: Params | null = {
-      page: 1,
-      pageSize: 20,
-      rowsLength: 100,
-      setPage,
-    }
-
-    const { result } = renderHook(() => usePagination(params))
+    const { result } = renderHook(() => usePagination(defaultParams))
 
     expect(result.current.firstPage).toBe(1)
-    expect(result.current.lastPage).toBe(5)
-    expect(result.current.page).toBe(1)
+    expect(result.current.lastPage).toBe(10)
+    expect(result.current.page).toBe(3)
   })
 })

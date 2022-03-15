@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react'
 import { useFiltering } from '../useFiltering/useFiltering'
 import { Header, useHeader } from '../useHeader/useHeader'
-import { PaginationValues, usePagination } from '../usePagination/usePagination'
+import { PaginationParams, usePagination } from '../usePagination/usePagination'
 import { SummaryValues, useSummary } from '../useSummary/useSummary'
 import { Rows, useRows } from '../useRows/useRows'
 import { useSorting } from '../useSorting/useSorting'
@@ -40,7 +40,7 @@ export type HandlePageSizing = (value: number, options?: StateChangeOptions) => 
 export interface UseTableValues {
   headers: Header[]
   rows: Rows[]
-  pagination: PaginationValues
+  pagination: PaginationParams | null
   summary: SummaryValues
   handleSorting: HandleSorting
   handleFiltering: HandleFiltering

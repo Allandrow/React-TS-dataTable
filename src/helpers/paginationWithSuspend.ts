@@ -1,5 +1,5 @@
 import { useMemo } from 'react'
-import { PaginationValues } from '../hooks/usePagination/usePagination'
+import { PaginationParams } from '../hooks/usePagination/usePagination'
 
 interface PaginationRenderOptions {
   suspendCountThreshold: number
@@ -7,7 +7,7 @@ interface PaginationRenderOptions {
   siblingCount: number
 }
 
-export interface PaginationRenderValues extends PaginationValues {
+export interface PaginationRenderValues extends PaginationParams {
   pageList: number[]
   suspendAfterList: boolean
   suspendBeforeList: boolean
@@ -21,9 +21,9 @@ const getRange = (start: number, end: number) => {
 }
 
 export const paginationWithSuspend = (
-  pagination: PaginationValues,
-  userOptions: PaginationRenderOptions
-) => {
+  pagination: PaginationParams,
+  userOptions?: Partial<PaginationRenderOptions>
+): PaginationRenderValues => {
   const defaults: PaginationRenderOptions = {
     suspendCountThreshold: 4,
     displayedPagesUntilSuspend: 7,
@@ -68,16 +68,14 @@ export const paginationWithSuspend = (
       }
     }
 
-    if (siblingCount) {
-      const firstPageAfterSuspend = page - siblingCount
-      const lastPageBeforeSuspend = page + siblingCount
+    const firstPageAfterSuspend = page - siblingCount
+    const lastPageBeforeSuspend = page + siblingCount
 
-      return {
-        pageList: getRange(firstPageAfterSuspend, lastPageBeforeSuspend),
-        suspendAfterList: true,
-        suspendBeforeList: true,
-        ...pagination,
-      }
+    return {
+      pageList: getRange(firstPageAfterSuspend, lastPageBeforeSuspend),
+      suspendAfterList: true,
+      suspendBeforeList: true,
+      ...pagination,
     }
   }, [pagination, options])
 

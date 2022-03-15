@@ -1,9 +1,6 @@
 import { renderHook } from '@testing-library/react-hooks'
 import { useRows } from './useRows'
-import { SortBy } from '../useTable/useTable'
-import { headers, data } from '../../fixtures'
-
-const sorting: SortBy = { id: 'firstName', direction: 'descending' }
+import { headers, data, sorting } from '../../fixtures'
 
 describe('useRows hook', () => {
   test('Returns rows array', () => {
@@ -14,6 +11,17 @@ describe('useRows hook', () => {
     expect(result.current[0].data[0].key).toBe('firstName-Alayne')
     result.current.forEach(({ data }) => {
       expect(data).toHaveLength(headers.length)
+
+      data.forEach((item, i) => {
+        expect(item.key.includes(headers[i].id)).toBe(true)
+      })
+
+      const sortedCount = data.reduce(
+        (total, { isSorted }) => (isSorted ? total + 1 : total),
+        0
+      )
+
+      expect(sortedCount).toBe(1)
     })
   })
 })

@@ -9,7 +9,7 @@ export const data = [
     department: 'Engineering',
     city: 'Austin',
     state: 'TX',
-    zipCode: '78715',
+    zipCode: 78715,
   },
   {
     key: '2',
@@ -21,7 +21,7 @@ export const data = [
     department: 'Business',
     city: 'Saint Petersburg',
     state: 'FL',
-    zipCode: '33715',
+    zipCode: 33715,
   },
   {
     key: '3',
@@ -33,6 +33,6 @@ export const data = [
     department: 'Business',
     city: 'Oklahoma City',
     state: 'OK',
-    zipCode: '73104',
+    zipCode: 73104,
   },
 ]

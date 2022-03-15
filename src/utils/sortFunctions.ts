@@ -28,7 +28,7 @@ const sortNumber = (a: Data, b: Data, { id, direction }: SortBy) => {
 }
 
 const getTimestamp = (value: unknown) => {
-  if (typeof value === 'number' && value.toString().length === 13) return value
+  if (typeof value === 'number') return new Date(value).getTime()
   if (typeof value === 'string') return Date.parse(value)
   if (value instanceof Date) return value.getTime()
 
