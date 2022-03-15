@@ -28,12 +28,13 @@ const sortNumber = (a: Data, b: Data, { id, direction }: SortBy) => {
 }
 
 const getTimestamp = (value: unknown) => {
-  // TODO : throw ici
-  // TODO : Compter le nb de chiffres pour voir si le number fourni est en secondes ou milli
-  if (typeof value === 'number') return value
+  if (typeof value === 'number' && value.toString().length === 13) return value
   if (typeof value === 'string') return Date.parse(value)
   if (value instanceof Date) return value.getTime()
-  return null
+
+  throw new Error(
+    `type of ${value} can't be used as comparison for date values. Type is ${typeof value}, types accepted : number(milliseconds timestamp), string(ISO dateString), date Object`
+  )
 }
 
 const sortDateISO = (a: Data, b: Data, { id, direction }: SortBy) => {
@@ -43,8 +44,6 @@ const sortDateISO = (a: Data, b: Data, { id, direction }: SortBy) => {
   if (aValue && bValue) {
     return compareValues(aValue, bValue, direction)
   }
-
-  throwError(a, b, id, 'date')
 }
 
 const sortString = (a: Data, b: Data, { id, direction }: SortBy) => {
