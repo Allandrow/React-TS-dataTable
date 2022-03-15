@@ -73,19 +73,28 @@ export const useTable = ({
     if (reset) setPage(1)
   }
 
-  const handleSorting = (sorting: SortBy, { resetPage = true }: StateChangeOptions) => {
+  const handleSorting = (
+    sorting: SortBy,
+    options: StateChangeOptions = { resetPage: true }
+  ) => {
     setSorting(sorting)
-    handlePageReset(resetPage)
+    handlePageReset(options.resetPage)
   }
 
-  const handleFiltering = (value: string, { resetPage = true }: StateChangeOptions) => {
+  const handleFiltering = (
+    value: string,
+    options: StateChangeOptions = { resetPage: true }
+  ) => {
     setFilter(value)
-    handlePageReset(resetPage)
+    handlePageReset(options.resetPage)
   }
 
-  const handlePageSizing = (value: number, { resetPage = true }: StateChangeOptions) => {
+  const handlePageSizing = (
+    value: number,
+    options: StateChangeOptions = { resetPage: true }
+  ) => {
     setPageSize(value)
-    handlePageReset(resetPage)
+    handlePageReset(options.resetPage)
   }
 
   const headers = useMemo(() => useHeader({ columns, sorting }), [columns, sorting])
