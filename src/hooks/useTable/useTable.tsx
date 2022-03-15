@@ -109,19 +109,27 @@ export const useTable = ({
     [rows, page, pageSize, sorting]
   )
 
-  const pagination = usePagination({
-    page,
-    pageSize,
-    rowsLength: rows.length,
-    setPage,
-  })
+  const pagination = useMemo(
+    () =>
+      usePagination({
+        page,
+        pageSize,
+        rowsLength: rows.length,
+        setPage,
+      }),
+    [page, pageSize, rows]
+  )
 
-  const summary = useSummary({
-    dataLength: data.length,
-    filteredDataLength: filteredData.length,
-    page,
-    pageSize,
-  })
+  const summary = useMemo(
+    () =>
+      useSummary({
+        dataLength: data.length,
+        filteredDataLength: filteredData.length,
+        page,
+        pageSize,
+      }),
+    [data, filteredData, page, pageSize]
+  )
 
   return {
     headers,

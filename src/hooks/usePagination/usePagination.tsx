@@ -1,5 +1,3 @@
-import { useMemo } from 'react'
-
 export interface PaginationProps {
   page: number
   pageSize: number
@@ -22,18 +20,14 @@ export const usePagination = ({
 }: PaginationProps) => {
   const totalPageCount = Math.ceil(rowsLength / pageSize)
 
-  const pagination: PaginationValues | null = useMemo(() => {
-    if (totalPageCount === 0) {
-      return null
-    }
+  if (totalPageCount === 0) {
+    return null
+  }
 
-    return {
-      firstPage: 1,
-      lastPage: totalPageCount,
-      page,
-      setPage,
-    }
-  }, [page, totalPageCount])
-
-  return pagination
+  return {
+    firstPage: 1,
+    lastPage: totalPageCount,
+    page,
+    setPage,
+  } as PaginationValues
 }

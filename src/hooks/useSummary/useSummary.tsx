@@ -1,5 +1,3 @@
-import { useMemo } from 'react'
-
 interface RecapProps {
   dataLength: number
   filteredDataLength: undefined | number
@@ -22,17 +20,14 @@ export const useSummary = ({
 }: RecapProps) => {
   const isFiltered = filteredDataLength !== undefined && filteredDataLength !== dataLength
 
-  const indices = useMemo(() => {
-    if (dataLength && !isFiltered) {
-      return getIndices(dataLength, pageSize, page)
-    }
+  let indices = { firstIndex: 0, lastIndex: 0 }
 
-    if (dataLength && isFiltered && filteredDataLength > 0) {
-      return getIndices(filteredDataLength, pageSize, page)
-    }
-
-    return { firstIndex: 0, lastIndex: 0 }
-  }, [dataLength, filteredDataLength, isFiltered, page, pageSize])
+  if (dataLength && !isFiltered) {
+    indices = getIndices(dataLength, pageSize, page)
+  }
+  if (dataLength && isFiltered && filteredDataLength > 0) {
+    indices = getIndices(filteredDataLength, pageSize, page)
+  }
 
   return {
     originalLength: dataLength,
