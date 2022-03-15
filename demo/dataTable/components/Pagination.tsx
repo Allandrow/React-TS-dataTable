@@ -15,12 +15,10 @@ export const Pagination = ({ pagination }: PaginationProps) => {
       })
     : null
 
-  const { firstPage, lastPage, page, setPage } = pagination
-
-  const goToPreviousPage = () => setPage(page - 1)
-  const goToNextPage = () => setPage(page + 1)
-  const isPreviousButtonDisabled = !pagination || page === firstPage
-  const isNextButtonDisabled = !pagination || page === lastPage
+  const goToPreviousPage = () => pagination?.setPage(pagination.page - 1)
+  const goToNextPage = () => pagination?.setPage(pagination.page + 1)
+  const isPreviousButtonDisabled = !pagination || pagination.page === pagination.firstPage
+  const isNextButtonDisabled = !pagination || pagination.page === pagination.lastPage
 
   return (
     <ul className="pagination">

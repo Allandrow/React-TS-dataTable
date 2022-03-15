@@ -5,29 +5,29 @@ export interface PaginationProps {
   setPage: (value: number) => void
 }
 
-export interface PaginationValues {
+export interface PaginationParams {
   firstPage: number
   lastPage: number
   page: number
   setPage: (value: number) => void
 }
 
+export type PaginationValues = PaginationParams | null
+
 export const usePagination = ({
   page,
   pageSize,
   rowsLength,
   setPage,
-}: PaginationProps) => {
+}: PaginationProps): PaginationValues => {
   const totalPageCount = Math.ceil(rowsLength / pageSize)
 
-  if (totalPageCount === 0) {
-    return null
-  }
+  if (!totalPageCount) return null
 
   return {
     firstPage: 1,
     lastPage: totalPageCount,
     page,
     setPage,
-  } as PaginationValues
+  }
 }

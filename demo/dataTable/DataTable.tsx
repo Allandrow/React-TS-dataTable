@@ -1,4 +1,4 @@
-import { useTable } from '../../src/hooks/useTable/useTable'
+import { useTable, UseTableValues } from '../../src/hooks/useTable/useTable'
 import { columns } from '../fixtures/columns'
 import { employees } from '../fixtures/employees'
 import { FilterInput } from './components/FilterInput'
@@ -17,7 +17,7 @@ export const DataTable = () => {
     handleSorting,
     handlePageSizing,
     handleFiltering,
-  } = useTable({
+  }: UseTableValues = useTable({
     columns,
     data: employees,
     pageSizeOptions: options,

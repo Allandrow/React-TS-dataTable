@@ -10,9 +10,9 @@ const compareValues = <T extends string | number | Date>(
   return 0
 }
 
-const throwError = (a: Data, b: Data, id: string, type: string) => {
+const throwTypeComparisonError = (id: string, type: string) => {
   throw new Error(
-    `At least one of the two compared values from key : ${id} are not of type ${type} for this sort. Data involved in sort error : ${a}, ${b}`
+    `At least one of the two compared values from key : ${id} are not of type ${type} for this sort.`
   )
 }
 
@@ -24,7 +24,7 @@ const sortNumber = (a: Data, b: Data, { id, direction }: SortBy) => {
     return compareValues(aValue, bValue, direction)
   }
 
-  throwError(a, b, id, 'number')
+  throwTypeComparisonError(id, 'number')
 }
 
 const getTimestamp = (value: unknown) => {
@@ -33,7 +33,8 @@ const getTimestamp = (value: unknown) => {
   if (value instanceof Date) return value.getTime()
 
   throw new Error(
-    `type of ${value} can't be used as comparison for date values. Type is ${typeof value}, types accepted : number(milliseconds timestamp), string(ISO dateString), date Object`
+    `type of ${value} can't be used as comparison for date values. Type is ${typeof value}.
+    Types accepted : number(milliseconds timestamp), string(ISO dateString), date Object`
   )
 }
 
@@ -54,7 +55,7 @@ const sortString = (a: Data, b: Data, { id, direction }: SortBy) => {
     return compareValues(aValue, bValue, direction)
   }
 
-  throwError(a, b, id, 'string')
+  throwTypeComparisonError(id, 'string')
 }
 
 const sortFunctions = new Map()

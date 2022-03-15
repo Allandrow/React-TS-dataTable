@@ -1,8 +1,16 @@
-interface RecapProps {
+interface SummaryProps {
   dataLength: number
   filteredDataLength: undefined | number
   page: number
   pageSize: number
+}
+
+export interface SummaryValues {
+  originalLength: number
+  filteredLength: number | undefined
+  isFiltered: boolean
+  firstIndex: number
+  lastIndex: number
 }
 
 const getIndices = (total: number, pageSize: number, currentPage: number) => {
@@ -17,7 +25,7 @@ export const useSummary = ({
   filteredDataLength,
   page,
   pageSize,
-}: RecapProps) => {
+}: SummaryProps): SummaryValues => {
   const isFiltered = filteredDataLength !== undefined && filteredDataLength !== dataLength
 
   let indices = { firstIndex: 0, lastIndex: 0 }

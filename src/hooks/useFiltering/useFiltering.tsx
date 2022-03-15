@@ -6,17 +6,15 @@ interface FilteringProps {
 }
 
 export const useFiltering = ({ data, filter }: FilteringProps) => {
-  if (filter.length > 0) {
-    return data.filter((row) =>
-      Object.values(row).some((cell) => {
-        if (typeof cell === 'string') {
-          return cell.toLowerCase().includes(filter)
-        }
+  if (!filter) return data
 
-        return String(cell).includes(filter)
-      })
-    )
-  }
+  return data.filter((row) =>
+    Object.values(row).some((cell) => {
+      if (typeof cell === 'string') {
+        return cell.toLowerCase().includes(filter)
+      }
 
-  return data
+      return String(cell).includes(filter)
+    })
+  )
 }

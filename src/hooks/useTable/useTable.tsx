@@ -1,9 +1,9 @@
 import { useMemo, useState } from 'react'
 import { useFiltering } from '../useFiltering/useFiltering'
-import { useHeader } from '../useHeader/useHeader'
-import { usePagination } from '../usePagination/usePagination'
-import { useSummary } from '../useSummary/useSummary'
-import { useRows } from '../useRows/useRows'
+import { Header, useHeader } from '../useHeader/useHeader'
+import { PaginationValues, usePagination } from '../usePagination/usePagination'
+import { SummaryValues, useSummary } from '../useSummary/useSummary'
+import { Rows, useRows } from '../useRows/useRows'
 import { useSorting } from '../useSorting/useSorting'
 
 type DataProps = Record<string, unknown>
@@ -18,7 +18,7 @@ export interface DefaultColumn {
   sortMethod?: string
 }
 
-export interface TableHookProps {
+interface TableHookProps {
   columns: DefaultColumn[]
   data: Data[]
   pageSizeOptions?: number[]
@@ -29,17 +29,6 @@ export interface SortBy {
   direction: 'ascending' | 'descending'
 }
 
-interface Row {
-  key: string
-  cellValue: unknown
-  isSorted: boolean
-}
-
-export interface Rows {
-  key: string
-  data: Row[]
-}
-
 export interface StateChangeOptions {
   resetPage: boolean
 }
@@ -48,11 +37,21 @@ export type HandleSorting = (sorting: SortBy, options?: StateChangeOptions) => v
 export type HandleFiltering = (value: string, options?: StateChangeOptions) => void
 export type HandlePageSizing = (value: number, options?: StateChangeOptions) => void
 
+export interface UseTableValues {
+  headers: Header[]
+  rows: Rows[]
+  pagination: PaginationValues
+  summary: SummaryValues
+  handleSorting: HandleSorting
+  handleFiltering: HandleFiltering
+  handlePageSizing: HandlePageSizing
+}
+
 export const useTable = ({
   columns,
   data,
   pageSizeOptions = [10, 20, 50, 100],
-}: TableHookProps) => {
+}: TableHookProps): UseTableValues => {
   const [sorting, setSorting] = useState<SortBy>({
     id: columns[0].id,
     direction: 'descending',

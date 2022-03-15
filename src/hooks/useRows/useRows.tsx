@@ -1,10 +1,21 @@
 import { Header } from '../useHeader/useHeader'
-import { Data, Rows, SortBy } from '../useTable/useTable'
+import { Data, SortBy } from '../useTable/useTable'
 
 interface RowsProps {
   data: Data[]
   headers: Header[]
   sorting: SortBy
+}
+
+interface Row {
+  key: string
+  cellValue: unknown
+  isSorted: boolean
+}
+
+export interface Rows {
+  key: string
+  data: Row[]
 }
 
 export const useRows = ({ data, headers, sorting }: RowsProps): Rows[] => {
