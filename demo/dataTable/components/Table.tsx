@@ -1,4 +1,5 @@
-import { HandleSorting, Header, Rows } from '../../../src/hooks/useTable/useTable'
+import { Header } from '../../../src/hooks/useHeader/useHeader'
+import { HandleSorting, Rows } from '../../../src/hooks/useTable/useTable'
 
 interface TableProps {
   headers: Header[]

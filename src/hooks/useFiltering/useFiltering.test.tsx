@@ -1,17 +1,17 @@
 import { renderHook } from '@testing-library/react-hooks'
-import { sample } from '../../../demo/fixtures/data'
 import { useFiltering } from './useFiltering'
+import { data } from '../../fixtures'
 
 describe('useFiltering hook', () => {
   test('returns data if no search value', () => {
-    const { result } = renderHook(() => useFiltering({ data: sample, filter: '' }))
+    const { result } = renderHook(() => useFiltering({ data, filter: '' }))
 
-    expect(result.current).toBe(sample)
+    expect(result.current).toBe(data)
   })
 
   test('returns empty array if no match', () => {
     const { result } = renderHook(() =>
-      useFiltering({ data: sample, filter: 'will not find any matches' })
+      useFiltering({ data: data, filter: 'will not find any matches' })
     )
 
     expect(result.current).toEqual([])
@@ -19,9 +19,7 @@ describe('useFiltering hook', () => {
   })
 
   test('returns array of matches if cells contain search value', () => {
-    const { result } = renderHook(() =>
-      useFiltering({ data: sample, filter: 'business' })
-    )
+    const { result } = renderHook(() => useFiltering({ data: data, filter: 'business' }))
 
     expect(result.current).toHaveLength(2)
   })

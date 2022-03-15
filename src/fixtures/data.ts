@@ -1,4 +1,4 @@
-export const sample = [
+export const data = [
   {
     key: '1',
     firstName: 'Alayne',

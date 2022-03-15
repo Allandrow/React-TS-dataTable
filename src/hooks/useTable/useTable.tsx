@@ -29,13 +29,6 @@ export interface SortBy {
   direction: 'ascending' | 'descending'
 }
 
-export interface Header {
-  id: string
-  text: string
-  isSorted: boolean
-  sortingDirection: 'ascending' | 'descending'
-}
-
 interface Row {
   key: string
   cellValue: unknown
@@ -72,6 +65,7 @@ export const useTable = ({
     if (reset) setPage(1)
   }
 
+  // Exposed state modifiying functions
   const handleSorting: HandleSorting = (sorting, options = { resetPage: true }) => {
     setSorting(sorting)
     handlePageReset(options.resetPage)
@@ -87,6 +81,7 @@ export const useTable = ({
     handlePageReset(options.resetPage)
   }
 
+  // Exposed data values manipulated via custom hooks
   const headers = useMemo(() => useHeader({ columns, sorting }), [columns, sorting])
 
   const sortedData = useMemo(
