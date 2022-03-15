@@ -18,7 +18,7 @@ export interface DefaultColumn {
   sortMethod?: string
 }
 
-interface TableProps {
+export interface TableHookProps {
   columns: DefaultColumn[]
   data: Data[]
   pageSizeOptions?: number[]
@@ -59,7 +59,7 @@ export const useTable = ({
   columns,
   data,
   pageSizeOptions = [10, 20, 50, 100],
-}: TableProps) => {
+}: TableHookProps) => {
   const [sorting, setSorting] = useState<SortBy>({
     id: columns[0].id,
     direction: 'descending',
@@ -78,7 +78,7 @@ export const useTable = ({
   }
 
   const handleFiltering: HandleFiltering = (value, options = { resetPage: true }) => {
-    setFilter(value)
+    setFilter(value.toLowerCase())
     handlePageReset(options.resetPage)
   }
 

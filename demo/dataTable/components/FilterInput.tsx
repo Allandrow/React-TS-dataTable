@@ -11,7 +11,7 @@ export const FilterInput = ({ handleFiltering }: FilterInputProps) => {
       <input
         id="search"
         type="search"
-        onChange={(e) => handleFiltering(e.currentTarget.value.toLowerCase())}
+        onChange={(e) => handleFiltering(e.currentTarget.value)}
       />
     </label>
   )
