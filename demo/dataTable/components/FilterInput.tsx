@@ -1,5 +1,7 @@
+import { HandleFiltering } from '../../../src/hooks/useTable/useTable'
+
 interface FilterInputProps {
-  handleFiltering: (value: string, options?: { resetPage: boolean }) => void
+  handleFiltering: HandleFiltering
 }
 
 export const FilterInput = ({ handleFiltering }: FilterInputProps) => {

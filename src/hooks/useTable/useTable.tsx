@@ -29,11 +29,6 @@ export interface SortBy {
   direction: 'ascending' | 'descending'
 }
 
-export interface OptionsList {
-  sortBy: SortBy
-  disabled: string[]
-}
-
 export interface Header {
   id: string
   text: string
@@ -56,6 +51,10 @@ export interface StateChangeOptions {
   resetPage: boolean
 }
 
+export type HandleSorting = (sorting: SortBy, options?: StateChangeOptions) => void
+export type HandleFiltering = (value: string, options?: StateChangeOptions) => void
+export type HandlePageSizing = (value: number, options?: StateChangeOptions) => void
+
 export const useTable = ({
   columns,
   data,
@@ -73,26 +72,17 @@ export const useTable = ({
     if (reset) setPage(1)
   }
 
-  const handleSorting = (
-    sorting: SortBy,
-    options: StateChangeOptions = { resetPage: true }
-  ) => {
+  const handleSorting: HandleSorting = (sorting, options = { resetPage: true }) => {
     setSorting(sorting)
     handlePageReset(options.resetPage)
   }
 
-  const handleFiltering = (
-    value: string,
-    options: StateChangeOptions = { resetPage: true }
-  ) => {
+  const handleFiltering: HandleFiltering = (value, options = { resetPage: true }) => {
     setFilter(value)
     handlePageReset(options.resetPage)
   }
 
-  const handlePageSizing = (
-    value: number,
-    options: StateChangeOptions = { resetPage: true }
-  ) => {
+  const handlePageSizing: HandlePageSizing = (value, options = { resetPage: true }) => {
     setPageSize(value)
     handlePageReset(options.resetPage)
   }

@@ -1,9 +1,9 @@
-import { Header, Rows, SortBy } from '../../../src/hooks/useTable/useTable'
+import { HandleSorting, Header, Rows } from '../../../src/hooks/useTable/useTable'
 
 interface TableProps {
   headers: Header[]
   rows: Rows[]
-  handleSorting: (sorting: SortBy, options?: { resetPage: boolean }) => void
+  handleSorting: HandleSorting
 }
 
 export const Table = ({ headers, rows, handleSorting }: TableProps) => {
