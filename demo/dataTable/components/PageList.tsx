@@ -1,4 +1,4 @@
-import { PaginationRenderValues } from '../../../src/helpers/paginationRenderHelper'
+import { PaginationRenderValues } from '../../../src/helpers/paginationWithSuspend'
 import { PageButton } from './PageButton'
 
 export const PageList = ({
@@ -25,8 +25,11 @@ export const PageList = ({
       {pageList.length > 0 &&
         pageList.map((pageNumber) => (
           <li key={pageNumber} className={pageNumber === page ? 'current' : ''}>
-            {pageNumber === page && <span>{pageNumber}</span>}
-            {!(pageNumber === page) && <PageButton page={pageNumber} setPage={setPage} />}
+            {pageNumber === page ? (
+              <span>{pageNumber}</span>
+            ) : (
+              <PageButton page={pageNumber} setPage={setPage} />
+            )}
           </li>
         ))}
       {suspendAfterList && (

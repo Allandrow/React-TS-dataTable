@@ -85,24 +85,24 @@ describe('sort functions', () => {
     )
 
     // new Date('06/13/1961') time
-    expect(sortedDates[0].date.getTime()).toBe(-269917200000)
+    expect(sortedDates[0].date.getTime()).toBe(-269_917_200_000)
     // new Date('04/20/2017') time
-    expect(sortedDates[2].date.getTime()).toBe(1492639200000)
+    expect(sortedDates[2].date.getTime()).toBe(1_492_639_200_000)
   })
 
   test('sort date with timestamp number', () => {
     const dates = [
-      { date: 779493600000 }, // 09/14/1994
-      { date: 1492639200000 }, // 04/20/2017
-      { date: -269917200000 }, // 06/13/1961
+      { date: 779_493_600_000 }, // 09/14/1994
+      { date: 1_492_639_200_000 }, // 04/20/2017
+      { date: -269_917_200_000 }, // 06/13/1961
     ]
 
     const sortedDates = [...dates].sort((a, b) =>
       sortFunctions.get('sortDateISO')(a, b, { id: 'date', direction: 'descending' })
     )
 
-    expect(sortedDates[0].date).toBe(-269917200000)
-    expect(sortedDates[2].date).toBe(1492639200000)
+    expect(sortedDates[0].date).toBe(-269_917_200_000)
+    expect(sortedDates[2].date).toBe(1_492_639_200_000)
   })
 
   test('method throws', () => {
