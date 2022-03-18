@@ -1,4 +1,4 @@
-import { paginationWithSuspend } from '../../../src/helpers'
+import { paginationWithSuspend } from '../../../src'
 import { PageList } from './PageList'
 import { PaginationParams } from '../../../src/types'
 

@@ -1,4 +1,4 @@
-import { useTable } from '../../src/hooks/useTable'
+import { useTable } from '../../src'
 import { FilterInput } from './components/FilterInput'
 import { PageSizeSelect } from './components/PageSizeSelect'
 import { Pagination } from './components/Pagination'
