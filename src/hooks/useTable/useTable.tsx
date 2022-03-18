@@ -1,10 +1,10 @@
 import { useMemo, useState } from 'react'
-import { useFiltering } from '../useFiltering/useFiltering'
-import { useHeader } from '../useHeader/useHeader'
-import { usePagination } from '../usePagination/usePagination'
-import { useSummary } from '../useSummary/useSummary'
-import { useRows } from '../useRows/useRows'
-import { useSorting } from '../useSorting/useSorting'
+import { useFiltering } from '../useFiltering'
+import { useHeader } from '../useHeader'
+import { usePagination } from '../usePagination'
+import { useSummary } from '../useSummary'
+import { useRows } from '../useRows'
+import { useSorting } from '../useSorting'
 import { Header, PaginationParams, SummaryValues, Rows } from '../../types'
 
 type DataProps = Record<string, unknown>

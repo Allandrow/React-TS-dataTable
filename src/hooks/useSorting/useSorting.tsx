@@ -1,4 +1,4 @@
-import { sortFunctions } from '../../utils/sortFunctions'
+import { sortFunctions } from '../../utils'
 import { Data, DefaultColumn, SortBy } from '../../types'
 
 interface SortingProps {

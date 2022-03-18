@@ -1,0 +1,1 @@
+export { paginationWithSuspend } from './paginationWithSuspend'
