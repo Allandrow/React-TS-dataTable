@@ -1,4 +1,4 @@
-import { HandlePageSizing } from '../../../src/hooks/useTable/useTable'
+import { HandlePageSizing } from '../../../src/types'
 
 interface PageSizeSelectProps {
   options: number[]

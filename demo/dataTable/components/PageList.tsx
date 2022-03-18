@@ -1,4 +1,4 @@
-import { PaginationRenderValues } from '../../../src/helpers/paginationWithSuspend'
+import { PaginationRenderValues } from '../../../src/types'
 import { PageButton } from './PageButton'
 
 export const PageList = ({

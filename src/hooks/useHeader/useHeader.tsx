@@ -1,4 +1,4 @@
-import { DefaultColumn, SortBy } from '../useTable/useTable'
+import { DefaultColumn, SortBy } from '../../types'
 
 interface HeaderProps {
   columns: DefaultColumn[]

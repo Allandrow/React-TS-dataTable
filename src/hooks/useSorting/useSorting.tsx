@@ -1,5 +1,5 @@
 import { sortFunctions } from '../../utils/sortFunctions'
-import { Data, DefaultColumn, SortBy } from '../useTable/useTable'
+import { Data, DefaultColumn, SortBy } from '../../types'
 
 interface SortingProps {
   data: Data[]

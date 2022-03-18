@@ -1,4 +1,4 @@
-import { Data } from '../useTable/useTable'
+import { Data } from '../../types'
 
 interface FilteringProps {
   data: Data[]

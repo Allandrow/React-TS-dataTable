@@ -1,5 +1,5 @@
 import { useMemo } from 'react'
-import { PaginationParams } from '../hooks/usePagination/usePagination'
+import { PaginationParams } from '../types'
 
 interface PaginationRenderOptions {
   suspendCountThreshold: number

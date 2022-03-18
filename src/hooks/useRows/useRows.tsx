@@ -1,5 +1,5 @@
 import { Header } from '../useHeader/useHeader'
-import { Data, SortBy } from '../useTable/useTable'
+import { Data, SortBy } from '../../types'
 
 interface RowsProps {
   data: Data[]

@@ -1,14 +1,10 @@
-import {
-  Data,
-  DefaultColumn,
-  useTable,
-  UseTableValues,
-} from '../../src/hooks/useTable/useTable'
+import { useTable } from '../../src/hooks/useTable/useTable'
 import { FilterInput } from './components/FilterInput'
 import { PageSizeSelect } from './components/PageSizeSelect'
 import { Pagination } from './components/Pagination'
 import { Summary } from './components/Summary'
 import { Table } from './components/Table'
+import { Data, DefaultColumn, UseTableValues } from '../../src/types'
 
 interface DataTableProps {
   columns: DefaultColumn[]

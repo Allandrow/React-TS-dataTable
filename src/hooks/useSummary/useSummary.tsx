@@ -1,13 +1,13 @@
 interface SummaryProps {
   dataLength: number
-  filteredDataLength: undefined | number
+  filteredDataLength: number
   page: number
   pageSize: number
 }
 
 export interface SummaryValues {
   originalLength: number
-  filteredLength: number | undefined
+  filteredLength: number
   isFiltered: boolean
   firstIndex: number
   lastIndex: number

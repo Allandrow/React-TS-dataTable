@@ -1,6 +1,4 @@
-import { Header } from '../../../src/hooks/useHeader/useHeader'
-import { Rows } from '../../../src/hooks/useRows/useRows'
-import { HandleSorting } from '../../../src/hooks/useTable/useTable'
+import { Header, Rows, HandleSorting } from '../../../src/types'
 
 interface TableProps {
   headers: Header[]

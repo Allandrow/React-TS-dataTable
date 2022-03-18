@@ -1,4 +1,4 @@
-import { Data, SortBy } from '../hooks/useTable/useTable'
+import { Data, SortBy } from '../types'
 
 const compareValues = <T extends string | number | Date>(
   aValue: T,

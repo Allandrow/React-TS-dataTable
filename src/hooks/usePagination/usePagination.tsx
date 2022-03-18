@@ -1,4 +1,4 @@
-export interface PaginationProps {
+interface PaginationProps {
   page: number
   pageSize: number
   rowsLength: number

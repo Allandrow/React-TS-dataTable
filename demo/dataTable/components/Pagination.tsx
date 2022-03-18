@@ -1,6 +1,6 @@
 import { paginationWithSuspend } from '../../../src/helpers/paginationWithSuspend'
-import { PaginationParams } from '../../../src/hooks/usePagination/usePagination'
 import { PageList } from './PageList'
+import { PaginationParams } from '../../../src/types'
 
 interface PaginationProps {
   pagination: PaginationParams | null

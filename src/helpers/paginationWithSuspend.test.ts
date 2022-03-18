@@ -1,6 +1,6 @@
 import { renderHook } from '@testing-library/react-hooks'
 import { paginationWithSuspend } from './paginationWithSuspend'
-import { PaginationParams } from '../hooks/usePagination/usePagination'
+import { PaginationParams } from '../types'
 
 describe('pagination helper', () => {
   const pagination: PaginationParams = {

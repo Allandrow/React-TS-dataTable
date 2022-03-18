@@ -1,4 +1,4 @@
-import { Header } from '../hooks/useHeader/useHeader'
+import { Header } from '../types'
 
 export const headers: Header[] = [
   {

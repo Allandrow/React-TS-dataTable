@@ -1,4 +1,4 @@
-import { HandleFiltering } from '../../../src/hooks/useTable/useTable'
+import { HandleFiltering } from '../../../src/types'
 
 interface FilterInputProps {
   handleFiltering: HandleFiltering
