@@ -200,6 +200,41 @@ const instance = useTable({ columns, data, pageSizeOptions }: TableHookProps)
 
 #### paginationWithSuspend
 
-##### options
+This helper function allows you to obtain values regarding the setup of a pagination with ellipsis, or suspends, between pages.
+Providing the pagination object you get from the `useTable` hook it will return a new object with a list of pages, the state of suspension before/after the list and the previous pagination properties.
+
+Example call of function :
+
+```js
+const customPagination = paginationWithSuspend(pagination, options?)
+```
+
+Coming out of the box with default, you can also override them with your preferred setups. Included properties and their default values are :
+
+- suspendCountThreshold: if the current page is within the first or last X pages it will display X pages before/after the suspend, X being the property value. Default value : 4
+
+- displayedPagesUntilSuspend : if the total number of pages is equal or below this value, the pagination will display all the pages without suspension. Default value : 7
+
+- siblingCount : number of pages to display around the current page. Default value : 1
+
+To override a default value, you can provide an object with the property/properties you want to modify as the options argument
+
+example :
+
+```js
+const customPagination = paginationWithSuspend(pagination, {
+  displayedPagesUntilSuspend: 5,
+  siblingCount: 3,
+})
+```
+
+This way, suspendCountThreshold will stay at its default value and the two other properties will take the new values instead of the default.
 
 ##### helper return
+
+Details of the properties in the returned object :
+
+- pageList : array of pages
+- suspendAfterList: boolean
+- suspendBeforeList: boolean
+- all the properties from the pagination object
