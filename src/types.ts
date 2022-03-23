@@ -4,6 +4,7 @@ export type {
   SortBy,
   StateChangeOptions,
   UseTableValues,
+  UserSortMethod,
   HandleFiltering,
   HandlePageSizing,
   HandleSorting,

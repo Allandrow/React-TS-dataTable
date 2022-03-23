@@ -10,10 +10,30 @@ interface SortingProps {
 export const useSorting = ({ data, sorting, columns }: SortingProps) => {
   const { sortMethod } = columns.find((column) => column.id === sorting.id)!
 
-  // TODO : check if method is in map
-  // TODO : check type of sortMethod, if string then map, else apply sort function given
   if (sortMethod) {
-    return [...data].sort((a, b) => sortFunctions.get(sortMethod)(a, b, sorting))
+    if (typeof sortMethod === 'string') {
+      if (sortFunctions.has(sortMethod)) {
+        return [...data].sort((a, b) => sortFunctions.get(sortMethod)(a, b, sorting))
+      } else {
+        console.error(
+          `${sortMethod} is not a known helper sorting method included in this library. \n
+          Known methods are : \n
+          - sortString
+          - sortNumber
+          - sortDateISO`
+        )
+        throw new Error('Invalid sortMethod name')
+      }
+    }
+
+    if (sortMethod instanceof Function) {
+      try {
+        return [...data].sort((a, b) => sortMethod(a, b, sorting))
+      } catch (err) {
+        console.error(err)
+        throw new Error('Something went wrong with the function used to sort data')
+      }
+    }
   }
 
   return [...data].sort((a, b) => sortFunctions.get('sortString')(a, b, sorting))

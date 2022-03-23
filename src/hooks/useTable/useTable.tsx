@@ -9,25 +9,27 @@ import { Header, PaginationParams, SummaryValues, Rows } from '../../types'
 
 type DataProps = Record<string, unknown>
 
+export interface SortBy {
+  id: string
+  direction: 'ascending' | 'descending'
+}
+
 export interface Data extends DataProps {
   key: string
 }
 
+export type UserSortMethod = (a: Data, b: Data, sorting: SortBy) => number
+
 export interface DefaultColumn {
   id: string
   displayText: string
-  sortMethod?: string
+  sortMethod?: string | UserSortMethod
 }
 
 interface TableHookProps {
   columns: DefaultColumn[]
   data: Data[]
   pageSizeOptions?: number[]
-}
-
-export interface SortBy {
-  id: string
-  direction: 'ascending' | 'descending'
 }
 
 export interface StateChangeOptions {

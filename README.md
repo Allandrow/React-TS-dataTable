@@ -57,7 +57,7 @@ const instance = useTable({ columns, data, pageSizeOptions }: TableHookProps)
   interface DefaultColumn {
     id: string
     displayText: string
-    sortMethod?: string
+    sortMethod?: string | Function
   }
   ```
 
