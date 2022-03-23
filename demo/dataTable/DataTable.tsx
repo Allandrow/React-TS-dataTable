@@ -22,6 +22,7 @@ export const DataTable = ({
     rows,
     pagination,
     summary,
+    isFiltered,
     handleSorting,
     handlePageSizing,
     handleFiltering,
@@ -39,7 +40,7 @@ export const DataTable = ({
         headers={headers}
         rows={rows}
         handleSorting={handleSorting}
-        isFiltered={summary.isFiltered}
+        isFiltered={isFiltered}
       />
       <Summary {...summary} />
       <Pagination pagination={pagination} />

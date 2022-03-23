@@ -1,6 +1,7 @@
 interface SummaryProps {
   dataLength: number
   filteredDataLength: number
+  isFiltered: boolean
   page: number
   pageSize: number
 }
@@ -24,10 +25,9 @@ export const useSummary = ({
   dataLength,
   filteredDataLength,
   page,
+  isFiltered,
   pageSize,
 }: SummaryProps): SummaryValues => {
-  const isFiltered = filteredDataLength !== undefined && filteredDataLength !== dataLength
-
   let indices = { firstIndex: 0, lastIndex: 0 }
 
   if (dataLength && !isFiltered) {

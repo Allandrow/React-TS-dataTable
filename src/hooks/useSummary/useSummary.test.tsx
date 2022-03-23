@@ -8,6 +8,7 @@ describe('useSummary hook', () => {
         dataLength: 0,
         filteredDataLength: 0,
         pageSize: 10,
+        isFiltered: false,
         page: 1,
       })
     )
@@ -26,6 +27,7 @@ describe('useSummary hook', () => {
         dataLength: 100,
         filteredDataLength: 0,
         pageSize: 10,
+        isFiltered: true,
         page: 1,
       })
     )
@@ -42,7 +44,13 @@ describe('useSummary hook', () => {
 
   test('data, no filtering', () => {
     const { result } = renderHook(() =>
-      useSummary({ dataLength: 80, filteredDataLength: 80, pageSize: 50, page: 1 })
+      useSummary({
+        dataLength: 80,
+        filteredDataLength: 80,
+        isFiltered: false,
+        pageSize: 50,
+        page: 1,
+      })
     )
 
     const { originalLength, filteredLength, isFiltered, firstIndex, lastIndex } =
@@ -60,6 +68,7 @@ describe('useSummary hook', () => {
       useSummary({
         dataLength: 80,
         filteredDataLength: 35,
+        isFiltered: true,
         pageSize: 20,
         page: 1,
       })
@@ -80,6 +89,7 @@ describe('useSummary hook', () => {
       useSummary({
         dataLength: 97,
         filteredDataLength: 78,
+        isFiltered: true,
         pageSize: 20,
         page: 4,
       })

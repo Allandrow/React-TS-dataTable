@@ -43,6 +43,7 @@ export interface UseTableValues {
   rows: Rows[]
   pagination: PaginationParams | null
   summary: SummaryValues
+  isFiltered: boolean
   handleSorting: HandleSorting
   handleFiltering: HandleFiltering
   handlePageSizing: HandlePageSizing
@@ -115,11 +116,14 @@ export const useTable = ({
     [page, pageSize, filteredRows]
   )
 
+  const isFiltered = filter.length > 0
+
   const summary = useMemo(
     () =>
       useSummary({
         dataLength: data.length,
         filteredDataLength: filteredRows.length,
+        isFiltered,
         page,
         pageSize,
       }),
@@ -131,6 +135,7 @@ export const useTable = ({
     rows: slicedRows,
     pagination,
     summary,
+    isFiltered,
     handleSorting,
     handleFiltering,
     handlePageSizing,

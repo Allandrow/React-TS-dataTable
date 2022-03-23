@@ -6,7 +6,7 @@ describe('useTable', () => {
   test('Get Table Instance', () => {
     const { result } = renderHook(() => useTable({ columns, data }))
 
-    expect(Object.keys(result.current)).toHaveLength(7)
+    expect(Object.keys(result.current)).toHaveLength(8)
 
     const { headers, rows, pagination, summary } = result.current
 

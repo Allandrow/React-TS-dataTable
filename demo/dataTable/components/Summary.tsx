@@ -15,7 +15,7 @@ export const Summary = ({
 }: SummaryProps) => {
   return (
     <p>
-      {isFiltered
+      {isFiltered && originalLength !== filteredLength
         ? `Showing ${firstIndex} to ${lastIndex} of ${filteredLength} entries (filtered from ${originalLength} total entries)`
         : `Showing ${firstIndex} to ${lastIndex} of ${originalLength} entries`}
     </p>
