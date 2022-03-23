@@ -32,6 +32,8 @@ export const DataTable = ({
     pageSizeOptions: options,
   })
 
+  console.log(headers)
+
   return (
     <section className="dataTable">
       <PageSizeSelect options={options} handlePageSizing={handlePageSizing} />

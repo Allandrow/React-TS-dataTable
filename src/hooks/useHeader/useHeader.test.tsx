@@ -8,16 +8,17 @@ describe('useHeader hook', () => {
 
     expect(result.current).toHaveLength(9)
 
-    result.current.forEach((header, i) => {
-      expect(header.id).toBe(columns[i].id)
-      expect(header.displayText).toBe(columns[i].displayText)
-      expect(header.isSorted).toBeDefined()
-      if (header.id === sorting.id) {
-        expect(header.isSorted).toBe(true)
+    result.current.forEach(({ id, displayText, isSorted, sortingDirection }, i) => {
+      expect(id).toBe(columns[i].id)
+      expect(displayText).toBe(columns[i].displayText)
+
+      if (id === sorting.id) {
+        expect(isSorted).toBe(true)
+        expect(sortingDirection).toBe(sorting.direction)
       } else {
-        expect(header.isSorted).toBe(false)
+        expect(isSorted).toBeUndefined()
+        expect(sortingDirection).toBeUndefined()
       }
-      expect(header.sortingDirection).toBe(sorting.direction)
     })
   })
 })
