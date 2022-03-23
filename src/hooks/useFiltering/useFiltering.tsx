@@ -1,20 +1,20 @@
-import { Data } from '../../types'
+import { Rows } from '../../types'
 
 interface FilteringProps {
-  data: Data[]
+  data: Rows[]
   filter: string
 }
 
 export const useFiltering = ({ data, filter }: FilteringProps) => {
   if (!filter) return data
 
-  return data.filter((row) =>
-    Object.values(row).some((cell) => {
-      if (typeof cell === 'string') {
-        return cell.toLowerCase().includes(filter)
+  return data.filter(({ data }) =>
+    data.some(({ cellValue }) => {
+      if (typeof cellValue === 'string') {
+        return cellValue.toLowerCase().includes(filter)
       }
 
-      return String(cell).includes(filter)
+      return String(cellValue).includes(filter)
     })
   )
 }

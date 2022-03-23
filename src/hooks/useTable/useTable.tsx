@@ -89,19 +89,19 @@ export const useTable = ({
     [data, sorting, headers]
   )
 
-  const filteredData = useMemo(
-    () => useFiltering({ data: sortedData, filter }),
-    [sortedData, filter, sorting]
+  const rows = useMemo(
+    () => useRows({ data: sortedData, headers, sorting }),
+    [sortedData, headers, sorting]
   )
 
-  const rows = useMemo(
-    () => useRows({ data: filteredData, headers, sorting }),
-    [sortedData, filteredData, headers, sorting]
+  const filteredRows = useMemo(
+    () => useFiltering({ data: rows, filter }),
+    [rows, filter, sorting]
   )
 
   const slicedRows = useMemo(
-    () => rows.slice((page - 1) * pageSize, page * pageSize),
-    [rows, page, pageSize, sorting]
+    () => filteredRows.slice((page - 1) * pageSize, page * pageSize),
+    [filteredRows, page, pageSize, sorting]
   )
 
   const pagination = useMemo(
@@ -109,21 +109,21 @@ export const useTable = ({
       usePagination({
         page,
         pageSize,
-        rowsLength: rows.length,
+        rowsLength: filteredRows.length,
         setPage,
       }),
-    [page, pageSize, rows]
+    [page, pageSize, filteredRows]
   )
 
   const summary = useMemo(
     () =>
       useSummary({
         dataLength: data.length,
-        filteredDataLength: filteredData.length,
+        filteredDataLength: filteredRows.length,
         page,
         pageSize,
       }),
-    [data, filteredData, page, pageSize]
+    [data, filteredRows, page, pageSize]
   )
 
   return {
