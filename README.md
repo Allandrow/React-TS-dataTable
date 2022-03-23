@@ -193,7 +193,6 @@ const instance = useTable({ columns, data, pageSizeOptions }: TableHookProps)
     - firstPage,
     - lastPage,
     - page (currently displayed page)
-    - setPage (handler)
 
   - summary : An object with information regarding current state of displayed informations :
 

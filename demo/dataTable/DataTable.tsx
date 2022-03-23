@@ -26,13 +26,12 @@ export const DataTable = ({
     handleSorting,
     handlePageSizing,
     handleFiltering,
+    handlePageChange,
   }: UseTableValues = useTable({
     columns,
     data,
     pageSizeOptions: options,
   })
-
-  console.log(headers)
 
   return (
     <section className="dataTable">
@@ -45,7 +44,7 @@ export const DataTable = ({
         isFiltered={isFiltered}
       />
       <Summary {...summary} />
-      <Pagination pagination={pagination} />
+      <Pagination pagination={pagination} handlePageChange={handlePageChange} />
     </section>
   )
 }

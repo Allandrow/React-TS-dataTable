@@ -6,7 +6,7 @@ describe('useTable', () => {
   test('Get Table Instance', () => {
     const { result } = renderHook(() => useTable({ columns, data }))
 
-    expect(Object.keys(result.current)).toHaveLength(8)
+    expect(Object.keys(result.current)).toHaveLength(9)
 
     const { headers, rows, pagination, summary } = result.current
 
@@ -36,7 +36,7 @@ describe('useTable', () => {
   test('Modifying sorting', () => {
     const { result } = renderHook(() => useTable({ columns, data: employees }))
 
-    result.current.pagination.setPage(2)
+    result.current.handlePageChange(2)
     result.current.handleSorting({ id: 'firstName', direction: 'ascending' })
 
     expect(result.current.rows[0].data[0].cellValue).toBe('Zaria')
@@ -53,7 +53,7 @@ describe('useTable', () => {
   test('Modifying filtering', () => {
     const { result } = renderHook(() => useTable({ columns, data: employees }))
 
-    result.current.pagination.setPage(3)
+    result.current.handlePageChange(3)
 
     expect(result.current.pagination.page).toBe(3)
 
@@ -72,7 +72,7 @@ describe('useTable', () => {
   test('Modifying page size', () => {
     const { result } = renderHook(() => useTable({ columns, data: employees }))
 
-    result.current.pagination.setPage(3)
+    result.current.handlePageChange(3)
 
     result.current.handlePageSizing(50)
 

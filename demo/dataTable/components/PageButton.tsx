@@ -1,8 +1,8 @@
 interface PageButtonProps {
   page: number
-  setPage: (value: number) => void
+  handlePageChange: (value: number) => void
 }
 
-export const PageButton = ({ page, setPage }: PageButtonProps) => {
-  return <button onClick={() => setPage(page)}>{page}</button>
+export const PageButton = ({ page, handlePageChange }: PageButtonProps) => {
+  return <button onClick={() => handlePageChange(page)}>{page}</button>
 }

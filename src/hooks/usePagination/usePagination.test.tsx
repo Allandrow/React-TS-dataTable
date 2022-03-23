@@ -5,7 +5,6 @@ interface Params {
   page: number
   pageSize: number
   rowsLength: number
-  setPage: (value: number) => void
 }
 
 describe('usePagination hook', () => {
@@ -13,7 +12,6 @@ describe('usePagination hook', () => {
     page: 3,
     pageSize: 10,
     rowsLength: 100,
-    setPage: (value) => console.log(value),
   }
 
   test('no data', () => {

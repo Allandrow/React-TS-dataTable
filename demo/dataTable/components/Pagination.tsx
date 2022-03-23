@@ -4,9 +4,10 @@ import { PaginationParams } from '../../../src/types'
 
 interface PaginationProps {
   pagination: PaginationParams | null
+  handlePageChange: (value: number) => void
 }
 
-export const Pagination = ({ pagination }: PaginationProps) => {
+export const Pagination = ({ pagination, handlePageChange }: PaginationProps) => {
   const paginationRenderValues = pagination
     ? paginationWithSuspend(pagination, {
         suspendCountThreshold: 4,
@@ -15,8 +16,8 @@ export const Pagination = ({ pagination }: PaginationProps) => {
       })
     : null
 
-  const goToPreviousPage = () => pagination?.setPage(pagination.page - 1)
-  const goToNextPage = () => pagination?.setPage(pagination.page + 1)
+  const goToPreviousPage = () => handlePageChange(pagination.page - 1)
+  const goToNextPage = () => handlePageChange(pagination.page + 1)
   const isPreviousButtonDisabled = !pagination || pagination.page === pagination.firstPage
   const isNextButtonDisabled = !pagination || pagination.page === pagination.lastPage
 
@@ -31,7 +32,9 @@ export const Pagination = ({ pagination }: PaginationProps) => {
           previous
         </button>
       </li>
-      {paginationRenderValues && <PageList {...paginationRenderValues} />}
+      {paginationRenderValues && (
+        <PageList {...paginationRenderValues} handlePageChange={handlePageChange} />
+      )}
       <li>
         <button
           onClick={goToNextPage}

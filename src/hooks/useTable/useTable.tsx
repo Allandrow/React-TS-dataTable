@@ -47,6 +47,7 @@ export interface UseTableValues {
   handleSorting: HandleSorting
   handleFiltering: HandleFiltering
   handlePageSizing: HandlePageSizing
+  handlePageChange: (value: number) => void
 }
 
 export const useTable = ({
@@ -61,6 +62,8 @@ export const useTable = ({
   const [filter, setFilter] = useState('')
   const [pageSize, setPageSize] = useState(pageSizeOptions[0])
   const [page, setPage] = useState(1)
+
+  const isFiltered = filter.length > 0
 
   const handlePageReset = (reset: boolean) => {
     if (reset) setPage(1)
@@ -111,12 +114,9 @@ export const useTable = ({
         page,
         pageSize,
         rowsLength: filteredRows.length,
-        setPage,
       }),
     [page, pageSize, filteredRows]
   )
-
-  const isFiltered = filter.length > 0
 
   const summary = useMemo(
     () =>
@@ -139,5 +139,6 @@ export const useTable = ({
     handleSorting,
     handleFiltering,
     handlePageSizing,
+    handlePageChange: setPage,
   }
 }

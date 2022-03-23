@@ -7,7 +7,6 @@ describe('pagination helper', () => {
     firstPage: 1,
     lastPage: 7,
     page: 1,
-    setPage: (value) => console.log(value),
   }
   test('Defaults displaying all pages, no suspend', () => {
     const { result } = renderHook(() => paginationWithSuspend(pagination))

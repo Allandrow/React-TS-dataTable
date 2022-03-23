@@ -1,21 +1,25 @@
 import { PaginationRenderValues } from '../../../src/types'
 import { PageButton } from './PageButton'
 
+interface PageListProps extends PaginationRenderValues {
+  handlePageChange: (value: number) => void
+}
+
 export const PageList = ({
   firstPage,
   lastPage,
   page,
   pageList,
-  setPage,
   suspendAfterList,
   suspendBeforeList,
-}: PaginationRenderValues) => {
+  handlePageChange,
+}: PageListProps) => {
   return (
     <>
       {suspendBeforeList && (
         <>
           <li key={firstPage}>
-            <PageButton page={firstPage} setPage={setPage} />
+            <PageButton page={firstPage} handlePageChange={handlePageChange} />
           </li>
           <li key={'suspendedBeforeList'}>
             <span>…</span>
@@ -28,7 +32,7 @@ export const PageList = ({
             {pageNumber === page ? (
               <span>{pageNumber}</span>
             ) : (
-              <PageButton page={pageNumber} setPage={setPage} />
+              <PageButton page={pageNumber} handlePageChange={handlePageChange} />
             )}
           </li>
         ))}
@@ -38,7 +42,7 @@ export const PageList = ({
             <span>…</span>
           </li>
           <li key={lastPage}>
-            <PageButton page={lastPage} setPage={setPage} />
+            <PageButton page={lastPage} handlePageChange={handlePageChange} />
           </li>
         </>
       )}
