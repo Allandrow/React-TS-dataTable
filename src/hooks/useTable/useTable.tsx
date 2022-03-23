@@ -15,7 +15,7 @@ export interface Data extends DataProps {
 
 export interface DefaultColumn {
   id: string
-  header: string
+  displayText: string
   sortMethod?: string
 }
 

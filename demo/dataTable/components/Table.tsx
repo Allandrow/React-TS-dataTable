@@ -32,7 +32,7 @@ export const Table = ({ headers, rows, isFiltered, handleSorting }: TableProps) 
               className={header.isSorted ? `sorted ${header.sortingDirection}` : ''}
               onClick={() => handleSortingEvent(header)}
             >
-              {header.text}
+              {header.displayText}
             </th>
           ))}
         </tr>

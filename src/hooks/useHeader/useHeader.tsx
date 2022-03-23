@@ -7,16 +7,16 @@ interface HeaderProps {
 
 export interface Header {
   id: string
-  text: string
+  displayText: string
   isSorted: boolean
   sortingDirection: 'ascending' | 'descending'
 }
 
 export const useHeader = ({ columns, sorting }: HeaderProps): Header[] => {
-  return columns.map(({ header, id }) => {
+  return columns.map(({ displayText, id }) => {
     return {
       id: id,
-      text: header,
+      displayText,
       isSorted: sorting.id === id,
       sortingDirection: sorting.direction,
     }

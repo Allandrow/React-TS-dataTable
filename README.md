@@ -56,7 +56,7 @@ const instance = useTable({ columns, data, pageSizeOptions }: TableHookProps)
   ```typescript
   interface DefaultColumn {
     id: string
-    header: string
+    displayText: string
     sortMethod?: string
   }
   ```
@@ -65,20 +65,20 @@ const instance = useTable({ columns, data, pageSizeOptions }: TableHookProps)
 
   ```js
   const columns = [
-    { id: 'firstName', header: 'First Name' },
-    { id: 'lastName', header: 'Last Name' },
-    { id: 'startDate', header: 'Start Date', sortMethod: 'sortDateISO' },
-    { id: 'department', header: 'Department' },
-    { id: 'dateOfBirth', header: 'Date of Birth', sortMethod: 'sortDateISO' },
-    { id: 'street', header: 'Street' },
-    { id: 'city', header: 'City' },
-    { id: 'state', header: 'State' },
-    { id: 'zipCode', header: 'Zip Code' },
+    { id: 'firstName', displayText: 'First Name' },
+    { id: 'lastName', displayText: 'Last Name' },
+    { id: 'startDate', displayText: 'Start Date', sortMethod: 'sortDateISO' },
+    { id: 'department', displayText: 'Department' },
+    { id: 'dateOfBirth', displayText: 'Date of Birth', sortMethod: 'sortDateISO' },
+    { id: 'street', displayText: 'Street' },
+    { id: 'city', displayText: 'City' },
+    { id: 'state', displayText: 'State' },
+    { id: 'zipCode', displayText: 'Zip Code' },
   ]
   ```
 
   - id: string value that will be used to link a column with values in each of the data table objects
-  - header : string value that will be the displayed text for the column
+  - displayText : string value that will be the displayed text for the column
   - sortMethod (optional) : used to determine a specific sort method to apply to this column. If no property is specified, the data in this column will be treated as strings and the sorting handler will handle them as such. There is three available values for this property :
     - `sortString` (default)
     - `sortNumber`
@@ -128,40 +128,55 @@ const instance = useTable({ columns, data, pageSizeOptions }: TableHookProps)
     const headers: Header[] = [
       {
         id: 'firstName',
-        text: 'First Name',
+        displayText: 'First Name',
         isSorted: true,
         sortingDirection: 'descending',
       },
       {
         id: 'lastName',
-        text: 'Last Name',
+        displayText: 'Last Name',
         isSorted: false,
         sortingDirection: 'descending',
       },
       {
         id: 'startDate',
-        text: 'Start Date',
+        displayText: 'Start Date',
         isSorted: false,
         sortingDirection: 'descending',
       },
       {
         id: 'department',
-        text: 'Department',
+        displayText: 'Department',
         isSorted: false,
         sortingDirection: 'descending',
       },
       {
         id: 'dateOfBirth',
-        text: 'Date of Birth',
+        displayText: 'Date of Birth',
         isSorted: false,
         sortingDirection: 'descending',
       },
-      { id: 'street', text: 'Street', isSorted: false, sortingDirection: 'descending' },
-      { id: 'city', text: 'City', isSorted: false, sortingDirection: 'descending' },
-      { id: 'state', text: 'State', isSorted: false, sortingDirection: 'descending' },
+      {
+        id: 'street',
+        displayText: 'Street',
+        isSorted: false,
+        sortingDirection: 'descending',
+      },
+      {
+        id: 'city',
+        displayText: 'City',
+        isSorted: false,
+        sortingDirection: 'descending',
+      },
+      {
+        id: 'state',
+        displayText: 'State',
+        isSorted: false,
+        sortingDirection: 'descending',
+      },
       {
         id: 'zipCode',
-        text: 'Zip Code',
+        displayText: 'Zip Code',
         isSorted: false,
         sortingDirection: 'descending',
       },

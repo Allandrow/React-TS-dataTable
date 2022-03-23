@@ -10,7 +10,7 @@ describe('useHeader hook', () => {
 
     result.current.forEach((header, i) => {
       expect(header.id).toBe(columns[i].id)
-      expect(header.text).toBe(columns[i].header)
+      expect(header.displayText).toBe(columns[i].displayText)
       expect(header.isSorted).toBeDefined()
       if (header.id === sorting.id) {
         expect(header.isSorted).toBe(true)
