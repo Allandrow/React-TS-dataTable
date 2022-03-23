@@ -91,7 +91,7 @@ describe('pagination helper', () => {
 
   test('adding options, displayedPagesUntilSuspend only', () => {
     const options = {
-      displayedPagesUntilSuspend: 5,
+      doNotSuspendIfBelowThreshold: 5,
     }
 
     const { result } = renderHook(() => paginationWithSuspend(pagination, options))
@@ -110,7 +110,7 @@ describe('pagination helper', () => {
   test('adding options, suspendCountThreshold only', () => {
     const localPagination = { ...pagination, lastPage: 20, page: 1 }
     const options = {
-      suspendCountThreshold: 10,
+      minimumSuspendDistance: 10,
     }
 
     const { result } = renderHook(() => paginationWithSuspend(localPagination, options))

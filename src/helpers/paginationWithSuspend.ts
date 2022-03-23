@@ -2,8 +2,8 @@ import { useMemo } from 'react'
 import { PaginationParams } from '../types'
 
 interface PaginationRenderOptions {
-  suspendCountThreshold: number
-  displayedPagesUntilSuspend: number
+  minimumSuspendDistance: number
+  doNotSuspendIfBelowThreshold: number
   siblingCount: number
 }
 
@@ -25,8 +25,8 @@ export const paginationWithSuspend = (
   userOptions?: Partial<PaginationRenderOptions>
 ): PaginationRenderValues => {
   const defaults: PaginationRenderOptions = {
-    suspendCountThreshold: 4,
-    displayedPagesUntilSuspend: 7,
+    minimumSuspendDistance: 4,
+    doNotSuspendIfBelowThreshold: 8,
     siblingCount: 1,
   }
 
@@ -37,9 +37,9 @@ export const paginationWithSuspend = (
 
   const paginationRenderProps = useMemo(() => {
     const { firstPage, lastPage, page } = pagination
-    const { suspendCountThreshold, displayedPagesUntilSuspend, siblingCount } = options
+    const { minimumSuspendDistance, doNotSuspendIfBelowThreshold, siblingCount } = options
 
-    if (lastPage <= displayedPagesUntilSuspend) {
+    if (lastPage < doNotSuspendIfBelowThreshold) {
       return {
         pageList: getRange(firstPage, lastPage),
         suspendAfterList: false,
@@ -48,17 +48,17 @@ export const paginationWithSuspend = (
       }
     }
 
-    if (page <= suspendCountThreshold) {
+    if (page <= minimumSuspendDistance) {
       return {
-        pageList: getRange(firstPage, suspendCountThreshold + siblingCount),
+        pageList: getRange(firstPage, minimumSuspendDistance + siblingCount),
         suspendAfterList: true,
         suspendBeforeList: false,
         ...pagination,
       }
     }
 
-    if (page > lastPage - suspendCountThreshold) {
-      const firstPageAfterSuspend = lastPage - suspendCountThreshold - 1 + siblingCount
+    if (page > lastPage - minimumSuspendDistance) {
+      const firstPageAfterSuspend = lastPage - minimumSuspendDistance - 1 + siblingCount
 
       return {
         pageList: getRange(firstPageAfterSuspend, lastPage),

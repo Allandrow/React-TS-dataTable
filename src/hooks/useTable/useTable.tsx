@@ -37,6 +37,7 @@ export interface StateChangeOptions {
 export type HandleSorting = (sorting: SortBy, options?: StateChangeOptions) => void
 export type HandleFiltering = (value: string, options?: StateChangeOptions) => void
 export type HandlePageSizing = (value: number, options?: StateChangeOptions) => void
+export type HandlePageChange = (value: number) => void
 
 export interface UseTableValues {
   headers: Header[]
@@ -47,7 +48,7 @@ export interface UseTableValues {
   handleSorting: HandleSorting
   handleFiltering: HandleFiltering
   handlePageSizing: HandlePageSizing
-  handlePageChange: (value: number) => void
+  handlePageChange: HandlePageChange
 }
 
 export const useTable = ({

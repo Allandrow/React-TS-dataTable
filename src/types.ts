@@ -7,6 +7,7 @@ export type {
   HandleFiltering,
   HandlePageSizing,
   HandleSorting,
+  HandlePageChange,
 } from './hooks/useTable/useTable'
 
 export type { Header } from './hooks/useHeader/useHeader'

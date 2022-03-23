@@ -1,20 +1,14 @@
 import { paginationWithSuspend } from '../../../src'
 import { PageList } from './PageList'
-import { PaginationParams } from '../../../src/types'
+import { HandlePageChange, PaginationParams } from '../../../src/types'
 
 interface PaginationProps {
   pagination: PaginationParams | null
-  handlePageChange: (value: number) => void
+  handlePageChange: HandlePageChange
 }
 
 export const Pagination = ({ pagination, handlePageChange }: PaginationProps) => {
-  const paginationRenderValues = pagination
-    ? paginationWithSuspend(pagination, {
-        suspendCountThreshold: 4,
-        displayedPagesUntilSuspend: 7,
-        siblingCount: 1,
-      })
-    : null
+  const paginationRenderValues = pagination ? paginationWithSuspend(pagination) : null
 
   const goToPreviousPage = () => handlePageChange(pagination.page - 1)
   const goToNextPage = () => handlePageChange(pagination.page + 1)

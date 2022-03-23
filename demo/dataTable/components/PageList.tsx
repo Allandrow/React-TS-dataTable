@@ -1,8 +1,8 @@
-import { PaginationRenderValues } from '../../../src/types'
+import { HandlePageChange, PaginationRenderValues } from '../../../src/types'
 import { PageButton } from './PageButton'
 
 interface PageListProps extends PaginationRenderValues {
-  handlePageChange: (value: number) => void
+  handlePageChange: HandlePageChange
 }
 
 export const PageList = ({

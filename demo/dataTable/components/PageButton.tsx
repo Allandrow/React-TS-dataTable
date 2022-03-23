@@ -1,6 +1,8 @@
+import { HandlePageChange } from '../../../src/types'
+
 interface PageButtonProps {
   page: number
-  handlePageChange: (value: number) => void
+  handlePageChange: HandlePageChange
 }
 
 export const PageButton = ({ page, handlePageChange }: PageButtonProps) => {
