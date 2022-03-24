@@ -15,8 +15,6 @@ Built With :
   npm i react-ts-datatable
 ```
 
-- pageSizeOptions (optional): an array of numbers. Default values are [10, 20, 50, 100]
-
 #### hook return
 
 The hook will return an object containing :
