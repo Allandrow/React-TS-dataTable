@@ -1,4 +1,4 @@
-import { act, renderHook } from '@testing-library/react-hooks'
+import { renderHook } from '@testing-library/react-hooks'
 import { useSorting } from './useSorting'
 import { data, columns, sorting } from '../../fixtures'
 import { SortBy } from '../../types'
