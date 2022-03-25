@@ -9,12 +9,13 @@ const config = {
   title: 'React-TS-dataTable',
   tagline:
     'A simple headless library to create and interact with tables, built with React and TypeScript.',
-  url: 'Allandrow/React-TS-dataTable',
+  url: 'https://allandrow.github.io/',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   organizationName: 'Allandrow', // Usually your GitHub org/user name.
-  projectName: 'react-ts-datatable', // Usually your repo name.
+  projectName: 'React-TS-dataTable', // Usually your repo name.
+  trailingSlash: false,
 
   presets: [
     [
