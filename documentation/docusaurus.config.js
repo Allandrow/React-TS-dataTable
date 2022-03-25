@@ -10,7 +10,7 @@ const config = {
   tagline:
     'A simple headless library to create and interact with tables, built with React and TypeScript.',
   url: 'https://allandrow.github.io/',
-  baseUrl: '/',
+  baseUrl: '/React-TS-dataTable/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   organizationName: 'Allandrow', // Usually your GitHub org/user name.
@@ -91,12 +91,8 @@ const config = {
             title: 'More',
             items: [
               {
-                label: 'Blog',
-                to: '/blog',
-              },
-              {
                 label: 'GitHub',
-                href: 'https://github.com/facebook/docusaurus',
+                href: 'https://github.com/Allandrow',
               },
             ],
           },
