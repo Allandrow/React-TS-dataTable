@@ -5,7 +5,7 @@ import { usePagination } from '../usePagination'
 import { useSummary } from '../useSummary'
 import { useRows } from '../useRows'
 import { useSorting } from '../useSorting'
-import { Header, PaginationParams, SummaryValues, Rows } from '../../types'
+import { Header, PaginationParams, SummaryValues, Row } from '../../types'
 
 type DataProps = Record<string, unknown>
 
@@ -43,7 +43,7 @@ export type HandlePageChange = (value: number) => void
 
 export interface UseTableValues {
   headers: Header[]
-  rows: Rows[]
+  rows: Row[]
   pagination: PaginationParams | null
   summary: SummaryValues
   isFiltered: boolean

@@ -6,18 +6,18 @@ interface RowsProps {
   sorting: SortBy
 }
 
-interface Row {
+interface Cell {
   key: string
   cellValue: unknown
   isSorted: boolean
 }
 
-export interface Rows {
+export interface Row {
   key: string
-  data: Row[]
+  data: Cell[]
 }
 
-export const useRows = ({ data, headers, sorting }: RowsProps): Rows[] => {
+export const useRows = ({ data, headers, sorting }: RowsProps): Row[] => {
   return data.map((row) => {
     return {
       key: row.key,

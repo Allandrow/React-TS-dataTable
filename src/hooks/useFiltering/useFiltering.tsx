@@ -1,7 +1,7 @@
-import { Rows } from '../../types'
+import { Row } from '../../types'
 
 interface FilteringProps {
-  data: Rows[]
+  data: Row[]
   filter: string
 }
 

@@ -1,6 +1,6 @@
-import { Rows } from '../types'
+import { Row } from '../types'
 
-export const rows: Rows[] = [
+export const rows: Row[] = [
   {
     key: '0',
     data: [

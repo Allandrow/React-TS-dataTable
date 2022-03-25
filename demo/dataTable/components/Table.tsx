@@ -1,8 +1,8 @@
-import { Header, Rows, HandleSorting } from '../../../src/types'
+import { Header, Row, HandleSorting } from '../../../src/types'
 
 interface TableProps {
   headers: Header[]
-  rows: Rows[]
+  rows: Row[]
   isFiltered: boolean
   handleSorting: HandleSorting
 }
