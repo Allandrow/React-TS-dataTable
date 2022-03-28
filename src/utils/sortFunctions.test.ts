@@ -18,6 +18,24 @@ describe('sort functions', () => {
     expect(sortedData[2].city).toBe('Austin')
   })
 
+  test('sort string lowerCase vs upperCase', () => {
+    const data = [{ name: 'Aidan' }, { name: 'aaron' }]
+
+    let sortedData = data.sort((a, b) =>
+      sortFunctions.get('sortString')(a, b, { id: 'name', direction: 'descending' })
+    )
+
+    expect(sortedData[0].name).toBe('aaron')
+    expect(sortedData[1].name).toBe('Aidan')
+
+    sortedData = data.sort((a, b) =>
+      sortFunctions.get('sortString')(a, b, { id: 'name', direction: 'ascending' })
+    )
+
+    expect(sortedData[0].name).toBe('Aidan')
+    expect(sortedData[1].name).toBe('aaron')
+  })
+
   test('sort number', () => {
     const dataNumbers = [
       { number: 2 },
