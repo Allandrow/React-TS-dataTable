@@ -52,7 +52,7 @@ const sortString = (a: Data, b: Data, { id, direction }: SortBy) => {
   const bValue = b[id]
 
   if (typeof aValue === 'string' && typeof bValue === 'string') {
-    return compareValues(aValue, bValue, direction)
+    return compareValues(aValue.toLowerCase(), bValue.toLowerCase(), direction)
   }
 
   throwTypeComparisonError(id, 'string')
