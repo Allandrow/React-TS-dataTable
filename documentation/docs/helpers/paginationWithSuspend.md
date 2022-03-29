@@ -9,6 +9,8 @@ This helper function allows you to setup new values derived from the `pagination
 ## Arguments
 
 ```typescript
+import { paginationWithSuspend } from 'react-ts-datatable'
+
 interface PaginationParams {
   firstPage: number
   lastPage: number

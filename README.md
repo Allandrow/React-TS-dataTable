@@ -14,3 +14,7 @@ Built With :
 ```shell
   npm i react-ts-datatable
 ```
+
+## Documentation
+
+[Documentation link](https://allandrow.github.io/React-TS-dataTable/docs/intro), built with [Docusaurus](https://docusaurus.io/)

@@ -33,16 +33,12 @@ Here we'll briefly demonstrate how to use the different functions available, for
 
 ### useTable
 
-To create a new table instance, simply call the custom hook while giving it an object containing at least two arrays (your columns and your data).
+To create a new table instance, simply call the custom hook while giving it an object containing at least the two required arrays : `columns` and `data`, `pageSizingOptions` being optional and having a default value.
 
 ```typescript
-const instance = useTable({ columns, data })
-```
+import { useTable } from 'react-ts-datatable'
 
-The call can also include a number array called `pageSizingOptions` that is setup by default with `[10,20,50,100]` values. If you want to change this behaviour, add the `pageSizingOptions` property inside the argument object and give it a new number array as value.
-
-```typescript
-const instance = useTable({ columns, data, pageSizingOptions: [10, 15, 20, 25, 30] })
+const instance = useTable({ columns, data, pageSizingOptions })
 ```
 
 ### paginationWithSuspend
@@ -52,5 +48,7 @@ This helper function will setup a new object with information regarding the page
 To call the function you'll need to provide the pagination object that you will receive from the `useTable` hook, or provide an object that shares the same structure. You can also provide a second object as argument that will allow you to override the default values.
 
 ```typescript
+import { paginationWithSuspend } from 'react-ts-datatable'
+
 const paginationRenderValues = paginationWithSuspend(pagination, userOptions)
 ```

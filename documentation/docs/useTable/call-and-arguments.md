@@ -7,6 +7,8 @@ sidebar_position: 1
 When calling the `useTable` hook, you'll need to provide an object as argument. This object will contain 3 properties (1 is optional with default values) :
 
 ```typescript
+import { useTable } from 'react-ts-datatable'
+
 const instance = useTable({ columns, data, pageSizingOptions })
 ```
 
@@ -26,25 +28,26 @@ interface Column {
 }
 ```
 
-- **id** : the identifier for the column. This is the value that is used to match a value in your data rows to a specific column.
-- **displayText** : the text that will be displayed in the headers of the table
-- **sortMethod** _(optional)_ : by default your column values will be compared as if they are strings. If this behaviour isn't what you intend for this column you can alter it by :
-  - providing a new string value that is one of the built-in sort methods included in the hook (more info on internal-logic/sorting page)
-  - providing your own callback function that will be applied to the sort method of this column.
+**id** : the identifier for the column. This is the value that is used to match a value in your data rows to a specific column.
+
+**displayText** : the text that will be displayed in the headers of the table
+
+**sortMethod** _(optional)_ : by default your column values will be compared as if they are strings. If this behaviour isn't what you intend for this column you can alter it by :
+
+- providing a new string value that is one of the built-in sort methods included in the hook (more info on internal-logic/sorting page)
+- providing your own callback function that will be applied to the sort method of this column.
 
 #### Example
 
-This is an example of a columns array that is used in the demo example
-
 ```js
-const columns = [
+const columns: Column[] = [
   { id: 'firstName', displayText: 'First Name' },
   { id: 'lastName', displayText: 'Last Name' },
   { id: 'startDate', displayText: 'Start Date', sortMethod: 'sortDateISO' },
   { id: 'department', displayText: 'Department' },
   { id: 'dateOfBirth', displayText: 'Date of Birth', sortMethod: 'sortDateISO' },
   { id: 'street', displayText: 'Street' },
-  { id: 'city', displayText: 'City' },
+  { id: 'city', displayText: 'City', sortMethod: customStringSort },
   { id: 'state', displayText: 'State' },
   { id: 'zipCode', displayText: 'Zip Code' },
 ]
@@ -96,3 +99,7 @@ Here you can notice that the only property that doesn't match a column id is the
 
 Optional array that allows you to specify the list of options for the number of rows displayed in a page.
 By default the values are `[10, 20, 50, 100]`
+
+## Demo
+
+You can find more details on the way theses values are setup and used in the Github repository within the [demo folder](https://github.com/Allandrow/React-TS-dataTable/tree/main/demo).
