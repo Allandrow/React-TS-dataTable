@@ -1,6 +1,6 @@
 export type {
   Data,
-  DefaultColumn,
+  Column,
   SortBy,
   StateChangeOptions,
   UseTableValues,

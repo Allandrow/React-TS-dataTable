@@ -20,14 +20,14 @@ export interface Data extends DataProps {
 
 export type UserSortMethod = (a: Data, b: Data, sorting: SortBy) => number
 
-export interface DefaultColumn {
+export interface Column {
   id: string
   displayText: string
   sortMethod?: string | UserSortMethod
 }
 
 interface TableHookProps {
-  columns: DefaultColumn[]
+  columns: Column[]
   data: Data[]
   pageSizeOptions?: number[]
 }

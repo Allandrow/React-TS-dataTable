@@ -4,10 +4,10 @@ import { PageSizeSelect } from './components/PageSizeSelect'
 import { Pagination } from './components/Pagination'
 import { Summary } from './components/Summary'
 import { Table } from './components/Table'
-import { Data, DefaultColumn, UseTableValues } from '../../src/types'
+import { Data, Column, UseTableValues } from '../../src/types'
 
 interface DataTableProps {
-  columns: DefaultColumn[]
+  columns: Column[]
   data: Data[]
   options?: number[]
 }

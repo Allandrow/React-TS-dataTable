@@ -1,10 +1,10 @@
 import { sortFunctions } from '../../utils'
-import { Data, DefaultColumn, SortBy } from '../../types'
+import { Data, Column, SortBy } from '../../types'
 
 interface SortingProps {
   data: Data[]
   sorting: SortBy
-  columns: DefaultColumn[]
+  columns: Column[]
 }
 
 export const useSorting = ({ data, sorting, columns }: SortingProps) => {

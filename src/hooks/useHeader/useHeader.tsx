@@ -1,7 +1,7 @@
-import { DefaultColumn, SortBy } from '../../types'
+import { Column, SortBy } from '../../types'
 
 interface HeaderProps {
-  columns: DefaultColumn[]
+  columns: Column[]
   sorting: SortBy
 }
 

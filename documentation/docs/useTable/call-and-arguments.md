@@ -19,7 +19,7 @@ To properly build the table, the arrays you'll provide will need to respect a sp
 The columns array represent the information regarding each column of your table. Each item in the array will be an object (the column information) and will need to contain these properties :
 
 ```typescript
-interface DefaultColumn {
+interface Column {
   id: string
   displayText: string
   sortMethod?: string | Function

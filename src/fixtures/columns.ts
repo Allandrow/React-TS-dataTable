@@ -1,7 +1,7 @@
-import { DefaultColumn } from '../types'
+import { Column } from '../types'
 import { customStringSort } from './customSortMethod'
 
-export const columns: DefaultColumn[] = [
+export const columns: Column[] = [
   { id: 'firstName', displayText: 'First Name' },
   { id: 'lastName', displayText: 'Last Name' },
   { id: 'startDate', displayText: 'Start Date', sortMethod: 'sortDateISO' },
