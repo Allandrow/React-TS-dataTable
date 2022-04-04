@@ -17,4 +17,4 @@ Built With :
 
 ## Documentation
 
-[Documentation link](https://allandrow.github.io/React-TS-dataTable/docs/intro), built with [Docusaurus](https://docusaurus.io/)
+[Documentation link](https://allandrow.github.io/React-TS-dataTable/docs/intro)
