@@ -29,20 +29,21 @@ const paginationRenderValues = paginationWithSuspend(
 )
 ```
 
-- `pagination` : the object received from `useTable`
-- `userOptions` : an optional object containing any or all of the properties inside the `PaginationRenderOptions` interface.
+**pagination** : the object received from `useTable`
+
+**userOptions** : an optional object containing any or all of the properties inside the `PaginationRenderOptions` interface.
 
 ### PaginationRenderOptions
 
-- `minimumSuspendDistance` (_default : _ `4`) : the number of pages to display from the first / last if the current page is within the distance.
+**minimumSuspendDistance** (_default_ : `4`) : the number of pages to display from the first / last if the current page is within the distance.
 
-:::tip siblingCount usage
-If page is within the distance from the first/last, it will display the distance + siblingCount pages before / after suspension.
+:::info Number of items displayed
+If page is within the distance from the first/last, it will display the distance + siblingCount pages before / after suspension, not just the minimumSuspendDistance value.
 :::
 
-- `doNotSuspendIfBelowThreshold` (_default : _ `8`) : If the total of pages is below this value, all pages will be displayed and no suspension will happen.
+**doNotSuspendIfBelowThreshold** (_default : _ `8`) : If the total of pages is below this value, all pages will be displayed and no suspension will happen.
 
-- `siblingCount` (_default : _ `1`) : the number of pages to display around the current page or after/before the minimum distance if current page is near the start/end.
+**siblingCount** (_default : _ `1`) : the number of pages to display around the current page or after/before the minimum distance if current page is near the start/end.
 
 ## Returned Values
 
@@ -64,6 +65,8 @@ interface PaginationRenderValues extends PaginationParams {
 
 Given that the properties of `pagination` are described elsewhere, we will concentrate only on the new properties :
 
-- `pageList` : the array of pages to be displayed.
-- `suspendAfterList` : boolean stating if the pagination needs a suspension after the list
-- `suspendBeforeList` : boolean stating if the pagination needs a suspension before the list
+**pageList** : the array of pages to be displayed.
+
+**suspendAfterList** : boolean stating if the pagination needs a suspension after the list
+
+**suspendBeforeList** : boolean stating if the pagination needs a suspension before the list
