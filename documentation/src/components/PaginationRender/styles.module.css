@@ -1,0 +1,25 @@
+.customForm {
+  display: grid;
+  gap: 2rem;
+}
+
+.customForm div {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.customForm label {
+  display: flex;
+  gap: 1rem;
+}
+
+.customForm span {
+  font-weight: bold;
+  width: 260px;
+}
+
+.customForm input {
+  width: 60px;
+  text-align: right;
+}
