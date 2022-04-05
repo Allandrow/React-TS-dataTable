@@ -1,7 +1,7 @@
 import { useMemo } from 'react'
 import { PaginationParams } from '../types'
 
-interface PaginationRenderOptions {
+export interface PaginationRenderOptions {
   minimumSuspendDistance: number
   doNotSuspendIfBelowThreshold: number
   siblingCount: number
