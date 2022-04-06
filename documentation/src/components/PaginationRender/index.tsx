@@ -40,7 +40,7 @@ export const PaginationRender = () => {
         <Pagination {...paginationRenderValues} />
       </div>
       <div className={styles.customForm}>
-        <h2>Change Values</h2>
+        <h2>Change Values :</h2>
         <div>
           <label>
             <span>lastPage : </span>

@@ -3,6 +3,11 @@
   gap: 2rem;
 }
 
+.customForm h2 {
+  margin-bottom: 0;
+  margin-top: 1rem;
+}
+
 .customForm div {
   display: flex;
   flex-direction: column;
