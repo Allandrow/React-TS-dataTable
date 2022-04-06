@@ -125,4 +125,33 @@ describe('pagination helper', () => {
     expect(suspendAfterList).toBe(true)
     expect(suspendBeforeList).toBe(false)
   })
+
+  test('do not suspend if sibling next to distance from start', () => {
+    const localPagination = { ...pagination, lastPage: 10, page: 2 }
+    const options = {
+      minimumSuspendDistance: 1,
+    }
+
+    const { result } = renderHook(() => paginationWithSuspend(localPagination, options))
+
+    const { pageList, suspendBeforeList } = result.current
+
+    expect(pageList[0]).toEqual(1)
+    expect(suspendBeforeList).toBe(false)
+  })
+
+  test('do not suspend if sibling next to distance from end', () => {
+    const localPagination = { ...pagination, lastPage: 10, page: 9 }
+    const options = {
+      minimumSuspendDistance: 1,
+    }
+
+    const { result } = renderHook(() => paginationWithSuspend(localPagination, options))
+
+    const { pageList, suspendAfterList } = result.current
+
+    expect(pageList).toHaveLength(3)
+    expect(pageList[2]).toEqual(10)
+    expect(suspendAfterList).toBe(false)
+  })
 })

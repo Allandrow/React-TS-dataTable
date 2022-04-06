@@ -39,6 +39,7 @@ export const paginationWithSuspend = (
     const { firstPage, lastPage, page } = pagination
     const { minimumSuspendDistance, doNotSuspendIfBelowThreshold, siblingCount } = options
 
+    // include all pages in pageList
     if (lastPage < doNotSuspendIfBelowThreshold) {
       return {
         pageList: getRange(firstPage, lastPage),
@@ -48,6 +49,7 @@ export const paginationWithSuspend = (
       }
     }
 
+    // page within distance from the start
     if (page <= minimumSuspendDistance) {
       return {
         pageList: getRange(firstPage, minimumSuspendDistance + siblingCount),
@@ -57,8 +59,9 @@ export const paginationWithSuspend = (
       }
     }
 
+    // page within distance from the end
     if (page > lastPage - minimumSuspendDistance) {
-      const firstPageAfterSuspend = lastPage - minimumSuspendDistance - 1 + siblingCount
+      const firstPageAfterSuspend = lastPage - minimumSuspendDistance + 1 - siblingCount
 
       return {
         pageList: getRange(firstPageAfterSuspend, lastPage),
@@ -70,6 +73,26 @@ export const paginationWithSuspend = (
 
     const firstPageAfterSuspend = page - siblingCount
     const lastPageBeforeSuspend = page + siblingCount
+
+    // page - sibling next to firstPage
+    if (page - siblingCount <= firstPage + 1) {
+      return {
+        pageList: getRange(firstPage, lastPageBeforeSuspend),
+        suspendBeforeList: false,
+        suspendAfterList: true,
+        ...pagination,
+      }
+    }
+
+    // page + sibling next to lastPage
+    if (page + siblingCount >= lastPage - 1) {
+      return {
+        pageList: getRange(firstPageAfterSuspend, lastPage),
+        suspendBeforeList: true,
+        suspendAfterList: false,
+        ...pagination,
+      }
+    }
 
     return {
       pageList: getRange(firstPageAfterSuspend, lastPageBeforeSuspend),
