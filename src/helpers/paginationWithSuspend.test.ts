@@ -154,4 +154,17 @@ describe('pagination helper', () => {
     expect(pageList[2]).toEqual(10)
     expect(suspendAfterList).toBe(false)
   })
+
+  test('siblingCount > total pages caps pageList at lastPage', () => {
+    const localPagination = { ...pagination, lastPage: 10, page: 9 }
+    const options = {
+      siblingCount: 12,
+    }
+
+    const { result } = renderHook(() => paginationWithSuspend(localPagination, options))
+
+    const { pageList } = result.current
+
+    expect(pageList).toHaveLength(localPagination.lastPage)
+  })
 })
