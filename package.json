@@ -1,20 +1,13 @@
 {
   "name": "react-ts-datatable",
   "author": "Cyril Tiger",
-  "version": "2.1.5",
+  "version": "2.2.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/Allandrow/React-TS-dataTable.git"
   },
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "files": [
-    "dist/index.js",
-    "dist/types.d.ts",
-    "dist/index.d.ts",
-    "dist/helpers/",
-    "dist/"
-  ],
   "keywords": [
     "React",
     "TypeScript",
