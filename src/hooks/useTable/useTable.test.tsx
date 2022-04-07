@@ -12,7 +12,7 @@ describe('useTable', () => {
 
     expect(headers).toStrictEqual(fixtureHeaders)
 
-    const sortedHeader = headers.find((header) => header.isSorted)
+    const sortedHeader = headers.find((header) => header.isSorted)!
 
     rows.forEach((row, i) => {
       expect(Object.keys(row)).toHaveLength(2)
@@ -23,9 +23,11 @@ describe('useTable', () => {
       }
     })
 
-    expect(pagination.firstPage).toBe(1)
-    expect(pagination.lastPage).toBe(1)
-    expect(pagination.page).toBe(1)
+    if (pagination) {
+      expect(pagination.firstPage).toBe(1)
+      expect(pagination.lastPage).toBe(1)
+      expect(pagination.page).toBe(1)
+    }
 
     expect(summary.originalLength).toEqual(summary.filteredLength)
     expect(summary.firstIndex).toBe(1)
@@ -41,7 +43,10 @@ describe('useTable', () => {
 
     expect(result.current.rows[0].data[0].cellValue).toBe('Zaria')
     expect(result.current.rows[0].data[0].isSorted).toBe(true)
-    expect(result.current.pagination.page).toBe(1)
+
+    if (result.current.pagination) {
+      expect(result.current.pagination.page).toBe(1)
+    }
 
     result.current.handleSorting({ id: 'zipCode', direction: 'descending' })
 
@@ -55,8 +60,9 @@ describe('useTable', () => {
 
     result.current.handlePageChange(3)
 
-    expect(result.current.pagination.page).toBe(3)
-
+    if (result.current.pagination) {
+      expect(result.current.pagination.page).toBe(3)
+    }
     result.current.handleFiltering('Austin')
 
     expect(result.current.rows).toHaveLength(3)
@@ -65,8 +71,11 @@ describe('useTable', () => {
 
     expect(result.current.rows).toHaveLength(10)
     expect(result.current.summary.filteredLength).toBe(12)
-    expect(result.current.pagination.lastPage).toBe(2)
-    expect(result.current.pagination.page).toBe(1)
+
+    if (result.current.pagination) {
+      expect(result.current.pagination.lastPage).toBe(2)
+      expect(result.current.pagination.page).toBe(1)
+    }
   })
 
   test('Modifying page size', () => {
@@ -76,9 +85,12 @@ describe('useTable', () => {
 
     result.current.handlePageSizing(50)
 
-    expect(result.current.pagination.lastPage).toBe(2)
+    if (result.current.pagination) {
+      expect(result.current.pagination.lastPage).toBe(2)
+      expect(result.current.pagination.page).toBe(1)
+    }
+
     expect(result.current.summary.lastIndex).toBe(50)
     expect(result.current.rows).toHaveLength(50)
-    expect(result.current.pagination.page).toBe(1)
   })
 })

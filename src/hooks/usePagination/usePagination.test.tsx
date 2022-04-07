@@ -27,8 +27,10 @@ describe('usePagination hook', () => {
   test('pagination object', () => {
     const { result } = renderHook(() => usePagination(defaultParams))
 
-    expect(result.current.firstPage).toBe(1)
-    expect(result.current.lastPage).toBe(10)
-    expect(result.current.page).toBe(3)
+    if (result.current) {
+      expect(result.current.firstPage).toBe(1)
+      expect(result.current.lastPage).toBe(10)
+      expect(result.current.page).toBe(3)
+    }
   })
 })
