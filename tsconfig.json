@@ -18,6 +18,5 @@
     "declaration": true,
     "outDir": "dist"
   },
-  "include": ["./src"],
-  "exclude": ["./src/**/*.stories.tsx", "./src/**/*.test.tsx", "./src/test-setup.ts"]
+  "include": ["./src"]
 }

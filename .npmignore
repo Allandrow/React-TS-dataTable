@@ -1,0 +1,4 @@
+src/**/*.stories.*
+src/**/*.test.*
+src/test-setup.ts
+src/fixtures/*
