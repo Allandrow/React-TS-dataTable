@@ -7,6 +7,10 @@ Built With :
 - [React](https://reactjs.org/)
 - [TypeScript](https://www.typescriptlang.org/)
 
+## Link to npm package
+
+[React-ts-dataTable](https://www.npmjs.com/package/react-ts-datatable)
+
 ## Installation
 
 - Install the package in your repo
