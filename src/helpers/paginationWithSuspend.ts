@@ -35,6 +35,15 @@ export const paginationWithSuspend = (
     ...userOptions,
   }
 
+  const getFullPagesPagination = (firstPage: number, lastPage: number) => {
+    return {
+      pageList: getRange(firstPage, lastPage),
+      suspendAfterList: false,
+      suspendBeforeList: false,
+      ...pagination,
+    }
+  }
+
   const paginationRenderProps: PaginationRenderValues = useMemo(() => {
     const { firstPage, lastPage, page } = pagination
     const { minimumSuspendDistance, doNotSuspendIfBelowThreshold, siblingCount } = options
@@ -46,12 +55,7 @@ export const paginationWithSuspend = (
 
     // include all pages in pageList
     if (lastPage <= displayAllPages) {
-      return {
-        pageList: getRange(firstPage, lastPage),
-        suspendAfterList: false,
-        suspendBeforeList: false,
-        ...pagination,
-      }
+      return getFullPagesPagination(firstPage, lastPage)
     }
 
     // page within distance from start, display distance + sibling then suspend to lastPage
@@ -60,12 +64,7 @@ export const paginationWithSuspend = (
 
       // do not suspend if sibling + distance nears or over lastPage
       if (lastPageBeforeSuspend >= lastPage - 1) {
-        return {
-          pageList: getRange(firstPage, lastPage),
-          suspendAfterList: false,
-          suspendBeforeList: false,
-          ...pagination,
-        }
+        return getFullPagesPagination(firstPage, lastPage)
       }
       return {
         pageList: getRange(firstPage, lastPageBeforeSuspend),
@@ -81,12 +80,7 @@ export const paginationWithSuspend = (
 
       // do not suspend if sibling + distance nears or below firstPage
       if (firstPageAfterSuspend <= firstPage + 1) {
-        return {
-          pageList: getRange(firstPage, lastPage),
-          suspendAfterList: false,
-          suspendBeforeList: false,
-          ...pagination,
-        }
+        return getFullPagesPagination(firstPage, lastPage)
       }
 
       return {
@@ -104,12 +98,7 @@ export const paginationWithSuspend = (
     if (firstPageAfterSuspend <= firstPage + 1) {
       // do not suspend if page + sibling nears or over lastPage
       if (lastPageBeforeSuspend >= lastPage - 1) {
-        return {
-          pageList: getRange(firstPage, lastPage),
-          suspendBeforeList: false,
-          suspendAfterList: false,
-          ...pagination,
-        }
+        return getFullPagesPagination(firstPage, lastPage)
       }
 
       return {
