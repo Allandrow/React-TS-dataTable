@@ -9,7 +9,6 @@ describe('useTable', () => {
     expect(Object.keys(result.current)).toHaveLength(9)
 
     const { headers, rows, pagination, summary } = result.current
-
     expect(headers).toStrictEqual(fixtureHeaders)
 
     const sortedHeader = headers.find((header) => header.isSorted)!

@@ -8,11 +8,7 @@ export const columns: Column[] = [
   { id: 'department', displayText: 'Department' },
   { id: 'dateOfBirth', displayText: 'Date of Birth', sortMethod: 'sortDateISO' },
   { id: 'street', displayText: 'Street' },
-  {
-    id: 'city',
-    displayText: 'City',
-    sortMethod: customStringSort,
-  },
+  { id: 'city', displayText: 'City', sortMethod: customStringSort },
   { id: 'state', displayText: 'State' },
   { id: 'zipCode', displayText: 'Zip Code' },
 ]
