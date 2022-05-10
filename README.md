@@ -16,4 +16,4 @@ A simple headless library to create tables amd components that interact with the
 
 ## Documentation
 
-[Documentation link](https://allandrow.github.io/React-TS-dataTable/docs/intro)
+[Documentation link](https://allandrow.github.io/React-TS-dataTable/)
