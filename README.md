@@ -2,7 +2,7 @@
 
 ![GitHub top language](https://img.shields.io/github/languages/top/allandrow/react-ts-datatable?style=for-the-badge) ![npm](https://img.shields.io/npm/v/react-ts-datatable?style=for-the-badge) ![npm bundle size](https://img.shields.io/bundlephobia/min/react-ts-datatable?style=for-the-badge)
 
-A simple headless library to create tables amd components that interact with them.
+A simple headless library to create tables and components that interact with them.
 
 [Link to npm](https://www.npmjs.com/package/react-ts-datatable)
 
